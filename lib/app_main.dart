@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: RoutesManager.homeScreen,
       onGenerateRoute: appRouter.generateRoute,
-      //home: const MarketScreen(),
+        //home: HomePage(),
+       // home: const TestButton(),
     );
   }
 }
