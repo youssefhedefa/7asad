@@ -116,5 +116,19 @@ class TextStyleHelper{
     color: ColorHelper.darkestGreenColor,
   );
 
+   static TextStyle font20BoldPrimary = const TextStyle(
+     fontSize: 20,
+     fontWeight: FontWeightHelper.bold,
+     fontFamily: 'Tajawal',
+     color: ColorHelper.primaryColor,
+   );
+
+   static TextStyle font18Medium = const TextStyle(
+     fontSize: 18,
+     fontWeight: FontWeightHelper.medium,
+     fontFamily: 'Tajawal',
+   );
+
+
 
 }

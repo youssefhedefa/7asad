@@ -14,11 +14,10 @@ class LandScreen extends StatelessWidget {
       create: (BuildContext context) => ChangeScreenCubit(),
       child: BlocBuilder<ChangeScreenCubit,ChangeScreenStates>(
         builder: (BuildContext context, state) {
-
           var changeScreenCubit = BlocProvider.of<ChangeScreenCubit>(context);
-
           return Scaffold(
             floatingActionButton: const CustomFloatingActionButton(),
+            //floatingActionButton: const TestButton(),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: CustomBottomNavigationBar(changeScreenCubit: changeScreenCubit,),
             body: changeScreenCubit.getView(),
