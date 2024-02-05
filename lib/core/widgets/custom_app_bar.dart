@@ -9,11 +9,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     required this.background,
     this.action,
+    this.hasLeading = true,
   });
 
   final String title;
   final Color background;
   final List<Widget>? action;
+  final bool? hasLeading;
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +43,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             Row(
               children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios_outlined,
-                    color: Colors.white,
+                hasLeading!
+                    ? IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(Icons.arrow_back_ios_outlined,
+                            color: background == Colors.white
+                                ? ColorHelper.darkestGreenColor
+                                : Colors.white),
+                      )
+                    : const SizedBox(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    title,
+                    style: TextStyleHelper.font22MediumDarkestGreen.copyWith(
+                      color: background == Colors.white
+                          ? ColorHelper.darkestGreenColor
+                          : Colors.white,
+                      fontSize: background == Colors.white ? 28 : 22,
+                    ),
                   ),
-                ),
-                Text(
-                  title,
-                  style: TextStyleHelper.font22MediumDarkestGreen
-                      .copyWith(color: Colors.white),
                 ),
               ],
             ),

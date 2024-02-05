@@ -1,4 +1,5 @@
-class RoutesManager{
+abstract class RoutesManager{
+  static const String landScreen = '/land';
   static const String marketScreen = '/market';
   static const String homeScreen = '/home';
   static const String notificationScreen = '/notification';
@@ -9,4 +10,8 @@ class RoutesManager{
   static const String favoriteScreen = '/favorite';
   static const String diseaseDetectionScreen = '/diseaseDetection';
   static const String medicienDetailsScreen = '/medicienDetails';
+  static const String signInScreen = '/signIn';
+  static const String logInScreen = '/logIn';
+  static const String bookingScreen = '/booking';
+  static const String confirmScreen = '/confirm';
 }

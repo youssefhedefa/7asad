@@ -46,6 +46,13 @@ class TextStyleHelper{
     color: ColorHelper.darkestGreenColor,
   );
 
+   static TextStyle font16MediumDarkGreen = const TextStyle(
+     fontSize: 16,
+     fontWeight: FontWeightHelper.medium,
+     fontFamily: 'Tajawal',
+     color: ColorHelper.darkGreenColor,
+   );
+
   static TextStyle font14RegularDarkGreen = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeightHelper.regular,

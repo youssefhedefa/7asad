@@ -1,5 +1,6 @@
 import 'package:final_project/core/helpers/assets_helper/icon_helper.dart';
 import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
+import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/core/widgets/seller_contacts_buttons.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ void showAlertContact(BuildContext context,String phoneNumber) {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          backgroundColor: ColorHelper.alertColor,
           content: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,14 +69,14 @@ void showAlertContact(BuildContext context,String phoneNumber) {
     );
   }
 
-void launchPhoneApp() async {
-  var url = Uri.parse('tel:9776765434');
-  if (await canLaunchUrl(url)) {
-    await launchUrl(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
+// void launchPhoneApp() async {
+//   var url = Uri.parse('tel:9776765434');
+//   if (await canLaunchUrl(url)) {
+//     await launchUrl(url);
+//   } else {
+//     throw 'Could not launch $url';
+//   }
+// }
 
 makingPhoneCall(String phoneNumber) async {
   final Uri url = Uri(
@@ -86,4 +88,9 @@ makingPhoneCall(String phoneNumber) async {
   } else {
     throw 'Could not launch $url';
   }
+}
+
+String getDayOfWeek(DateTime date) {
+  List<String> daysOfWeek = ['الاثنين', 'الثلاثاء', 'الاربعاء', 'الخميس', 'الجمعه', 'السبت', 'الحد'];
+  return daysOfWeek[date.weekday - 1];
 }

@@ -7,4 +7,5 @@ class ImageHelper{
   static const String testMainItemDetails3Image = 'assets/images/other3.png';
   static const String mohamedImage = 'assets/images/mohamed.png';
   static const String testMedicienItemImage = 'assets/images/medicien_item.png';
+  static const String confirmImage = 'assets/images/confirm.png';
 }
