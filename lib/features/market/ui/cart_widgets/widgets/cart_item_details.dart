@@ -1,7 +1,7 @@
 import 'package:final_project/core/helpers/assets_helper/icon_helper.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
-import 'package:final_project/core/widgets/custom_functions/show_contact_alert.dart';
+import 'package:final_project/core/widgets/custom_functions/functions.dart';
 import 'package:final_project/core/widgets/custom_get_button.dart';
 import 'package:flutter/material.dart';
 

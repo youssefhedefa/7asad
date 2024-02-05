@@ -6,8 +6,12 @@ import 'package:final_project/features/market/ui/item_details_screen.dart';
 import 'package:final_project/features/market/ui/market_screen.dart';
 import 'package:final_project/features/notification/ui/notification_screen.dart';
 import 'package:final_project/features/profile/ui/profile_screen.dart';
+import 'package:final_project/features/registration/ui/log_in/log_in_screen.dart';
+import 'package:final_project/features/registration/ui/sign_in/sign_in_screen.dart';
+import 'package:final_project/features/scan/ui/booking_appointment.dart';
 import 'package:final_project/features/scan/ui/disease_detection_screen.dart';
 import 'package:final_project/features/scan/ui/medicien_details.dart';
+import 'package:final_project/features/scan/ui/widgets/appointment/confirm_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -22,7 +26,7 @@ class AppRouter {
           builder: (_) => const MarketScreen(),
         );
 
-      case RoutesManager.homeScreen:
+      case RoutesManager.landScreen:
         return MaterialPageRoute(
           builder: (_) => const LandScreen(),
         );
@@ -72,6 +76,26 @@ class AppRouter {
           return MaterialPageRoute(
             builder: (_) => const MedicienDetails(),
           );
+
+          case RoutesManager.signInScreen:
+          return MaterialPageRoute(
+            builder: (_) => const SignInScreen(),
+          );
+
+          case RoutesManager.logInScreen:
+            return MaterialPageRoute(
+              builder: (_) => const LogInScreen(),
+            );
+
+      case RoutesManager.bookingScreen:
+        return MaterialPageRoute(
+          builder: (_) => const BookingAppointmentScreen(),
+        );
+
+        case RoutesManager.confirmScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ConfirmScreen(),
+        );
 
       default:
         return MaterialPageRoute(
