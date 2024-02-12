@@ -55,7 +55,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                 today = selectedDay;
               });
             },
-            selectedDayPredicate: (day) => isSameDay(day,today),
+            selectedDayPredicate: (day) => isSameDay(day , today),
             headerStyle: const HeaderStyle(
               formatButtonVisible: false,
               titleCentered: true,

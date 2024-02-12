@@ -14,4 +14,6 @@ abstract class RoutesManager{
   static const String logInScreen = '/logIn';
   static const String bookingScreen = '/booking';
   static const String confirmScreen = '/confirm';
+  static const String chatScreen = '/chat';
+  static const String chatBodyScreen = '/chatBody';
 }

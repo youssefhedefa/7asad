@@ -25,7 +25,7 @@ class ActionButton extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: TextStyleHelper.font18Medium.copyWith(
+          style: TextStyleHelper.font18MediumWhite.copyWith(
             color: labelColor,
           ),
         ),

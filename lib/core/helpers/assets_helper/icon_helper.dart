@@ -28,5 +28,7 @@ class IconHelper{
   static const String faceIcon = 'assets/icons/face.png';
   static const String cameraIcon = 'assets/icons/camera.png';
   static const String gallereyIcon = 'assets/icons/gallarey.png';
+  static const String senderIcon = 'assets/icons/sender.png';
+  static const String recevierIcon = 'assets/icons/recevier.png';
 
 }

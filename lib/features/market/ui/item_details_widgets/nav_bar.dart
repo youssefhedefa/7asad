@@ -1,56 +1,59 @@
-import 'package:final_project/features/market/ui/item_details_widgets/details/details.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/nav_bar_item.dart';
-import 'package:final_project/features/market/ui/item_details_widgets/reviews/reviews.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+  const NavBar({super.key, required this.firstTap, required this.secondTap, required this.screens, this.horizontalPadding});
+
+  final String firstTap;
+  final String secondTap;
+  final List<Widget> screens;
+  final double? horizontalPadding;
 
   @override
   State<NavBar> createState() => _NavBarState();
 }
 
 class _NavBarState extends State<NavBar> {
+
   int currentPart = 0;
-  List<Widget> screen = const [
-    Details(),
-    Reviews(),
-  ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    currentPart = 1;
-                  });
-                },
-                child: NavBarItem(
-                  label: 'تقيمات',
-                  active: currentPart == 1 ? true : false,
+        Padding(
+          padding:  EdgeInsets.symmetric(horizontal: widget.horizontalPadding!),
+          child: Row(
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      currentPart = 1;
+                    });
+                  },
+                  child: NavBarItem(
+                    label: widget.firstTap ,
+                    active: currentPart == 1 ? true : false,
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    currentPart = 0;
-                  });
-                },
-                child: NavBarItem(
-                  label: 'تفاصيل',
-                  active: currentPart == 0 ? true : false,
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      currentPart = 0;
+                    });
+                  },
+                  child: NavBarItem(
+                    label: widget.secondTap ,
+                    active: currentPart == 0 ? true : false,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         const Divider(
           height: 2,
@@ -59,7 +62,7 @@ class _NavBarState extends State<NavBar> {
         const SizedBox(
           height: 30,
         ),
-        screen[currentPart],
+        widget.screens[currentPart],
       ],
     );
   }

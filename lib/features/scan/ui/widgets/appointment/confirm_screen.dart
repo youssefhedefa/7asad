@@ -18,55 +18,89 @@ class ConfirmScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: [
-              const SizedBox(height: 60,),
-              Expanded(
-                flex: 4,
-                  child: Image.asset(ImageHelper.confirmImage,),
+              const SizedBox(
+                height: 60,
               ),
-              const SizedBox(height: 50,),
               Expanded(
                 flex: 4,
-                  child: Column(
-                    children: [
-                      Text(
-                          'تم حجز معادك بنجاح ',
-                        style: TextStyleHelper.font28BoldLightestGreen.copyWith(
-                          fontWeight: FontWeightHelper.medium,
-                          color: Colors.black,
-                        ),
+                child: Image.asset(
+                  ImageHelper.confirmImage,
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Expanded(
+                flex: 4,
+                child: Column(
+                  children: [
+                    Text(
+                      'تم حجز معادك بنجاح ',
+                      style: TextStyleHelper.font28BoldLightestGreen.copyWith(
+                        fontWeight: FontWeightHelper.medium,
+                        color: Colors.black,
                       ),
-                      const SizedBox(height: 18,),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width - 60,
-                        padding: const EdgeInsets.symmetric(horizontal: 44,vertical: 19),
-                        decoration: BoxDecoration(
-                          color: ColorHelper.lightGreenColor,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Text(
-                          textAlign: TextAlign.center,
-                         '''
-معادك مع د\\ احمد علي,
-يوم الثلاثاء,10مارس2024
-في تمام الساعة 3:30 الى 4 مساءا
-                         ''',
+                    ),
+                    const SizedBox(
+                      height: 18,
+                    ),
+                    Container(
+                      width: MediaQuery.sizeOf(context).width - 60,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 22, vertical: 19),
+                      decoration: BoxDecoration(
+                        color: ColorHelper.lightGreenColor,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text: 'معادك مع د\\ احمد علي, يوم ',
                           style: TextStyleHelper.font16MediumDarkGreen,
+                          children: [
+                            TextSpan(
+                              text: 'الثلاثاء,10مارس2024',
+                              style: TextStyleHelper.font16BoldDarkestGreen,
+                            ),
+                            TextSpan(
+                              text: ' في تمام الساعة',
+                              style: TextStyleHelper.font16MediumDarkGreen,
+                            ),
+                            TextSpan(
+                              text: ' 3:30 ',
+                              style: TextStyleHelper.font16BoldDarkestGreen,
+                            ),
+                            TextSpan(
+                              text: 'الى',
+                              style: TextStyleHelper.font16MediumDarkGreen,
+                            ),
+                            TextSpan(
+                              text: ' 4 ',
+                              style: TextStyleHelper.font16BoldDarkestGreen,
+                            ),
+                            TextSpan(
+                              text: ' مساءا ',
+                              style: TextStyleHelper.font16MediumDarkGreen,
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
               ),
               const Spacer(
                 flex: 2,
               ),
               ActionButton(
-                onTap: (){
-                },
+                onTap: () {},
                 label: 'تأكيد ',
                 outerColor: ColorHelper.primaryColor,
                 labelColor: Colors.white,
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),

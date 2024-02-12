@@ -46,6 +46,13 @@ class TextStyleHelper{
     color: ColorHelper.darkestGreenColor,
   );
 
+  static TextStyle font16RegularDarkestGreen = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeightHelper.regular,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.darkestGreenColor,
+  );
+
    static TextStyle font16MediumDarkGreen = const TextStyle(
      fontSize: 16,
      fontWeight: FontWeightHelper.medium,
@@ -102,6 +109,13 @@ class TextStyleHelper{
     color: ColorHelper.darkGreenColor,
   );
 
+  static TextStyle font12MediumDarkestGreen = const TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.darkestGreenColor,
+  );
+
   static TextStyle font12RegularPrimary = const TextStyle(
     fontSize: 12,
     fontWeight: FontWeightHelper.regular,
@@ -130,10 +144,11 @@ class TextStyleHelper{
      color: ColorHelper.primaryColor,
    );
 
-   static TextStyle font18Medium = const TextStyle(
+   static TextStyle font18MediumWhite = const TextStyle(
      fontSize: 18,
      fontWeight: FontWeightHelper.medium,
      fontFamily: 'Tajawal',
+     color: Colors.white,
    );
 
 
