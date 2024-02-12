@@ -10,16 +10,18 @@ class Reviews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        RatingStart(),
-        CustomRatingBars(),
-        CustomDivider(),
-        CommentList(),
-        CustomDivider(),
-        CreateComment(),
-      ],
+    return const SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          RatingStart(),
+          CustomRatingBars(),
+          CustomDivider(),
+          CommentList(),
+          CustomDivider(),
+          CreateComment(),
+        ],
+      ),
     );
   }
 }

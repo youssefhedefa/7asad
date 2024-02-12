@@ -9,6 +9,7 @@ class AppointmentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      //remove expand here
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -18,12 +19,12 @@ class AppointmentsScreen extends StatelessWidget {
           rightPadding: 22,
           leftPadding: 22,
         ),
-        ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 4,
-          itemBuilder: (_,index) => const CustomFullAppointmentCard(),
-          separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 16),
+        Expanded(
+          child: ListView.separated(
+            itemCount: 5,
+            itemBuilder: (_,index) => const CustomFullAppointmentCard(),
+            separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 16),
+          ),
         ),
       ],
     );
