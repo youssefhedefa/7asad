@@ -19,9 +19,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      //remove expand here
-      //shrinkWrap: true,
-      //physics: const NeverScrollableScrollPhysics(),
       children: [
         NotifyCard(
           type: Constants.confirmBookingType,
