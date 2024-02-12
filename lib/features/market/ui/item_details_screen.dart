@@ -13,33 +13,34 @@ class ItemDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: CustomItemDetailsAppBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-            right: 18,
-            left: 18,
-            top: 10,
-          ),
-          child: Column(
-            children: [
-              MainItemDetailsImage(),
-              SizedBox(
-                height: 18,
-              ),
-              OtherItemDetailsImages(),
-              SizedBox(
-                height: 28,
-              ),
-              NavBar(
+      body: Padding(
+        padding: EdgeInsets.only(
+          right: 18,
+          left: 18,
+          top: 10,
+        ),
+        child: Column(
+          children: [
+            MainItemDetailsImage(),
+            SizedBox(
+              height: 18,
+            ),
+            OtherItemDetailsImages(),
+            SizedBox(
+              height: 28,
+            ),
+            Expanded(
+              child: NavBar(
                 firstTap: 'تقيمات',
                 secondTap: 'تفاصيل',
+                horizontalPadding: 0,
                 screens: [
                   Details(),
                   Reviews(),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

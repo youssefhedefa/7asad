@@ -13,56 +13,58 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const DetailsTitle(),
-        const DetailsDescription(),
-        const SizedBox(height: 14),
-        Text(
-          'البائع',
-          style: TextStyleHelper.font14RegularDarkestGreen,
-        ),
-        const SellerInfo(),
-        const SizedBox(height: 14),
-        const QuantityRow(),
-        const SizedBox(height: 14),
-        ActionButton(
-          onTap: () {},
-          label: 'شراء الأن',
-          outerColor: ColorHelper.primaryColor,
-          labelColor: Colors.white,
-        ),
-        const SizedBox(height: 12),
-        ActionButton(
-          onTap: () {
-            Navigator.pushNamed(context, RoutesManager.cartScreen);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Container(
-                  width: MediaQuery.sizeOf(context).width - 70,
-                  height: 40,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    color: ColorHelper.successfulColor,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const DetailsTitle(),
+          const DetailsDescription(),
+          const SizedBox(height: 14),
+          Text(
+            'البائع',
+            style: TextStyleHelper.font14RegularDarkestGreen,
+          ),
+          const SellerInfo(),
+          const SizedBox(height: 14),
+          const QuantityRow(),
+          const SizedBox(height: 14),
+          ActionButton(
+            onTap: () {},
+            label: 'شراء الأن',
+            outerColor: ColorHelper.primaryColor,
+            labelColor: Colors.white,
+          ),
+          const SizedBox(height: 12),
+          ActionButton(
+            onTap: () {
+              Navigator.pushNamed(context, RoutesManager.cartScreen);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Container(
+                    width: MediaQuery.sizeOf(context).width - 70,
+                    height: 40,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      color: ColorHelper.successfulColor,
+                    ),
+                    child: Text(
+                      'تمت اضافتها لعربه التسوق',
+                      style: TextStyleHelper.font14RegularDis.copyWith(color: Colors.white),
+                    ),
                   ),
-                  child: Text(
-                    'تمت اضافتها لعربه التسوق',
-                    style: TextStyleHelper.font14RegularDis.copyWith(color: Colors.white),
-                  ),
+                  backgroundColor: ColorHelper.screenBackgroundColor,
+                  behavior: SnackBarBehavior.floating,
+                  elevation: 0,
                 ),
-                backgroundColor: ColorHelper.screenBackgroundColor,
-                behavior: SnackBarBehavior.floating,
-                elevation: 0,
-              ),
-            );
-          },
-          label: 'اضافه الى عربة التسوق',
-          outerColor: Colors.white,
-          labelColor: ColorHelper.primaryColor,
-        ),
-        const SizedBox(height: 26),
-      ],
+              );
+            },
+            label: 'اضافه الى عربة التسوق',
+            outerColor: Colors.white,
+            labelColor: ColorHelper.primaryColor,
+          ),
+          const SizedBox(height: 26),
+        ],
+      ),
     );
   }
 }

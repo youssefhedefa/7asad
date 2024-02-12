@@ -2,7 +2,12 @@ import 'package:final_project/features/market/ui/item_details_widgets/nav_bar_it
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key, required this.firstTap, required this.secondTap, required this.screens, this.horizontalPadding});
+  const NavBar(
+      {super.key,
+      required this.firstTap,
+      required this.secondTap,
+      required this.screens,
+      this.horizontalPadding});
 
   final String firstTap;
   final String secondTap;
@@ -14,16 +19,18 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-
   int currentPart = 0;
+  PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      //remove expand here
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding:  EdgeInsets.symmetric(horizontal: widget.horizontalPadding!),
+          padding:
+              EdgeInsets.symmetric(horizontal: widget.horizontalPadding!),
           child: Row(
             children: [
               Expanded(
@@ -31,10 +38,11 @@ class _NavBarState extends State<NavBar> {
                   onTap: () {
                     setState(() {
                       currentPart = 1;
+                      pageController.animateToPage(currentPart, duration: const Duration(milliseconds: 200), curve: Curves.bounceIn,);
                     });
                   },
                   child: NavBarItem(
-                    label: widget.firstTap ,
+                    label: widget.firstTap,
                     active: currentPart == 1 ? true : false,
                   ),
                 ),
@@ -44,10 +52,11 @@ class _NavBarState extends State<NavBar> {
                   onTap: () {
                     setState(() {
                       currentPart = 0;
+                      pageController.animateToPage(currentPart, duration: const Duration(milliseconds: 100), curve: Curves.linear,);
                     });
                   },
                   child: NavBarItem(
-                    label: widget.secondTap ,
+                    label: widget.secondTap,
                     active: currentPart == 0 ? true : false,
                   ),
                 ),
@@ -62,8 +71,27 @@ class _NavBarState extends State<NavBar> {
         const SizedBox(
           height: 30,
         ),
-        widget.screens[currentPart],
+        //widget.screens[currentPart]
+        Expanded(
+          child: PageView(
+            reverse: true,
+            controller: pageController,
+            onPageChanged: (index) {
+              setState(() {
+                currentPart = index;
+              });
+            },
+            children: widget.screens,
+          ),
+        ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    pageController.dispose();
   }
 }

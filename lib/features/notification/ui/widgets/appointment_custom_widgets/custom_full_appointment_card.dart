@@ -13,14 +13,14 @@ class CustomFullAppointmentCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
-            flex: 75,
+            flex: 77,
             child: AppointmentCard(),
           ),
           Spacer(
             flex: 2,
           ),
           Expanded(
-            flex: 23,
+            flex: 21,
               child: CustomTimer(),
           ),
         ],
