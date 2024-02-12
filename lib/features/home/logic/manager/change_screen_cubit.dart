@@ -3,7 +3,7 @@ import 'package:final_project/core/models/bottom_app_bar_item_model.dart';
 import 'package:final_project/features/home/logic/manager/change_screen_states.dart';
 import 'package:final_project/features/home/ui/home_screen.dart';
 import 'package:final_project/features/market/ui/market_screen.dart';
-import 'package:final_project/features/notification/ui/notification_screen.dart';
+import 'package:final_project/features/notification/ui/notification_and_appointment_screen.dart';
 import 'package:final_project/features/profile/ui/profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,7 @@ class ChangeScreenCubit extends Cubit<ChangeScreenStates>{
 
   ChangeScreenCubit() : super(ChangeScreenInitialState());
 
-  int currentScreen = 3;
+  int currentScreen = 1;
 
   List<BottomAppBarItemModel> items = [
     BottomAppBarItemModel(label: 'الرئسية', activeIcon: Icons.home, idleIcon: Icons.home_outlined),
@@ -23,7 +23,7 @@ class ChangeScreenCubit extends Cubit<ChangeScreenStates>{
 
   List<Widget> screens = const [
     HomeScreen(),
-    NotificationScreen(),
+    NotificationAndAppointmentScreen(),
     ProfileScreen(),
     MarketScreen(),
   ];

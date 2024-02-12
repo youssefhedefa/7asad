@@ -14,6 +14,7 @@ class ColorHelper{
   static const Color successfulColor = Color(0xff00FF00);
   static const Color warningColor = Color(0xffFFA500);
   static const Color alertColor = Color(0xffDAF2EF);
+  static const Color notSelectedColor = Color(0xffE6E0E9);
   static const List<Color> excellentColor = [
     Color(0xff00FF00),
     Color(0xff0CDA39),

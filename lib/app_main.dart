@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: ColorHelper.primaryColor),
         useMaterial3: true,
       ),
-      initialRoute: RoutesManager.logInScreen,
+      initialRoute: RoutesManager.landScreen,
       onGenerateRoute: appRouter.generateRoute,
         //home: HomePage(),
        // home: const TestButton(),

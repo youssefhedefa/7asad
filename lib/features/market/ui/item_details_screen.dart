@@ -1,7 +1,9 @@
 import 'package:final_project/features/market/ui/item_details_widgets/custom_item_details_app_bar.dart';
+import 'package:final_project/features/market/ui/item_details_widgets/details/details.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/main_item_detail_image.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/nav_bar.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/other_item_row_images.dart';
+import 'package:final_project/features/market/ui/item_details_widgets/reviews/reviews.dart';
 import 'package:flutter/material.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
@@ -21,10 +23,21 @@ class ItemDetailsScreen extends StatelessWidget {
           child: Column(
             children: [
               MainItemDetailsImage(),
-              SizedBox(height: 18,),
+              SizedBox(
+                height: 18,
+              ),
               OtherItemDetailsImages(),
-              SizedBox(height: 28,),
-              NavBar(),
+              SizedBox(
+                height: 28,
+              ),
+              NavBar(
+                firstTap: 'تقيمات',
+                secondTap: 'تفاصيل',
+                screens: [
+                  Details(),
+                  Reviews(),
+                ],
+              ),
             ],
           ),
         ),
@@ -32,5 +45,3 @@ class ItemDetailsScreen extends StatelessWidget {
     );
   }
 }
-
-

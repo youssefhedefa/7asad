@@ -17,7 +17,7 @@ class CreateComment extends StatelessWidget {
             children: [
               Text(
                 'أكتب تقييمك',
-                style: TextStyleHelper.font18Medium.copyWith(
+                style: TextStyleHelper.font18MediumWhite.copyWith(
                   color: Colors.black,
                 ),
               ),
