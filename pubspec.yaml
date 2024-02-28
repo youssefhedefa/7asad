@@ -33,6 +33,10 @@ dependencies:
   table_calendar: ^3.0.9
   flutter_sound: ^9.2.13
   permission_handler:
+  firebase_auth: ^4.17.4
+  firebase_core: ^2.25.4
+  recaptcha_enterprise_flutter: ^18.4.1
+
 
 
 dev_dependencies:

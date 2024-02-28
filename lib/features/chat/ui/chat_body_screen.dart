@@ -31,7 +31,6 @@ class ChatBodyScreen extends StatelessWidget {
                 }
               },
               icon: const Icon(Icons.more_vert),
-              //tooltip: 'Show menu',
             );
           },
           menuChildren: [

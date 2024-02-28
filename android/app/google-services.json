@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "261865902481",
+    "project_id": "agrical-scan-appl-project",
+    "storage_bucket": "agrical-scan-appl-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261865902481:android:e9e80dc818b1a658284a30",
+        "android_client_info": {
+          "package_name": "com.example.final_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqUpvGGy0Cjumw8OVbRrUTzM2NCTiDU8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

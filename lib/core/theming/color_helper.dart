@@ -2,6 +2,7 @@ import 'package:flutter/animation.dart';
 
 class ColorHelper{
   static const Color darkestGreenColor = Color(0xff14332F);
+  static const Color dividerColor = Color.fromRGBO(230, 224, 233, 1);
   static const Color darkGreenColor = Color(0xff50736F);
   static const Color medGreenColor = Color(0xff7A9995);
   static const Color lightGreenColor = Color(0xffDAF2EF);
@@ -15,6 +16,7 @@ class ColorHelper{
   static const Color warningColor = Color(0xffFFA500);
   static const Color alertColor = Color(0xffDAF2EF);
   static const Color notSelectedColor = Color(0xffE6E0E9);
+  static const Color commentBgColor = Color(0xffF9F9F9);
   static const List<Color> excellentColor = [
     Color(0xff00FF00),
     Color(0xff0CDA39),

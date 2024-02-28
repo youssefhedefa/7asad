@@ -27,6 +27,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      foregroundColor: Colors.white,
+      shadowColor: Colors.white,
+      surfaceTintColor: Colors.white,
+      elevation: 0,
       systemOverlayStyle: background == ColorHelper.primaryColor
           ? const SystemUiOverlayStyle(
               statusBarColor: ColorHelper.primaryColor,
@@ -101,7 +105,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
   @override
   Size get preferredSize => const Size.fromHeight(90);
 }

@@ -7,8 +7,11 @@ import 'package:final_project/features/market/ui/favourite_screen.dart';
 import 'package:final_project/features/market/ui/item_details_screen.dart';
 import 'package:final_project/features/market/ui/market_screen.dart';
 import 'package:final_project/features/notification/ui/notification_and_appointment_screen.dart';
+import 'package:final_project/features/profile/ui/edit_profile.dart';
 import 'package:final_project/features/profile/ui/profile_screen.dart';
+import 'package:final_project/features/registration/data/phone_auth_model.dart';
 import 'package:final_project/features/registration/ui/log_in/log_in_screen.dart';
+import 'package:final_project/features/registration/ui/phone_auth/phone_auth_screen.dart';
 import 'package:final_project/features/registration/ui/sign_in/sign_in_screen.dart';
 import 'package:final_project/features/scan/ui/booking_appointment.dart';
 import 'package:final_project/features/scan/ui/disease_detection_screen.dart';
@@ -105,6 +108,18 @@ class AppRouter {
         case RoutesManager.chatBodyScreen:
         return MaterialPageRoute(
           builder: (_) => const ChatBodyScreen(),
+        );
+
+        case RoutesManager.phoneAuthScreen:
+          var arg = settings.arguments as PhoneAuthModel;
+        return MaterialPageRoute(
+          builder: (_) => PhoneAuthScreen(phoneAuthModel: arg),
+        );
+
+        case RoutesManager.editProfileScreen:
+          //var arg = settings.arguments as PhoneAuthModel;
+        return MaterialPageRoute(
+          builder: (_) => const EditProfile(),
         );
 
       default:

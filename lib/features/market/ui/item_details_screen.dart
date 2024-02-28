@@ -31,6 +31,7 @@ class ItemDetailsScreen extends StatelessWidget {
             ),
             Expanded(
               child: NavBar(
+                //expand here
                 firstTap: 'تقيمات',
                 secondTap: 'تفاصيل',
                 horizontalPadding: 0,

@@ -24,12 +24,12 @@ class _CustomFooterState extends State<CustomFooter> {
   TextEditingController controller = TextEditingController();
   bool isMicAndCamera = true;
   bool isMicOpen = false;
+  bool isPause = false;
 
 
   @override
   void initState() {
     super.initState();
-
     initRecord();
   }
 
@@ -47,7 +47,9 @@ class _CustomFooterState extends State<CustomFooter> {
       decoration: const BoxDecoration(
         color: ColorHelper.medGreenColor,
       ),
-      child: isMicOpen ?  Row(
+      child: isMicOpen ?
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
             onTap:() async {
@@ -67,24 +69,72 @@ class _CustomFooterState extends State<CustomFooter> {
               ),
             ),
           ),
-          StreamBuilder<RecordingDisposition>(
-              stream: record.onProgress,
-              builder: (_,snapshot){
-                final duration = snapshot.hasData ?
-                    snapshot.data!.duration : Duration.zero;
+          Row(
+            children: [
+              StreamBuilder<RecordingDisposition>(
+                  stream: record.onProgress,
+                  builder: (_,snapshot){
+                    final duration = snapshot.hasData ?
+                        snapshot.data!.duration : Duration.zero;
 
-                String twoDigit(int n) => n.toString().padLeft(2);
-                final twoDigitInMinutes = twoDigit(duration.inMinutes.remainder(60));
-                final twoDigitInSecond = twoDigit(duration.inSeconds.remainder(60));
+                    String twoDigit(int n) => n.toString().padLeft(2,'0');
+                    final twoDigitInMinutes = twoDigit(duration.inMinutes.remainder(60));
+                    final twoDigitInSecond = twoDigit(duration.inSeconds.remainder(60));
 
-                return Text(
-                    '$twoDigitInMinutes : $twoDigitInSecond',
-                  style: TextStyleHelper.font14RegularDarkestGreen.copyWith(color: Colors.white),
-                );
-              }
+                    return Text(
+                        ' $twoDigitInSecond : $twoDigitInMinutes ',
+                      style: TextStyleHelper.font18MediumWhite,
+                    );
+                  }
+              ),
+              const SizedBox(width: 6,),
+              InkWell(
+                onTap:() async {
+                  if(isPause){
+                    await play();
+                  }
+                  else{
+                    await pause();
+                  }
+                  setState(() {
+                    isPause = !isPause;
+                  });
+                },
+                child: SizedBox(
+                  width: 34,
+                  height: 34,
+                  child: isPause ?
+                    const Icon(
+                      Icons.pause,
+                      color: Colors.white,
+                    ) :
+                    const Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                    ),
+                ),
+              ),
+            ],
+          ),
+          InkWell(
+            onTap:() async {
+              await delete();
+              setState(() {
+                isMicOpen = false;
+              });
+            },
+            child: const SizedBox(
+              width: 34,
+              height: 34,
+              child: Icon(
+                Icons.delete_outline,
+                color: Colors.white,
+              ),
+            ),
           ),
         ],
-      ) : Row(
+      ) :
+      Row(
         children: [
           const SizedBox(width: 6),
           isMicAndCamera
@@ -133,6 +183,7 @@ class _CustomFooterState extends State<CustomFooter> {
       ),
     );
   }
+
   Future stop() async{
     await record.stopRecorder();
     //final path = await record.stopRecorder();
@@ -141,6 +192,18 @@ class _CustomFooterState extends State<CustomFooter> {
     setState(() {
       isMicOpen = false;
     });
+  }
+
+  Future pause() async{
+    await record.pauseRecorder();
+  }
+
+  Future play({int? duration}) async{
+    await record.resumeRecorder();
+  }
+
+  Future delete() async{
+    await record.deleteRecord(fileName: 'audio');
   }
 
   Future start() async{

@@ -1,6 +1,7 @@
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -10,7 +11,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.onChange,
     this.obscureText,
-    this.controller,
+    this.controller, this.inputFormatters,
   });
 
   final String label;
@@ -19,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
   final void Function(String)? onChange;
   final bool? obscureText;
   final TextEditingController? controller;
+   final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class CustomTextFormField extends StatelessWidget {
         validator: validator,
         onChanged: onChange,
         obscureText: obscureText ?? false,
+        inputFormatters: inputFormatters,
         decoration: InputDecoration(
           contentPadding:
               const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
