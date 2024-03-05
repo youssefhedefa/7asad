@@ -25,7 +25,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   percent_indicator: ^4.0.1
   readmore: ^2.2.0
-  image_picker: ^1.0.7
+  image_picker: any
   path_provider: ^2.1.2
   flutter_expandable_fab: ^2.0.0
   flutter_speed_dial: ^7.0.0
@@ -37,7 +37,25 @@ dependencies:
   firebase_core: ^2.25.4
   recaptcha_enterprise_flutter: ^18.4.1
 
+  # for dependency injection
+  get_it: any
 
+  # Code generator (mainly used with cubit & retrofit)
+  freezed: ^2.4.5
+  freezed_annotation: ^2.4.1
+
+  # Networking
+  dio: any
+  retrofit: any
+  retrofit_generator: any
+  pretty_dio_logger: any
+
+  # handel the key name that come from json file
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+
+  # for auto generated files
+  build_runner: ^2.4.8
 
 dev_dependencies:
   flutter_test:

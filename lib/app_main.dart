@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: RoutesManager.landScreen,
+      //initialRoute: RoutesManager.signInScreen,
       onGenerateRoute: appRouter.generateRoute,
         //home: HomePage(),
        // home: const TestButton(),

@@ -1,7 +1,7 @@
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/core/widgets/custom_app_bar.dart';
-import 'package:final_project/features/registration/data/phone_auth_model.dart';
+import 'package:final_project/features/registration/data/phone_auth/phone_auth_model.dart';
 import 'package:final_project/features/registration/ui/phone_auth/widgets/custom_digit_form.dart';
 import 'package:flutter/material.dart';
 

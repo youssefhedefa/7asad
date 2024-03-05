@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -48,6 +45,16 @@ class DefaultFirebaseOptions {
         );
     }
   }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAYVCYKlDrDEWwmt6XDwMesHNwBEykw2x8',
+    appId: '1:261865902481:web:5cea7387dbca3645284a30',
+    messagingSenderId: '261865902481',
+    projectId: 'agrical-scan-appl-project',
+    authDomain: 'agrical-scan-appl-project.firebaseapp.com',
+    storageBucket: 'agrical-scan-appl-project.appspot.com',
+    measurementId: 'G-8F68SFMS3G',
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCqUpvGGy0Cjumw8OVbRrUTzM2NCTiDU8o',

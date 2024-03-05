@@ -8,10 +8,10 @@ class AuthService {
 
 
   static Future<void> phoneAuthRecaptcha() async{
-    firebaseAuth.setSettings(
-      appVerificationDisabledForTesting: true,
-      forceRecaptchaFlow: true,
-    );
+    // firebaseAuth.setSettings(
+    //   appVerificationDisabledForTesting: true,
+    //   forceRecaptchaFlow: true,
+    // );
   }
 
   static Future sendOTP({
@@ -26,10 +26,8 @@ class AuthService {
       phoneNumber: '+2$phoneNumber',
       timeout: const Duration(seconds: 90),
       verificationCompleted: (phoneAuthCredential) async {
-        return;
       },
       verificationFailed: (error) async {
-        return;
       },
       codeSent: (verificationId, forceResendingToken) async {
         verifyID = verificationId;
@@ -37,7 +35,6 @@ class AuthService {
         nextStep();
       },
       codeAutoRetrievalTimeout: (verificationId) async {
-        return;
       },
     )
         .onError((error, stackTrace) {

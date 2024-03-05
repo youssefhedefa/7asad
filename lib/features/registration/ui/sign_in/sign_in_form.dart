@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
 
-import 'package:final_project/core/networking/remote/firebase_services.dart';
+import 'package:final_project/core/networking/remote/firebase/firebase_services.dart';
 import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/widgets/action_buttons.dart';
-import 'package:final_project/features/registration/data/phone_auth_model.dart';
-import 'package:final_project/features/registration/logic/auth_services.dart';
+import 'package:final_project/features/registration/data/phone_auth/phone_auth_model.dart';
+import 'package:final_project/features/registration/data/phone_auth/auth_services.dart';
 import 'package:final_project/features/registration/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

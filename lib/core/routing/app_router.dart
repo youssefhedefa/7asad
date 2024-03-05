@@ -1,3 +1,4 @@
+import 'package:final_project/core/di/dependency_injection.dart';
 import 'package:final_project/core/widgets/land_screen.dart';
 import 'package:final_project/features/chat/ui/chat_body_screen.dart';
 import 'package:final_project/features/chat/ui/chat_screen.dart';
@@ -9,7 +10,8 @@ import 'package:final_project/features/market/ui/market_screen.dart';
 import 'package:final_project/features/notification/ui/notification_and_appointment_screen.dart';
 import 'package:final_project/features/profile/ui/edit_profile.dart';
 import 'package:final_project/features/profile/ui/profile_screen.dart';
-import 'package:final_project/features/registration/data/phone_auth_model.dart';
+import 'package:final_project/features/registration/data/phone_auth/phone_auth_model.dart';
+import 'package:final_project/features/registration/logic/sign_in_cubit/sign_in_cubit.dart';
 import 'package:final_project/features/registration/ui/log_in/log_in_screen.dart';
 import 'package:final_project/features/registration/ui/phone_auth/phone_auth_screen.dart';
 import 'package:final_project/features/registration/ui/sign_in/sign_in_screen.dart';
@@ -18,6 +20,7 @@ import 'package:final_project/features/scan/ui/disease_detection_screen.dart';
 import 'package:final_project/features/scan/ui/medicien_details.dart';
 import 'package:final_project/features/scan/ui/widgets/appointment/confirm_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'routes.dart';
 
@@ -82,7 +85,10 @@ class AppRouter {
 
       case RoutesManager.signInScreen:
         return MaterialPageRoute(
-          builder: (_) => const SignInScreen(),
+          builder: (_) => BlocProvider(
+          create: (BuildContext context) => getIt<SignInCubit>(),
+          child: const SignInScreen()
+          ),
         );
 
       case RoutesManager.logInScreen:
