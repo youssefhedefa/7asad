@@ -1,3 +1,4 @@
+import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +14,12 @@ class InfoText extends StatelessWidget {
       child: Column(
         children: [
           Text(
-              'اسماعيل الطوخي',
+              CachHelper.getUserInfo()![2],
             style: TextStyleHelper.font18BoldDarkestGreen,
           ),
           const SizedBox(height: 8,),
           Text(
-              'مهندس زراعي',
+            CachHelper.getUserInfo()![4],
             style: TextStyleHelper.font14RegularDarkGreen,
           ),
           const SizedBox(height: 8,),

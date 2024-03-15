@@ -19,7 +19,9 @@ class ItemDetailsScreen extends StatelessWidget {
           left: 18,
           top: 10,
         ),
+        //add single scroll view
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             MainItemDetailsImage(),
             SizedBox(
@@ -31,7 +33,6 @@ class ItemDetailsScreen extends StatelessWidget {
             ),
             Expanded(
               child: NavBar(
-                //expand here
                 firstTap: 'تقيمات',
                 secondTap: 'تفاصيل',
                 horizontalPadding: 0,

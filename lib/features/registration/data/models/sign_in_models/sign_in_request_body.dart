@@ -8,13 +8,13 @@ class SignInRequestBody{
   final String name;
   final String password;
   final String passwordConfirm;
-  final String phoneNumber;
+
+  @JsonKey(name: 'phone')
+  final String phone;
   final String? email;
 
-  SignInRequestBody({required this.name, required this.password, required this.passwordConfirm, required this.phoneNumber, this.email = 'yousef@gmail.com'});
+  SignInRequestBody({required this.name, required this.password, required this.passwordConfirm, required this.phone, this.email = 'yousef@gmail.com'});
 
   Map<String,dynamic> toJson() => _$SignInRequestBodyToJson(this);
-
-
 
 }

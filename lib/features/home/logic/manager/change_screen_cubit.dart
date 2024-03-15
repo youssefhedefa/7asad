@@ -11,7 +11,7 @@ class ChangeScreenCubit extends Cubit<ChangeScreenStates>{
 
   ChangeScreenCubit() : super(ChangeScreenInitialState());
 
-  int currentScreen = 2;
+  int currentScreen = 3;
 
   List<BottomAppBarItemModel> items = [
     BottomAppBarItemModel(label: 'الرئسية', activeIcon: Icons.home, idleIcon: Icons.home_outlined),

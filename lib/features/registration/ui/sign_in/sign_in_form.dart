@@ -1,14 +1,14 @@
 // ignore_for_file: avoid_print
-
-import 'package:final_project/core/networking/remote/firebase/firebase_services.dart';
-import 'package:final_project/core/routing/routes.dart';
+import 'package:final_project/core/helpers/app_regex.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/widgets/action_buttons.dart';
-import 'package:final_project/features/registration/data/phone_auth/phone_auth_model.dart';
-import 'package:final_project/features/registration/data/phone_auth/auth_services.dart';
+import 'package:final_project/features/registration/data/models/sign_in_models/sign_in_request_body.dart';
+import 'package:final_project/features/registration/logic/sign_in_cubit/sign_in_cubit.dart';
+import 'package:final_project/features/registration/ui/sign_in/sign_in_listener.dart';
 import 'package:final_project/features/registration/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -18,32 +18,16 @@ class SignInForm extends StatefulWidget {
 }
 
 class _SignInFormState extends State<SignInForm> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  String fullName = '';
-  String phoneNumber = '';
-  String password = '';
-  String confirmPassword = '';
-
-  TextEditingController fullNameController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-
-  FirebaseServices firebaseServices = FirebaseServices();
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: context.read<SignInCubit>().formKey,
       child: Column(
         children: [
           CustomTextFormField(
-            label: 'الأسم بالكامل',
-            controller: fullNameController,
-            onChange: (value) {
-              fullName = value;
-            },
+            label: 'الأسم الثنائي',
+            controller: context.read<SignInCubit>().fullNameController,
             validator: (value) {
               if (value!.isEmpty) {
                 return 'اسمك بالكامل مطلوب';
@@ -54,49 +38,50 @@ class _SignInFormState extends State<SignInForm> {
           ),
           CustomTextFormField(
             label: 'رقم الموبايل',
-            controller: phoneNumberController,
+            controller: context.read<SignInCubit>().phoneNumberController,
             type: TextInputType.phone,
             inputFormatters: [
               LengthLimitingTextInputFormatter(11),
               FilteringTextInputFormatter.digitsOnly,
             ],
-            onChange: (value) {
-              phoneNumber = value;
-            },
             validator: (value) {
               if (value!.isEmpty) {
                 return 'رقم الموبايل مطلوب';
-              } else {
+              }
+              else if(!AppRegex.isPhoneValid(value)){
+                return 'من فضلك ادخل رقم موبايل صحيح';
+              }
+              else {
                 return null;
               }
             },
           ), // phone number
           CustomTextFormField(
             label: 'كلمة السر',
-            controller: passwordController,
-            onChange: (value) {
-              password = value;
-            },
+            controller: context.read<SignInCubit>().passwordController,
+            obscureText: true,
             validator: (value) {
               if (value!.isEmpty) {
                 return 'كلمه السر مطلوبه';
-              } else {
+              }
+              else if(!AppRegex.isPasswordValid(value)){
+                return 'من فضلك ادخل كلمه سر تحتوي علي حروف وارقام\n وتتكون من اكتر من 7 حروف';
+              }
+              else {
                 return null;
               }
             },
           ),
           CustomTextFormField(
             label: 'تأكيد كلمة السر',
-            controller: confirmPasswordController,
-            onChange: (value) {
-              confirmPassword = value;
-            },
+            controller: context.read<SignInCubit>().confirmPasswordController,
+            obscureText: true,
             validator: (value) {
               if (value!.isEmpty) {
                 return 'من فضلك ادخل كلمه السر بشكل صحيح';
               }
-              if (value != password) {
-                confirmPasswordController.clear();
+              if (value != context.read<SignInCubit>().passwordController.text.toString()) {
+                context.read<SignInCubit>().confirmPasswordController.clear();
                 return 'كلمه السر غير متطابقه';
               } else {
                 return null;
@@ -108,27 +93,11 @@ class _SignInFormState extends State<SignInForm> {
           ),
           ActionButton(
             onTap: () {
-              if (formKey.currentState!.validate()) {
-                //firebaseServices.phoneAuth(phoneNumber: phoneNumber, context: context);
-
-                AuthService.sendOTP(
-                  phoneNumber: phoneNumberController.text,
-                  errorStep: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                          'error in sending opt',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        backgroundColor: Colors.red,
-                      ),
-                    );
-                  },
-                  nextStep: (){
-                    Navigator.pushNamed(context, RoutesManager.phoneAuthScreen,arguments: PhoneAuthModel(phoneNumber: phoneNumber,));
-                  },
-                );
-              } else {
+              if (context.read<SignInCubit>().formKey.currentState!.validate()) {
+                print('Success');
+                validateThenDoSignin(context);
+              }
+              else {
                 print('failure');
               }
             },
@@ -136,8 +105,21 @@ class _SignInFormState extends State<SignInForm> {
             outerColor: ColorHelper.primaryColor,
             labelColor: Colors.white,
           ),
+          const SignInListener(),
         ],
       ),
     );
   }
+  void validateThenDoSignin(BuildContext context) {
+    context.read<SignInCubit>().emitSignInStates(
+      SignInRequestBody(
+        email: 'default@gmail.com',
+        name: context.read<SignInCubit>().fullNameController.text.trim(),
+        password: context.read<SignInCubit>().passwordController.text,
+        passwordConfirm: context.read<SignInCubit>().confirmPasswordController.text,
+        phone: context.read<SignInCubit>().phoneNumberController.text,
+      ),context
+    );
+  }
+
 }

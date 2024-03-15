@@ -10,7 +10,7 @@ import 'package:final_project/features/market/ui/market_screen.dart';
 import 'package:final_project/features/notification/ui/notification_and_appointment_screen.dart';
 import 'package:final_project/features/profile/ui/edit_profile.dart';
 import 'package:final_project/features/profile/ui/profile_screen.dart';
-import 'package:final_project/features/registration/data/phone_auth/phone_auth_model.dart';
+import 'package:final_project/features/registration/logic/log_in_cubit/log_in_cubit.dart';
 import 'package:final_project/features/registration/logic/sign_in_cubit/sign_in_cubit.dart';
 import 'package:final_project/features/registration/ui/log_in/log_in_screen.dart';
 import 'package:final_project/features/registration/ui/phone_auth/phone_auth_screen.dart';
@@ -93,7 +93,11 @@ class AppRouter {
 
       case RoutesManager.logInScreen:
         return MaterialPageRoute(
-          builder: (_) => const LogInScreen(),
+          builder: (_) => BlocProvider(
+            create: (BuildContext context) => getIt<LogInCubit>(),
+
+            child: const LogInScreen(),
+          ),
         );
 
       case RoutesManager.bookingScreen:
@@ -117,9 +121,9 @@ class AppRouter {
         );
 
         case RoutesManager.phoneAuthScreen:
-          var arg = settings.arguments as PhoneAuthModel;
+          var arg = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (_) => PhoneAuthScreen(phoneAuthModel: arg),
+          builder: (_) => PhoneAuthScreen(phone: arg),
         );
 
         case RoutesManager.editProfileScreen:

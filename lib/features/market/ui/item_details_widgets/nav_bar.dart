@@ -29,8 +29,7 @@ class _NavBarState extends State<NavBar> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: widget.horizontalPadding!),
+          padding: EdgeInsets.symmetric(horizontal: widget.horizontalPadding!),
           child: Row(
             children: [
               Expanded(
@@ -38,7 +37,11 @@ class _NavBarState extends State<NavBar> {
                   onTap: () {
                     setState(() {
                       currentPart = 1;
-                      pageController.animateToPage(currentPart, duration: const Duration(milliseconds: 200), curve: Curves.bounceIn,);
+                      pageController.animateToPage(
+                        currentPart,
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.bounceIn,
+                      );
                     });
                   },
                   child: NavBarItem(
@@ -52,7 +55,11 @@ class _NavBarState extends State<NavBar> {
                   onTap: () {
                     setState(() {
                       currentPart = 0;
-                      pageController.animateToPage(currentPart, duration: const Duration(milliseconds: 100), curve: Curves.linear,);
+                      pageController.animateToPage(
+                        currentPart,
+                        duration: const Duration(milliseconds: 100),
+                        curve: Curves.linear,
+                      );
                     });
                   },
                   child: NavBarItem(
@@ -71,7 +78,6 @@ class _NavBarState extends State<NavBar> {
         const SizedBox(
           height: 30,
         ),
-        //widget.screens[currentPart]
         Expanded(
           child: PageView(
             reverse: true,

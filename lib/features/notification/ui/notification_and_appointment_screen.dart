@@ -14,6 +14,7 @@ class NotificationAndAppointmentScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: 'الأشعارات',
         background: Colors.white,
+        hasLeading: false,
         sufixWidget: IconButton(
           onPressed: () {
             Navigator.pushNamed(context, RoutesManager.chatScreen);

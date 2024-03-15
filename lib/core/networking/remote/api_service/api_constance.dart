@@ -2,6 +2,7 @@ class ApiConstants{
 
   static const String apiBaseUrl = 'https://sevenasad.onrender.com/';
   static const String signIn = 'auth/register';
+  static const String logIn = 'auth/login';
 
 }
 

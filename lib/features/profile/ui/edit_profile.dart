@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, unused_field
 
 import 'package:final_project/core/constants.dart';
 import 'package:final_project/core/routing/routes.dart';

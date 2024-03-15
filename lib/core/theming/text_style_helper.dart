@@ -81,6 +81,13 @@ class TextStyleHelper{
     color: ColorHelper.darkestGreenColor,
   );
 
+   static TextStyle font16BoldWhite = const TextStyle(
+     fontSize: 16,
+     fontWeight: FontWeightHelper.bold,
+     fontFamily: 'Tajawal',
+     color: Colors.white,
+   );
+
   static TextStyle font16RegularDarkestGreen = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeightHelper.regular,
@@ -101,6 +108,13 @@ class TextStyleHelper{
     fontFamily: 'Tajawal',
     color: ColorHelper.darkGreenColor,
   );
+
+   static TextStyle font14RegularError = const TextStyle(
+     fontSize: 14,
+     fontWeight: FontWeightHelper.regular,
+     fontFamily: 'Tajawal',
+     color: ColorHelper.errorColor,
+   );
 
   static TextStyle font14RegularDis = const TextStyle(
     fontSize: 14,

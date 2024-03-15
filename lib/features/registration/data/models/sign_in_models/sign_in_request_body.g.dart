@@ -11,7 +11,7 @@ SignInRequestBody _$SignInRequestBodyFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       password: json['password'] as String,
       passwordConfirm: json['passwordConfirm'] as String,
-      phoneNumber: json['phoneNumber'] as String,
+      phone: json['phone'] as String,
       email: json['email'] as String? ?? 'yousef@gmail.com',
     );
 
@@ -20,6 +20,6 @@ Map<String, dynamic> _$SignInRequestBodyToJson(SignInRequestBody instance) =>
       'name': instance.name,
       'password': instance.password,
       'passwordConfirm': instance.passwordConfirm,
-      'phoneNumber': instance.phoneNumber,
+      'phone': instance.phone,
       'email': instance.email,
     };

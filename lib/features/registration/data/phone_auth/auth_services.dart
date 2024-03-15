@@ -6,23 +6,21 @@ class AuthService {
   static final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   static String verifyID = '';
 
-
-  static Future<void> phoneAuthRecaptcha() async{
-    // firebaseAuth.setSettings(
-    //   appVerificationDisabledForTesting: true,
-    //   forceRecaptchaFlow: true,
-    // );
-  }
+  // static Future<void> phoneAuthRecaptcha() async{
+  //   // firebaseAuth.setSettings(
+  //   //   appVerificationDisabledForTesting: true,
+  //   //   forceRecaptchaFlow: true,
+  //   // );
+  // }
 
   static Future sendOTP({
     required String phoneNumber,
     required Function errorStep,
     required Function nextStep,
   }) async {
-    await phoneAuthRecaptcha();
+    //await phoneAuthRecaptcha();
     firebaseAuth
         .verifyPhoneNumber(
-      //forceResendingToken: ,
       phoneNumber: '+2$phoneNumber',
       timeout: const Duration(seconds: 90),
       verificationCompleted: (phoneAuthCredential) async {
