@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
+import 'package:final_project/core/models/user_data.dart';
 import 'package:final_project/core/networking/local/caching_helper.dart';
-import 'package:final_project/features/registration/data/models/sign_in_models/sign_in_response.dart';
 import 'package:final_project/features/registration/logic/sign_in_cubit/sign_in_cubit.dart';
 import 'package:final_project/features/registration/logic/sign_in_cubit/sign_in_states.dart';
 import 'package:flutter/material.dart';
@@ -28,18 +28,21 @@ class SignInListener extends StatelessWidget {
               ),
             );
           },
-          success: (singInResponse) {
+          success: (userDataResponse) {
             print('success state');
             /// todo: save token here
-            SignInResponse response = singInResponse;
-            List<String> userInfo = [
-            response.data.user.id,
-            response.token,
-            response.data.user.name,
-            response.data.user.phone,
-            response.data.user.role,
-            ];
-            CachHelper.setUserInformation(userInfo: userInfo);
+             UserData response = userDataResponse;
+            // List<String> userInfo = [
+            //   response.data!.user.id!,
+            //   response.token!,
+            //   response.data!.user.name!,
+            //   response.data!.user.phone!,
+            //   response.data!.user.role!,
+            //   response.data!.user.userRating.toString(),
+            // ];
+            //CachHelper.setMainUserInformation(userInfo: userInfo);
+            CachHelper.setToken(userInfo: response.token!);
+
           },
           error: (error) {
             /// todo: need to handle the errors

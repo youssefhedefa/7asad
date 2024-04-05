@@ -62,11 +62,5 @@ class AuthCubit extends Cubit<AuthState>{
     }
   }
 
-  // void dispose() {
-  //   for (int i = 0; i < controllers.length; i++) {
-  //     controllers[i].dispose();
-  //   }
-  //   focusNode.dispose();
-  // }
 
 }

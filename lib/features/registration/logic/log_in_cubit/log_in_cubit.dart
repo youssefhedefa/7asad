@@ -24,10 +24,12 @@ class LogInCubit extends Cubit<LogInState>{
     emit(const LogInState.loading());
     final response = await logInRepo.logIn(loginRequestBody);
     response.when(
-      success: (signInResponse){
-        emit(LogInState.success(signInResponse));
+      success: (userDataResponse){
+        print('success');
+        emit(LogInState.success(userDataResponse));
       },
       failure: (error){
+        print('error');
         emit(LogInState.error(error: error.failure.message ?? 'error in sign in'));
       },
     );

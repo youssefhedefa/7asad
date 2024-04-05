@@ -8,6 +8,10 @@ class CustomItemDetailsAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      forceMaterialTransparency: true,
+      notificationPredicate: (_) => false,
+      surfaceTintColor: Colors.transparent,
+      scrolledUnderElevation: 0,
       leading: Padding(
         padding: const EdgeInsets.only(right: 18.0),
         child: IconButton(

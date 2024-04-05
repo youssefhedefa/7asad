@@ -1,3 +1,4 @@
+import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'result_item_details.dart';
@@ -38,23 +39,28 @@ class ResultItem extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            const Row(
-              children: [
-                Expanded(
-                  flex: 35,
-                  child: AspectRatio(
-                    aspectRatio: 1.05,
-                    child: ResultItemImage(),
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, RoutesManager.itemDetailScreen);
+              },
+              child: const Row(
+                children: [
+                  Expanded(
+                    flex: 35,
+                    child: AspectRatio(
+                      aspectRatio: 1.05,
+                      child: ResultItemImage(),
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 65,
-                  child: AspectRatio(
-                    aspectRatio: 1.75,
-                    child: ResultItemDetails(),
+                  Expanded(
+                    flex: 65,
+                    child: AspectRatio(
+                      aspectRatio: 1.75,
+                      child: ResultItemDetails(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             favoriteIcon!,
           ],

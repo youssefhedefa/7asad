@@ -5,25 +5,80 @@ abstract class CachHelper{
   static late SharedPreferences sharedPreferences;
   CachHelper._();
 
-  static String userKey = 'user';
+  static String tokenKey = 'user';
+  static String idKey = 'userId';
+  static String userRemainDataKey = 'remain';
 
   static init() async {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  /// user information index :-
-  /// 0 ==> response.data.user.id;
-  /// 1 ==> response.token;
-  /// 2 ==> response.data.user.name;
-  /// 3 ==> response.data.user.phone;
-  /// 4 ==> response.data.user.role;
+  // user information index :-
+  // 0 ==> response.data.user.id;
+  // 1 ==> response.token;
+  // 2 ==> response.data.user.name;
+  // 3 ==> response.data.user.phone;
+  // 4 ==> response.data.user.role;
+  // 5 ==> response.data.user.rating;
 
-  static Future<void> setUserInformation({required List<String> userInfo }){
-    return sharedPreferences.setStringList(userKey, userInfo);
+  // static Future<void> setMainUserInformation({required List<String> userInfo }){
+  //   return sharedPreferences.setStringList(userMainDataKey, userInfo);
+  // }
+  //
+  // static List<String>? getMainUserInfo(){
+  //   return sharedPreferences.getStringList(userMainDataKey);
+  // }
+  //
+  // static Future<void> clearMainUserInfo(){
+  //   return sharedPreferences.remove(userMainDataKey);
+  // }
+
+  static Future<void> setToken({required String userInfo }){
+    return sharedPreferences.setString(tokenKey, userInfo);
   }
 
-  static List<String>? getUserInfo(){
-    return sharedPreferences.getStringList(userKey);
+  static String? getToken(){
+    return sharedPreferences.getString(tokenKey);
   }
 
+  static Future<void> clearToken(){
+    return sharedPreferences.remove(tokenKey);
+  }
+
+
+  static Future<void> setId({required String userInfo }){
+    return sharedPreferences.setString(idKey, userInfo);
+  }
+
+  static String? getId(){
+    return sharedPreferences.getString(idKey);
+  }
+
+  static Future<void> clearId(){
+    return sharedPreferences.remove(idKey);
+  }
+
+  // response.data.user.photo!,
+  // response.data.user.background!,
+  // response.data.user.country!,
+  // response.data.user.city!,
+  // response.data.user.unvirsety!,
+  // response.data.user.faculty!,
+  // response.data.user.educationalDegree!,
+  // response.data.user.experince!.title!,
+  // response.data.user.experince!.company!,
+  // response.data.user.experince!.startDate!,
+  // response.data.user.experince!.endDate!,
+
+  static Future<void> setRemainUserInformation({required List<String> userInfo }){
+    return sharedPreferences.setStringList(userRemainDataKey, userInfo);
+  }
+
+  static List<String>? getRemainUserInfo(){
+    return sharedPreferences.getStringList(userRemainDataKey);
+  }
+
+  static Future<void> clearRemainUserInfo(){
+    return sharedPreferences.remove(userRemainDataKey);
+  }
 }

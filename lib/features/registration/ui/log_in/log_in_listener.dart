@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_print
-
+import 'package:final_project/core/models/user_data.dart';
 import 'package:final_project/core/networking/local/caching_helper.dart';
+import 'package:final_project/core/networking/local/hive/constance.dart';
+import 'package:final_project/core/networking/local/hive/local_servics.dart';
 import 'package:final_project/core/routing/routes.dart';
-import 'package:final_project/core/theming/color_helper.dart';
-import 'package:final_project/features/registration/data/models/log_in_models/log_in_response.dart';
 import 'package:final_project/features/registration/logic/log_in_cubit/log_in_cubit.dart';
 import 'package:final_project/features/registration/logic/log_in_cubit/log_in_states.dart';
 import 'package:flutter/material.dart';
@@ -31,25 +31,49 @@ class LogInListener extends StatelessWidget {
               ),
             );
           },
-          success: (logInResponse) {
-            print('success state');
-            LogInResponse response = logInResponse;
-            List<String> userInfo = [
-              response.data.user.id,
-              response.token,
-              response.data.user.name,
-              response.data.user.phone,
-              response.data.user.role
-            ];
+          success: (userDataResponse) async {
+            try{
+              print('success state');
 
-            CachHelper.setUserInformation(userInfo: userInfo);
+              UserData response = userDataResponse;
 
-            Navigator.pop(context);
-            Navigator.pushNamed(context, RoutesManager.landScreen);
+              User user = response.data!.user;
+              Experince exprience = response.data!.user.experince!;
+
+              CachHelper.setToken(userInfo: response.token!);
+              CachHelper.setId(userInfo: response.data!.user.id!);
+
+              await LocalServices.putData(
+                lazyBox: LocalBox.userBox,
+                key: KeysConstance.userKey,
+                value: user,
+              );
+
+              await LocalServices.putData(
+                lazyBox: LocalBox.exprienceBox,
+                key: KeysConstance.experinceKey,
+                value: exprience,
+              );
+
+              if(context.mounted){
+                Navigator.pop(context);
+                Navigator.pop(context);
+                Navigator.pushNamed(context, RoutesManager.landScreen);
+              }
+              else{
+                print('error in success state');
+              }
+
+            }
+            catch(e){
+              print('error in success state');
+              print(e);
+            }
 
           },
           error: (error) {
             print('error state');
+            print(error);
             Navigator.pop(context);
             context.read<LogInCubit>().errorHappen = true;
             context.read<LogInCubit>().errorMessage = error;

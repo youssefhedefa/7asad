@@ -1,8 +1,12 @@
-class ApiConstants{
+abstract class ApiConstants{
 
   static const String apiBaseUrl = 'https://sevenasad.onrender.com/';
+  static const String uploadImage = 'product/uploadImage';
   static const String signIn = 'auth/register';
   static const String logIn = 'auth/login';
+  static const String logOut = 'auth/logout';
+  static const String getUser = 'auth/getUser/{id}';
+  static const String updateUser = 'auth/updateProfile';
 
 }
 

@@ -22,6 +22,7 @@ class _NavBarState extends State<NavBar> {
   int currentPart = 0;
   PageController pageController = PageController();
 
+
   @override
   Widget build(BuildContext context) {
     return Column(

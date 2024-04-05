@@ -3,7 +3,13 @@ import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
 
 class ExperienceContainer extends StatelessWidget {
-  const ExperienceContainer({super.key});
+  const ExperienceContainer({super.key, required this.title, required this.companyName, required this.startDate, required this.endDate});
+
+  final String title ;
+  final String companyName ;
+  final String startDate ;
+  final String endDate ;
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +30,15 @@ class ExperienceContainer extends StatelessWidget {
           ),
           const SizedBox(height: 14),
           ListView.separated(
-            itemCount: 2,
+            itemCount: 1,
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemBuilder: (_,index)=> const ExperienceItem(),
+              itemBuilder: (_,index)=> ExperienceItem(
+                title: title,
+                companyName: companyName,
+                startDate: startDate,
+                endDate: endDate,
+              ),
             separatorBuilder: (_,index)=> const SizedBox(height: 4,),
           ),
         ],
@@ -37,7 +48,12 @@ class ExperienceContainer extends StatelessWidget {
 }
 
 class ExperienceItem extends StatelessWidget {
-  const ExperienceItem({super.key});
+  const ExperienceItem({super.key, required this.title, required this.companyName, required this.startDate, required this.endDate});
+
+  final String title;
+  final String companyName;
+  final String startDate;
+  final String endDate;
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +68,13 @@ class ExperienceItem extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: Text(
-            'تدريب \\ مركز البحوث الزراعية',
+            '$title \\ $companyName',
             style: TextStyleHelper.font18RegularDarkestGreen,
           ),
         ),
         const SizedBox(width: 4),
         Text(
-          '2022 \\ 2018',
+          '$endDate \\ $startDate',
           style: TextStyleHelper.font12RegularDarkGreen,
         ),
       ],

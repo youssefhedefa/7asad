@@ -1,10 +1,14 @@
-import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
 
 class InfoText extends StatelessWidget {
-  const InfoText({super.key});
+  const InfoText({super.key, required this.name, required this.job, required this.city, required this.country});
+
+  final String name;
+  final String job;
+  final String city;
+  final String country;
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +18,12 @@ class InfoText extends StatelessWidget {
       child: Column(
         children: [
           Text(
-              CachHelper.getUserInfo()![2],
+            name,
             style: TextStyleHelper.font18BoldDarkestGreen,
           ),
           const SizedBox(height: 8,),
           Text(
-            CachHelper.getUserInfo()![4],
+            job,
             style: TextStyleHelper.font14RegularDarkGreen,
           ),
           const SizedBox(height: 8,),
@@ -27,12 +31,14 @@ class InfoText extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(
-                  Icons.place,
+                Icons.place,
                 color: ColorHelper.darkGreenColor,
               ),
               const SizedBox(width: 3,),
               Text(
-                  'كفر الشيخ \\ بيلا',
+                //'كفر الشيخ \\ بيلا',
+                '$city \\ $country',
+                //'${CachHelper.getRemainUserInfo()![2]} \\ ${CachHelper.getRemainUserInfo()![3]}',
                 style: TextStyleHelper.font14RegularDarkGreen,
               ),
             ],

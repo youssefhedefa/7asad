@@ -27,13 +27,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: ColorHelper.primaryColor),
         useMaterial3: true,
       ),
-      //initialRoute: RoutesManager.landScreen,
-      //initialRoute: RoutesManager.signInScreen,
-      initialRoute: RoutesManager.logInScreen,
       onGenerateRoute: appRouter.generateRoute,
-        //home: HomePage(),
+      initialRoute: RoutesManager.landScreen,
+      //initialRoute: RoutesManager.signInScreen,
+      //initialRoute: RoutesManager.logInScreen,
        // home: const TestButton(),
-      // home: const LogInScreen(),
+        //home: const HomeTestScreen(),
     );
   }
 }

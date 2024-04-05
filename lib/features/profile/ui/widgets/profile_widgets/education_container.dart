@@ -3,7 +3,11 @@ import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
 
 class EducationContainer extends StatelessWidget {
-  const EducationContainer({super.key});
+  const EducationContainer({super.key, required this.faculty, required this.university, required this.degree});
+
+  final String faculty;
+  final String university;
+  final String degree;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +41,13 @@ class EducationContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'كلية الزراعة \\ جامعة كفر الشيخ',
+                        //'كلية الزراعة \\ جامعة كفر الشيخ',
+                        '$faculty \\ $university',
                         style: TextStyleHelper.font18RegularDarkestGreen,
                       ),
                       Text(
-                        'بكالوريوس',
+                        //'بكالوريوس',
+                        degree,
                         style: TextStyleHelper.font18RegularDarkGreen,
                       ),
                     ],
@@ -50,6 +56,7 @@ class EducationContainer extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                   '2022 \\ 2018',
+                //'${CachHelper.getRemainUserInfo()![10]} \\ ${CachHelper.getRemainUserInfo()![9]}',
                 style: TextStyleHelper.font12RegularDarkGreen,
               ),
             ],

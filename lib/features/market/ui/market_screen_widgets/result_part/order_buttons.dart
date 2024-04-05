@@ -15,14 +15,14 @@ class OrderButtons extends StatelessWidget {
           child: const Icon(
             Icons.shopping_cart_outlined,
             color: ColorHelper.primaryColor,
-            size: 18,
+            size: 20,
           ),
         ),
         const SizedBox(
           width: 4,
         ),
         CustomGetButton(
-          height: 1,
+          height: 2,
           width: 12,
           onTap: (){
             Navigator.pushNamed(context, RoutesManager.itemDetailScreen);
