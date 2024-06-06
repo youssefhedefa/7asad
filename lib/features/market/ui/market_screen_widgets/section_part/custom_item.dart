@@ -32,10 +32,10 @@ class CustomItem extends StatelessWidget {
               model.icon,
           ),
         ),
-        const Expanded(child: SizedBox(height: 5,)),
+        const Expanded(child: SizedBox(height: 6,),),
         Text(
           model.label,
-          style: TextStyleHelper.font12RegularDarkGreen,
+          style: TextStyleHelper.font14RegularDarkestGreen,
         ),
       ],
     );

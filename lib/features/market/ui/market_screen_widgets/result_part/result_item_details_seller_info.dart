@@ -2,22 +2,16 @@ import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
 
 class ResultItemDetailsSellerInfo extends StatelessWidget {
-  const ResultItemDetailsSellerInfo({super.key});
+  const ResultItemDetailsSellerInfo({super.key, required this.name, required this.city});
+
+  final String name;
+  final String city;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          'البائع:محمد الشوال/طنطا',
-          style: TextStyleHelper.font8RegularDarkestGreen ,
-        ),
-        Text(
-          'احصل عليه يوم 27/6/2023',
-          style: TextStyleHelper.font8RegularDarkestGreen ,
-        ),
-      ],
+    return Text(
+      'البائع: $name /$city',
+      style: TextStyleHelper.font12RegularDarkestGreen ,
     );
   }
 }

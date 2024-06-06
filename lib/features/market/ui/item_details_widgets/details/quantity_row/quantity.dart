@@ -3,12 +3,14 @@ import 'package:final_project/features/market/ui/item_details_widgets/details/qu
 import 'package:flutter/material.dart';
 
 class Quantity extends StatefulWidget {
-  const Quantity({super.key, required this.buttonWidth, required this.buttonHeight, required this.fontSize, this.buttonFontSize});
+  const Quantity({super.key, required this.buttonWidth, required this.buttonHeight, required this.fontSize, this.buttonFontSize, this.changeQuantity});
 
   final double buttonWidth;
   final double buttonHeight;
   final double fontSize;
   final double? buttonFontSize;
+  final Function(int)? changeQuantity;
+
 
   @override
   State<Quantity> createState() => _QuantityState();
@@ -29,6 +31,7 @@ class _QuantityState extends State<Quantity> {
             onTap: () {
               setState(() {
                 _counter++;
+                widget.changeQuantity!(_counter);
               });
             },
             sign: '+',
@@ -52,6 +55,7 @@ class _QuantityState extends State<Quantity> {
             onTap: () {
               setState(() {
                 _counter--;
+                widget.changeQuantity!(_counter);
               });
             },
             sign: '-',

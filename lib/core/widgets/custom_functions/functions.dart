@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:final_project/core/helpers/assets_helper/icon_helper.dart';
 import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/core/widgets/seller_contacts_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -93,4 +96,28 @@ makingPhoneCall(String phoneNumber) async {
 String getDayOfWeek(DateTime date) {
   List<String> daysOfWeek = ['الاثنين', 'الثلاثاء', 'الاربعاء', 'الخميس', 'الجمعه', 'السبت', 'الحد'];
   return daysOfWeek[date.weekday - 1];
+}
+
+Future<File?> pickImageFromGallery() async {
+  File? image;
+  final picker = ImagePicker();
+  final file = await picker.pickImage(
+    source: ImageSource.gallery,
+  );
+  if (file != null) {
+    image = File(file.path);
+  }
+  return image;
+}
+
+Future<File?> pickImageFromCamera() async {
+  File? image;
+  final picker = ImagePicker();
+  final file = await picker.pickImage(
+    source: ImageSource.camera,
+  );
+  if (file != null) {
+    image = File(file.path);
+  }
+  return image;
 }

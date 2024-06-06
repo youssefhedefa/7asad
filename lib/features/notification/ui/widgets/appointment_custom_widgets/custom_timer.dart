@@ -4,7 +4,9 @@ import 'package:final_project/core/widgets/dotted_line_painter.dart';
 import 'package:flutter/material.dart';
 
 class CustomTimer extends StatelessWidget {
-  const CustomTimer({super.key});
+  const CustomTimer({super.key, required this.time});
+
+  final String time;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class CustomTimer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          '10:00ص',
+          time,
           style: TextStyleHelper.font16MediumDarkGreen
               .copyWith(color: ColorHelper.darkestGreenColor),
         ),
@@ -24,7 +26,7 @@ class CustomTimer extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          '10:30ص',
+          time,
           style: TextStyleHelper.font16MediumDarkGreen,
         ),
       ],

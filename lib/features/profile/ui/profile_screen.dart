@@ -1,4 +1,7 @@
 import 'package:final_project/core/di/dependency_injection.dart';
+import 'package:final_project/core/models/chat_model.dart';
+import 'package:final_project/core/models/the_data_to_profile_as_visitor.dart';
+import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
@@ -9,28 +12,30 @@ import 'package:final_project/features/profile/ui/widgets/profile_widgets/profil
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/education_container.dart';
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/experience_container.dart';
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/info_text.dart';
-import 'package:final_project/features/profile/ui/widgets/profile_widgets/post_item/post_item.dart';
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/profile_photo_stack.dart';
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/statistics_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'widgets/profile_widgets/listeners/profile_listener.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, required this.dataToProfileAsVisitor,});
+
+  final DataToProfileAsVisitor dataToProfileAsVisitor;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: getIt<ProfileCubit>(),
+      value: getIt<ProfileCubit>()..emitGetProfileState(
+        id: dataToProfileAsVisitor.isVisitor ? dataToProfileAsVisitor.id! : CachHelper.getId(),
+      ),
       child: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (BuildContext context, ProfileState<dynamic> state) {
-          if (state is SuccessExperienceDataFromLocalStorage ||
-              state is SuccessUserDataFromLocalStorage ||
-              state is SuccessUpdateUserData
-          ) {
+          if (state is Success ||
+              state is SuccessUpdateUserData ||
+              state is SuccessUpdateBackGroundImage ||
+              state is SuccessUpdatePersonalImage) {
             return Scaffold(
               appBar: AppBar(
                 systemOverlayStyle: const SystemUiOverlayStyle(
@@ -46,14 +51,20 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ProfilePhotoStack(
-                        background: context.read<ProfileCubit>().user.background ?? '',
-                        image: context.read<ProfileCubit>().user.photo ?? '',
+                        background: context
+                                .read<ProfileCubit>()
+                                .user
+                                .background ??
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHrMqwA2X-_g537_jV6dciihxDmX4PUTQD6Q&s',
+                        image: context.read<ProfileCubit>().user.photo ??
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQljYSrXL1AK2EzLXxKDtbl3hrFbLphwvqzmw&s',
                       ),
                       InfoText(
                         name: context.read<ProfileCubit>().user.name ?? '',
                         job: context.read<ProfileCubit>().user.job ?? ' ',
                         city: context.read<ProfileCubit>().user.city ?? ' ',
-                        country: context.read<ProfileCubit>().user.country ?? ' ',
+                        country:
+                            context.read<ProfileCubit>().user.country ?? ' ',
                       ),
                       const StatisticsRow(),
                       Padding(
@@ -71,12 +82,13 @@ class ProfileScreen extends StatelessWidget {
                               Expanded(
                                 child: ActionButton(
                                   onTap: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      RoutesManager.editProfileScreen,
-                                    );
+                                    onButtonTap(context);
+                                    // Navigator.pushNamed(
+                                    //   context,
+                                    //   RoutesManager.editProfileScreen,
+                                    // );
                                   },
-                                  label: 'تعديل الصفحه الشخصية',
+                                  label: dataToProfileAsVisitor.isVisitor ? 'ارسال رسالة' :'تعديل الصفحه الشخصية',
                                   outerColor: ColorHelper.primaryColor,
                                   labelColor: Colors.white,
                                 ),
@@ -86,19 +98,40 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           EducationContainer(
-                            faculty: context.read<ProfileCubit>().user.faculty ?? ' ',
-                            university: context.read<ProfileCubit>().user.unviersity ?? ' ',
-                            degree: context.read<ProfileCubit>().user.educationalDegree ?? ' ',
+                            faculty:
+                                context.read<ProfileCubit>().user.faculty ??
+                                    ' ',
+                            university:
+                                context.read<ProfileCubit>().user.unviersity ??
+                                    ' ',
+                            degree: context
+                                    .read<ProfileCubit>()
+                                    .user
+                                    .educationaldegree ??
+                                ' ',
                           ),
-                          ExperienceContainer(
-                            startDate: context.read<ProfileCubit>().experince.startDate ?? ' ',
-                            endDate: context.read<ProfileCubit>().experince.endDate ?? ' ',
-                            companyName: context.read<ProfileCubit>().experince.company ?? ' ',
-                            title: context.read<ProfileCubit>().experince.title ?? ' ',
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 24,
+                                right: 16.0,
+                            ),
+                            child: Text(
+                              'الخبرة',
+                              style: TextStyleHelper.font18BoldDarkestGreen,
+                            ),
+                          ),
+                          Column(
+                            children: experiences(context),
                           ),
                         ],
+                      ),
+                      const Divider(
+                          color: ColorHelper.dividerColor,
+                          thickness: 2,
+                        height: 2,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
@@ -114,7 +147,8 @@ class ProfileScreen extends StatelessWidget {
                       ListView.separated(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (_, index) => const PostItem(),
+                        //itemBuilder: (_, index) => const PostItem(),
+                        itemBuilder: (_, index) => const SizedBox(),
                         separatorBuilder: (_, index) => const SizedBox(
                           height: 16,
                         ),
@@ -127,7 +161,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             );
           }
-          else{
+          else if(state is Loading) {
             return const Center(
               child: CircularProgressIndicator(
                 color: Colors.white,
@@ -135,8 +169,56 @@ class ProfileScreen extends StatelessWidget {
               ),
             );
           }
+          else {
+            return Center(
+              child: Text(
+                  ' حدث خطأ ما يرجى المحاولة مرة اخرى',
+                style : TextStyleHelper.font22MediumDarkestGreen
+              ),
+            );
+          }
         },
       ),
     );
   }
+
+  List<Widget> experiences(BuildContext context) {
+    List<Widget> list = [];
+    if (context.read<ProfileCubit>().experince.isNotEmpty) {
+      for (int i = 0;
+          i < context.read<ProfileCubit>().experince.length;
+          i++) {
+        list.add(
+          ExperienceContainer(
+            startDate:
+                context.read<ProfileCubit>().experince[i].startDate ??
+                    ' ',
+            endDate:
+                context.read<ProfileCubit>().experince[i].endDate ?? ' ',
+            companyName:
+                context.read<ProfileCubit>().experince[i].company ?? ' ',
+            title: context.read<ProfileCubit>().experince[i].title ?? ' ',
+          ),
+        );
+      }
+      return list;
+    } else {
+      return [const SizedBox()];
+    }
+  }
+
+  onButtonTap(BuildContext context){
+    if(dataToProfileAsVisitor.isVisitor){
+      Navigator.pushNamed(context, RoutesManager.chatBodyScreen, arguments: ChatBodyModel(
+          name: context.read<ProfileCubit>().user.name ?? 'اليوزر ملوش اسم',
+          id: dataToProfileAsVisitor.id ?? '6625feb2629a73b4555a0de2',
+          image: context.read<ProfileCubit>().user.photo ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQljYSrXL1AK2EzLXxKDtbl3hrFbLphwvqzmw&s',
+      ),
+      );
+    }
+    else{
+      Navigator.pushNamed(context, RoutesManager.editProfileScreen);
+    }
+  }
+
 }

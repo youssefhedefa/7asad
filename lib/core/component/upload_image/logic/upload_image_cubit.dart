@@ -51,7 +51,6 @@ class UploadImageCubit extends Cubit<UploadImageState> {
     FormData image,
     BuildContext context,
   ) async {
-    //print('loading state');
     emit(const UploadImageState.loading());
     final response = await uploadImageRepo.uploadImage(image);
     response.when(
@@ -60,7 +59,7 @@ class UploadImageCubit extends Cubit<UploadImageState> {
       },
       failure: (error) {
         emit(UploadImageState.error(
-            error: error.failure.message ?? 'error in upload image'));
+            error: error.toString(),));
       },
     );
   }

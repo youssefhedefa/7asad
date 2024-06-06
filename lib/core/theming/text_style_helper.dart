@@ -11,12 +11,40 @@ class TextStyleHelper{
     color: ColorHelper.darkestGreenColor,
   );
 
+   static TextStyle font14MediumPrimaryColor = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.primaryColor,
+  );
+
+   static TextStyle font14MediumSuccess = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.successfulColor,
+  );
+
    static TextStyle font16MediumDarkestGreen = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeightHelper.medium,
     fontFamily: 'Tajawal',
     color: ColorHelper.darkestGreenColor,
   );
+
+   static TextStyle font16MediumWhite = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Tajawal',
+    color: Colors.white,
+  );
+
+   static TextStyle font32MediumPrimary = const TextStyle(
+     fontSize: 32,
+     fontWeight: FontWeightHelper.medium,
+     fontFamily: 'Tajawal',
+     color: ColorHelper.primaryColor,
+   );
 
    static TextStyle font18BoldDarkestGreen = const TextStyle(
     fontSize: 18,
@@ -53,6 +81,13 @@ class TextStyleHelper{
     color: ColorHelper.lightestGreenColor,
   );
 
+  static TextStyle font28MediumDarkestGreen = const TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.darkestGreenColor,
+  );
+
   static TextStyle font24BoldDarkestGreen = const TextStyle(
     fontSize: 24,
     fontWeight: FontWeightHelper.bold,
@@ -74,6 +109,13 @@ class TextStyleHelper{
     color: ColorHelper.darkestGreenColor,
   );
 
+  static TextStyle font22MediumWhite = const TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Tajawal',
+    color: Colors.white,
+  );
+
   static TextStyle font16BoldDarkestGreen = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeightHelper.bold,
@@ -88,6 +130,13 @@ class TextStyleHelper{
      color: Colors.white,
    );
 
+   static TextStyle font16RegularWhite = const TextStyle(
+     fontSize: 16,
+     fontWeight: FontWeightHelper.regular,
+     fontFamily: 'Tajawal',
+     color: Colors.white,
+   );
+
   static TextStyle font16RegularDarkestGreen = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeightHelper.regular,
@@ -95,8 +144,30 @@ class TextStyleHelper{
     color: ColorHelper.darkestGreenColor,
   );
 
+  static TextStyle font16RegularDarkGreen = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeightHelper.regular,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.darkGreenColor,
+  );
+
+
+  static TextStyle font16RegularSuccessful = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeightHelper.regular,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.successfulColor,
+  );
+
    static TextStyle font16MediumDarkGreen = const TextStyle(
      fontSize: 16,
+     fontWeight: FontWeightHelper.medium,
+     fontFamily: 'Tajawal',
+     color: ColorHelper.darkGreenColor,
+   );
+
+   static TextStyle font18MediumDarkGreen = const TextStyle(
+     fontSize: 18,
      fontWeight: FontWeightHelper.medium,
      fontFamily: 'Tajawal',
      color: ColorHelper.darkGreenColor,
@@ -116,8 +187,8 @@ class TextStyleHelper{
      color: ColorHelper.errorColor,
    );
 
-  static TextStyle font14RegularDis = const TextStyle(
-    fontSize: 14,
+  static TextStyle font16RegularDis = const TextStyle(
+    fontSize: 16,
     fontWeight: FontWeightHelper.regular,
     fontFamily: 'Tajawal',
     color: ColorHelper.discTextColor,
@@ -128,6 +199,13 @@ class TextStyleHelper{
     fontWeight: FontWeightHelper.regular,
     fontFamily: 'Tajawal',
     color: ColorHelper.cardBackgroundColor,
+  );
+
+  static TextStyle font12RegularDarkestGreen = const TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeightHelper.regular,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.darkestGreenColor,
   );
 
   static TextStyle font22RegularDarkestGreen = const TextStyle(
@@ -212,6 +290,14 @@ class TextStyleHelper{
      fontWeight: FontWeightHelper.medium,
      fontFamily: 'Tajawal',
      color: Colors.white,
+   );
+
+
+   static TextStyle font18MediumDarkestGreen = const TextStyle(
+     fontSize: 18,
+     fontWeight: FontWeightHelper.medium,
+     fontFamily: 'Tajawal',
+     color: ColorHelper.darkestGreenColor,
    );
 
 

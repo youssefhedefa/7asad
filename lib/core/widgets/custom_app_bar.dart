@@ -1,4 +1,3 @@
-import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.radius,
     this.hasImage = false,
     this.sufixWidget = const SizedBox(),
+    this.whiteText = false,
+    this.userImage,
+    this.userId,
   });
 
   final String title;
@@ -23,6 +25,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? radius;
   final bool? hasImage;
   final Widget? sufixWidget;
+  final bool? whiteText;
+  final String? userImage;
+  final String? userId;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +36,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       shadowColor: Colors.white,
       surfaceTintColor: Colors.white,
       elevation: 0,
-      systemOverlayStyle: background == ColorHelper.primaryColor
-          ? const SystemUiOverlayStyle(
-              statusBarColor: ColorHelper.primaryColor,
-              statusBarBrightness: Brightness.light,
-              statusBarIconBrightness: Brightness.light,
-            )
-          : null,
+      // systemOverlayStyle: background == ColorHelper.primaryColor
+      //     ? const SystemUiOverlayStyle(
+      //         statusBarColor: ColorHelper.primaryColor,
+      //         statusBarBrightness: Brightness.light,
+      //         statusBarIconBrightness: Brightness.light,
+      //       )
+      //     : null,
       automaticallyImplyLeading: false,
       backgroundColor: background,
       shape: RoundedRectangleBorder(
@@ -73,12 +78,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       child: Container(
                           height: 44,
                           width: 44,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(
-                                ImageHelper.mohamedImage,
-                              ),
+                              image: NetworkImage(userImage ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQljYSrXL1AK2EzLXxKDtbl3hrFbLphwvqzmw&s'),
                             ),
                           ),
                         ),
@@ -88,12 +91,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
                     title,
-                    style: TextStyleHelper.font22MediumDarkestGreen.copyWith(
-                      color: background == Colors.white
-                          ? ColorHelper.darkestGreenColor
-                          : Colors.white,
-                      fontSize: (background == Colors.white && sufixWidget == null) ? 28 : 22,
-                    ),
+                    style: TextStyleHelper.font28MediumDarkestGreen.copyWith(color: whiteText! ? Colors.white: ColorHelper.darkestGreenColor),
                   ),
                 ),
                 const Spacer(),

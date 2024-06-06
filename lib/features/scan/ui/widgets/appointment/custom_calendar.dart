@@ -1,7 +1,9 @@
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/core/widgets/custom_functions/functions.dart';
+import 'package:final_project/features/scan/logic/prediction_cubit/prediction_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 
@@ -47,10 +49,11 @@ class _CustomCalendarState extends State<CustomCalendar> {
             ),
           ),
           TableCalendar(
-            firstDay: DateTime.utc(2022, 10, 16),
+            firstDay: DateTime.now(),
             lastDay: DateTime.utc(2040, 3, 14),
             focusedDay: today,
             onDaySelected: (selectedDay, focusedDay) {
+              context.read<PredictionCubit>().date = DateFormat('yyyy-MM-dd').format(selectedDay);
               setState(() {
                 today = selectedDay;
               });

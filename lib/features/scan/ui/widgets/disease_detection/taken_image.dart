@@ -1,9 +1,12 @@
 import 'dart:io';
+import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class TakenImage extends StatelessWidget {
-  const TakenImage({super.key, required this.image});
+  const TakenImage({super.key,
+    required this.image
+  });
 
   final XFile image;
 
@@ -16,7 +19,7 @@ class TakenImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         image: DecorationImage(
           image: FileImage(
-            // ImageHelper.testMainItemDetailsImage,
+             //ImageHelper.testMainItemDetailsImage,
               File(image.path),
           ),
         ),

@@ -1,13 +1,15 @@
 import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
+import 'package:final_project/features/market/data/models/product/product_data.dart';
 import 'package:flutter/material.dart';
 import 'result_item_details.dart';
 import 'result_item_image.dart';
 
 class ResultItem extends StatelessWidget {
-  const ResultItem({super.key, this.favoriteIcon});
+  const ResultItem({super.key, this.favoriteIcon, required this.product, });
 
   final Widget? favoriteIcon;
+  final ProductData product;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,6 @@ class ResultItem extends StatelessWidget {
         bottom: 8,
       ),
       child: Container(
-        //height: MediaQuery.sizeOf(context).height * 0.195,
         padding: const EdgeInsetsDirectional.only(
           start: 8,
           end: 12,
@@ -41,22 +42,27 @@ class ResultItem extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: (){
-                Navigator.pushNamed(context, RoutesManager.itemDetailScreen);
+                Navigator.pushNamed(context, RoutesManager.itemDetailScreen , arguments: product);
               },
-              child: const Row(
+              child: Row(
                 children: [
                   Expanded(
                     flex: 35,
                     child: AspectRatio(
                       aspectRatio: 1.05,
-                      child: ResultItemImage(),
+                      child: ResultItemImage(
+                        image: product.photo![0],
+                      ),
                     ),
                   ),
                   Expanded(
                     flex: 65,
                     child: AspectRatio(
                       aspectRatio: 1.75,
-                      child: ResultItemDetails(),
+                      child: ResultItemDetails(
+                        product: product,
+                        //productInfo: productInfo,
+                      ),
                     ),
                   ),
                 ],

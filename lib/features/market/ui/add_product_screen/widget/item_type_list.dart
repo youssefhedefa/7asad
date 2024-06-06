@@ -1,7 +1,9 @@
 import 'package:final_project/core/helpers/assets_helper/icon_helper.dart';
 import 'package:final_project/features/market/data/section_model.dart';
+import 'package:final_project/features/market/logic/product_cubit/product_cubit.dart';
 import 'package:final_project/features/market/ui/add_product_screen/widget/item_type_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemTypeList extends StatefulWidget {
   const ItemTypeList({super.key});
@@ -11,6 +13,7 @@ class ItemTypeList extends StatefulWidget {
 }
 
 class _ItemTypeListState extends State<ItemTypeList> {
+
   List<SectionModel> sectionModel = [
     SectionModel(
       label: 'محاصيل',
@@ -58,7 +61,7 @@ class _ItemTypeListState extends State<ItemTypeList> {
     ),
   ];
 
-  int currentSelect = -1;
+  int currentSelect = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +71,12 @@ class _ItemTypeListState extends State<ItemTypeList> {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
+            currentSelect = index;
             setState(() {
-              currentSelect = index;
-              //select = !select;
             });
+            context.read<ProductCubit>().selectedCategory =
+                sectionModel.elementAt(currentSelect).label;
+            print(context.read<ProductCubit>().selectedCategory);
           },
           child: ItemTypeRow(
             label: sectionModel[index].label,

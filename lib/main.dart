@@ -5,6 +5,7 @@ import 'package:final_project/core/models/user_data.dart';
 import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/networking/local/hive/constance.dart';
 import 'package:final_project/core/routing/app_router.dart';
+import 'package:final_project/features/market/logic/product_cubit/product_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'firebase_options.dart';
 //import 'package:device_preview/device_preview.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,12 +25,18 @@ void main() async {
   Hive.registerAdapter(ExperinceAdapter());
   Hive.registerAdapter(UserAdapter());
   LocalBox.userBox = await Hive.openLazyBox<User>(BoxConstance.userBox);
-  LocalBox.exprienceBox = await Hive.openLazyBox<Experince>(BoxConstance.experinceBox);
+  LocalBox.exprienceBox =
+      await Hive.openLazyBox<List<Experince>>(BoxConstance.experinceBox);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    MyApp(appRouter: AppRouter()),
+    BlocProvider(
+      create: (context) => getIt<ProductCubit>(),
+      child: MyApp(
+        appRouter: AppRouter(),
+      ),
+    ),
   );
 
   // runApp(
@@ -39,5 +45,4 @@ void main() async {
   //     builder: (context) => MyApp(appRouter: AppRouter()), // Wrap your app
   //   ),
   // );
-
 }

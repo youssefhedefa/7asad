@@ -1,0 +1,38 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:final_project/core/networking/local/caching_helper.dart';
+import 'package:final_project/core/networking/remote/firebase/firebase_constances.dart';
+import 'package:final_project/features/chat/data/models/chat_room.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final getAllChatsProvider = StreamProvider.autoDispose<Iterable<Chatroom>>(
+  (ref) {
+    final myUid = CachHelper.getId();
+
+    final controller = StreamController<Iterable<Chatroom>>();
+
+    final sub = FirebaseFirestore.instance
+        .collection(FirebaseCollectionNames.chatrooms)
+        .where(FirebaseFieldNames.members, arrayContains: myUid)
+        .orderBy(FirebaseFieldNames.lastMessageTs)
+        .snapshots()
+        .listen((snapshot) {
+      final chats = snapshot.docs.map(
+        (chatData) => Chatroom.fromMap(
+          chatData.data(),
+        ),
+      );
+      controller.sink.add(chats);
+    });
+
+    ref.onDispose(
+      () {
+        controller.close();
+        sub.cancel();
+      },
+    );
+
+    return controller.stream;
+  },
+);

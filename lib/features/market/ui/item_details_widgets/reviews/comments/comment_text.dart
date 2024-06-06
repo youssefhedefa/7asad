@@ -4,14 +4,16 @@ import 'package:readmore/readmore.dart';
 
 
 class CommentText extends StatelessWidget {
-  const CommentText({super.key});
+  const CommentText({super.key, required this.comment});
+
+  final String comment;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.sizeOf(context).width - 140,
       child: ReadMoreText(
-        ' من المحاصيل الأساسية التي تستخدم في إنتاج الخبز والمعجنات والسلع  من المحاصيل الأساسية التي تستخدم في إنتاج الخبز والمعجنات والسلع من المحاصيل الأساسية التي تستخدم في إنتاج الخبز والمعجنات والسلع....',
+        comment,
         trimLines: 2,
         //colorClickableText: Colors.pink,
         trimMode: TrimMode.Line,

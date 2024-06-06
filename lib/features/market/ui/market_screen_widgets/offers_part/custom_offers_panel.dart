@@ -1,7 +1,7 @@
 import 'package:final_project/core/theming/color_helper.dart';
+import 'package:final_project/features/market/ui/market_screen_widgets/offers_part/offer_data.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'custom_offer_card.dart';
 
 class CustomOffersPanel extends StatefulWidget {
   const CustomOffersPanel({super.key});
@@ -46,7 +46,7 @@ class _CustomOffersPanelState extends State<CustomOffersPanel> {
                     top: 4,
                     bottom: 4,
                   ),
-                  child: CustomOfferCard(),
+                  child: OfferData(),
                 );
               },
             ),
@@ -67,3 +67,5 @@ class _CustomOffersPanelState extends State<CustomOffersPanel> {
     );
   }
 }
+
+

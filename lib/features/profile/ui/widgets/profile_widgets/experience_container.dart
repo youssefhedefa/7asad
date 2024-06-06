@@ -15,20 +15,15 @@ class ExperienceContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      padding: const EdgeInsets.symmetric(vertical: 22,horizontal: 16),
-      decoration: const BoxDecoration(
-          border: Border(
-            bottom: BorderSide(color: ColorHelper.dividerColor,width: 2),
-          )
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 16),
+      // decoration: const BoxDecoration(
+      //     border: Border(
+      //       bottom: BorderSide(color: ColorHelper.dividerColor,width: 2),
+      //     )
+      // ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-              'الخبرة',
-            style: TextStyleHelper.font18BoldDarkestGreen,
-          ),
-          const SizedBox(height: 14),
           ListView.separated(
             itemCount: 1,
               physics: const NeverScrollableScrollPhysics(),

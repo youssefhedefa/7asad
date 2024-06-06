@@ -1,161 +1,106 @@
-//import 'dart:io';
 import 'package:final_project/core/theming/color_helper.dart';
-import 'package:final_project/core/theming/text_style_helper.dart';
+import 'package:final_project/core/widgets/custom_functions/functions.dart';
+import 'package:final_project/features/chat/logic/controller/audio_recorder/audio_recorder_controller.dart';
+import 'package:final_project/features/chat/logic/controller/audio_recorder/audio_recorder_file_helper.dart';
+import 'package:final_project/features/chat/logic/providers/chat_provider.dart';
+import 'package:final_project/features/chat/ui/widgets/audio_recorde/audio_record.dart';
 import 'package:final_project/features/chat/ui/widgets/footer/attach_menu.dart';
 import 'package:final_project/features/chat/ui/widgets/footer/attach_or_send_icon.dart';
 import 'package:final_project/features/chat/ui/widgets/footer/custom_icons.dart';
 import 'package:final_project/features/chat/ui/widgets/footer/text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sound/flutter_sound.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomFooter extends StatefulWidget {
-  const CustomFooter({super.key});
+class CustomFooter extends ConsumerStatefulWidget {
+  const CustomFooter({super.key,required this.chatroomId, required this.receiverId});
+
+  final String chatroomId;
+  final String receiverId;
 
   @override
-  State<CustomFooter> createState() => _CustomFooterState();
+  ConsumerState<CustomFooter> createState() => _CustomFooterState();
 }
 
-class _CustomFooterState extends State<CustomFooter> {
+class _CustomFooterState extends ConsumerState<CustomFooter> {
 
 
-  final record = FlutterSoundRecorder();
 
-  TextEditingController controller = TextEditingController();
+  TextEditingController messageController = TextEditingController();
   bool isMicAndCamera = true;
   bool isMicOpen = false;
   bool isPause = false;
 
-
-  @override
-  void initState() {
-    super.initState();
-    initRecord();
-  }
-
-  @override
-  void dispose() {
-    record.closeRecorder();
-    super.dispose();
+  handelMic(){
+    setState(() {
+      isMicOpen = !isMicOpen;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return isMicOpen ?
+    RepositoryProvider(
+      create: (context) => AudioRecorderController(
+        AudioRecorderFileHelper(),
+        (message) {
+          print(message);
+        },
+      ),
+      child: Container(
+        color: ColorHelper.primaryColor,
+        width: MediaQuery.sizeOf(context).width,
+        padding: const EdgeInsets.only(top: 14, left: 14,right: 14,bottom: 18),
+        child: AudioRecorderViewBody(
+          onGestureTap: handelMic,
+        ),
+      ),
+    ):
+    Container(
       width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.only(top: 14, left: 14, bottom: 18),
       decoration: const BoxDecoration(
         color: ColorHelper.medGreenColor,
       ),
-      child: isMicOpen ?
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            onTap:() async {
-              if(record.isRecording){
-                await stop();
-              }
-              else{
-                await start();
-              }
-            },
-            child: const SizedBox(
-              width: 34,
-              height: 34,
-              child: Icon(
-                Icons.keyboard_voice_outlined,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Row(
-            children: [
-              StreamBuilder<RecordingDisposition>(
-                  stream: record.onProgress,
-                  builder: (_,snapshot){
-                    final duration = snapshot.hasData ?
-                        snapshot.data!.duration : Duration.zero;
-
-                    String twoDigit(int n) => n.toString().padLeft(2,'0');
-                    final twoDigitInMinutes = twoDigit(duration.inMinutes.remainder(60));
-                    final twoDigitInSecond = twoDigit(duration.inSeconds.remainder(60));
-
-                    return Text(
-                        ' $twoDigitInSecond : $twoDigitInMinutes ',
-                      style: TextStyleHelper.font18MediumWhite,
-                    );
-                  }
-              ),
-              const SizedBox(width: 6,),
-              InkWell(
-                onTap:() async {
-                  if(isPause){
-                    await play();
-                  }
-                  else{
-                    await pause();
-                  }
-                  setState(() {
-                    isPause = !isPause;
-                  });
-                },
-                child: SizedBox(
-                  width: 34,
-                  height: 34,
-                  child: isPause ?
-                    const Icon(
-                      Icons.pause,
-                      color: Colors.white,
-                    ) :
-                    const Icon(
-                      Icons.play_arrow,
-                      color: Colors.white,
-                    ),
-                ),
-              ),
-            ],
-          ),
-          InkWell(
-            onTap:() async {
-              await delete();
-              setState(() {
-                isMicOpen = false;
-              });
-            },
-            child: const SizedBox(
-              width: 34,
-              height: 34,
-              child: Icon(
-                Icons.delete_outline,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ) :
-      Row(
+      child: Row(
         children: [
           const SizedBox(width: 6),
           isMicAndCamera
               ? MicAndCameraIcons(
-            onMicTap: () async{
-              setState(() {
-                isMicOpen = true;
-              });
-              await record.openRecorder();
-              await start();
-              record.setSubscriptionDuration(const Duration(milliseconds: 5));
+            onMicTap: () async {
+               setState(() {
+                  isMicOpen = true;
+               });
+            },
+            onCameraTap: () async {
+              final image = await pickImageFromCamera();
+              if (image == null) return;
+              await ref.read(chatProvider).sendFileMessage(
+                file: image,
+                chatroomId: widget.chatroomId,
+                receiverId: widget.receiverId,
+                messageType: 'image',
+              );
             },
           )
-              : const AttachAndSendIcon(
-                  isAttach: false,
-                ),
+              : AttachAndSendIcon(
+            isAttach: false,
+            onSendTap: () async {
+              if (messageController.text.isNotEmpty) {
+                await ref.read(chatProvider).sendMessage(
+                  chatroomId: widget.chatroomId,
+                  message: messageController.text,
+                  receiverId: widget.receiverId,
+                );
+                messageController.clear();
+              }
+            },
+          ),
           const SizedBox(width: 8),
           CustomTextField(
-            controller: controller,
+            controller: messageController,
             onTap: () {
-              if (controller.text.isNotEmpty) {
+              if (messageController.text.isNotEmpty) {
                 setState(() {
                   isMicAndCamera = false;
                 });
@@ -176,47 +121,24 @@ class _CustomFooterState extends State<CustomFooter> {
                 });
               }
             },
+            onSubmitted: (value) async {
+              if (value.isNotEmpty) {
+                await ref.read(chatProvider).sendMessage(
+                  chatroomId: widget.chatroomId,
+                  message: value,
+                  receiverId: widget.receiverId,
+                );
+                messageController.clear();
+              }
+            },
           ),
           const SizedBox(width: 8),
-          const AttachMenu(),
+          AttachMenu(
+            chatroomId: widget.chatroomId,
+            userId: widget.receiverId,
+          ),
         ],
       ),
     );
   }
-
-  Future stop() async{
-    await record.stopRecorder();
-    //final path = await record.stopRecorder();
-    //final audioFile = File(path!);
-    //print('path audio '+audioFile.path);
-    setState(() {
-      isMicOpen = false;
-    });
-  }
-
-  Future pause() async{
-    await record.pauseRecorder();
-  }
-
-  Future play({int? duration}) async{
-    await record.resumeRecorder();
-  }
-
-  Future delete() async{
-    await record.deleteRecord(fileName: 'audio');
-  }
-
-  Future start() async{
-    await record.startRecorder(toFile: 'audio');
-  }
-
-  Future initRecord() async{
-    final state = await Permission.microphone.request();
-
-    if(state != PermissionStatus.granted){
-      throw 'Permission not granted';
-    }
-  }
 }
-
-

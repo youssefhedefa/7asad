@@ -3,7 +3,14 @@ import 'package:final_project/features/market/ui/cart_widgets/widgets/cart_item_
 import 'package:flutter/material.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+  const CartItem({super.key, required this.imageUrl, required this.title, required this.quantity, required this.price, required this.id, required this.isFavourite, });
+
+  final String imageUrl;
+  final String title;
+  final String quantity;
+  final String price;
+  final String id;
+  final bool isFavourite;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,14 @@ class CartItem extends StatelessWidget {
           ],
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const CartItemHead(),
+        child: CartItemHead(
+          imageUrl: imageUrl,
+          title: title,
+          quantity: quantity,
+          price: price,
+          id: id,
+          isFavourite: isFavourite,
+        ),
       ),
     );
   }

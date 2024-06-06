@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class SellerRating extends StatelessWidget {
-  const SellerRating({super.key});
+  const SellerRating({super.key, required this.rating});
+
+  final double rating;
 
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
-      initialRating: 2,
+      initialRating: rating,
       minRating: 1,
       direction: Axis.horizontal,
       allowHalfRating: true,

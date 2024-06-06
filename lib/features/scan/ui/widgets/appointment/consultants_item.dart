@@ -4,9 +4,11 @@ import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
 
 class ConsultantsItem extends StatelessWidget {
-  const ConsultantsItem({super.key, required this.selected});
+  const ConsultantsItem({super.key, required this.selected, required this.name, required this.image});
 
   final bool selected;
+  final String name;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +23,16 @@ class ConsultantsItem extends StatelessWidget {
           Container(
             height: 86,
             width: 80,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: AssetImage(ImageHelper.mohamedImage),
+                image: NetworkImage(image),
               ),
             ),
           ),
           const Expanded(child: SizedBox(height: 8,)),
           Text(
-              'د/ هشام أحمد',
+              name,
             style: TextStyleHelper.font16MediumDarkGreen.copyWith(
               color: selected ? Colors.white : ColorHelper.darkestGreenColor,
             ),

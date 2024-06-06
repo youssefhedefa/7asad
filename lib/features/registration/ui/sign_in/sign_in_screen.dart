@@ -21,6 +21,7 @@ class SignInScreen extends StatelessWidget {
         title: 'انشاء حساب',
         background: ColorHelper.primaryColor,
         hasLeading: false,
+        whiteText: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -62,7 +63,7 @@ class SignInScreen extends StatelessWidget {
                   FooterLabel(
                     actionText: 'تسجيل دخول',
                     onTap: () {
-                      Navigator.pushReplacementNamed(
+                      Navigator.pushNamed(
                           context, RoutesManager.logInScreen);
                     },
                   ),

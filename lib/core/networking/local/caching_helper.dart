@@ -8,6 +8,7 @@ abstract class CachHelper{
   static String tokenKey = 'user';
   static String idKey = 'userId';
   static String userRemainDataKey = 'remain';
+   static String userImageUrl = 'image';
 
   static init() async {
     sharedPreferences = await SharedPreferences.getInstance();
@@ -37,21 +38,32 @@ abstract class CachHelper{
     return sharedPreferences.setString(tokenKey, userInfo);
   }
 
-  static String? getToken(){
-    return sharedPreferences.getString(tokenKey);
+  static String getToken(){
+    return sharedPreferences.getString(tokenKey) ?? '';
   }
 
   static Future<void> clearToken(){
     return sharedPreferences.remove(tokenKey);
   }
 
+  static Future<void> setImageUrl({required String imageUrl }){
+    return sharedPreferences.setString(userImageUrl, imageUrl);
+  }
+
+  static String getImageUrl(){
+    return sharedPreferences.getString(userImageUrl) ?? 'https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg';
+  }
+
+  static Future<void> clearImageUrl(){
+    return sharedPreferences.remove(userImageUrl);
+  }
 
   static Future<void> setId({required String userInfo }){
     return sharedPreferences.setString(idKey, userInfo);
   }
 
-  static String? getId(){
-    return sharedPreferences.getString(idKey);
+  static String getId(){
+    return sharedPreferences.getString(idKey) ?? '';
   }
 
   static Future<void> clearId(){

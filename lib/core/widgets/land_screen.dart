@@ -1,8 +1,9 @@
 import 'package:final_project/core/models/bottom_app_bar_item_model.dart';
+import 'package:final_project/core/models/the_data_to_profile_as_visitor.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/widgets/bottom_app_bar_item.dart';
 import 'package:final_project/core/widgets/custom_floating_action_button.dart';
-import 'package:final_project/features/home/ui/home_screen.dart';
+import 'package:final_project/features/community/ui/community_screen.dart';
 import 'package:final_project/features/market/ui/market_screen.dart';
 import 'package:final_project/features/notification/ui/notification_and_appointment_screen.dart';
 import 'package:final_project/features/profile/ui/profile_screen.dart';
@@ -17,7 +18,7 @@ class LandScreen extends StatefulWidget {
 
 class _LandScreenState extends State<LandScreen> {
 
-  int currentScreen = 3;
+  int currentScreen = 0;
 
   List<BottomAppBarItemModel> items = [
     BottomAppBarItemModel(label: 'الرئسية', activeIcon: Icons.home, idleIcon: Icons.home_outlined),
@@ -28,15 +29,21 @@ class _LandScreenState extends State<LandScreen> {
 
 
   List<Widget> screens =  [
-    const HomeScreen(),
+    const CommunityScreen(),
     const NotificationAndAppointmentScreen(),
-    const ProfileScreen(),
+    ProfileScreen(
+     dataToProfileAsVisitor:
+      DataToProfileAsVisitor(
+       isVisitor: false,
+     ),
+    ),
     const MarketScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButton: const CustomFloatingActionButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(

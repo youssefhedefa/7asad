@@ -12,11 +12,12 @@ class ColorHelper{
   static const Color cardBackgroundColor = Color(0xffFFFFFF);
   static const Color screenBackgroundColor = Color(0xffF9F9F9);
   static const Color errorColor = Color(0xffFF0000);
-  static const Color successfulColor = Color(0xff00FF00);
+  static const Color successfulColor = Color(0xff00B107);
   static const Color warningColor = Color(0xffFFA500);
   static const Color alertColor = Color(0xffDAF2EF);
   static const Color notSelectedColor = Color(0xffE6E0E9);
   static const Color commentBgColor = Color(0xffF9F9F9);
+  static const Color iconBorderColor = Color(0xffD9D9D9);
   static const List<Color> excellentColor = [
     Color(0xff00FF00),
     Color(0xff0CDA39),

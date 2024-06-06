@@ -28,72 +28,121 @@ class Data {
 }
 
 
-
 @JsonSerializable()
 @HiveType(typeId: 0)
 class User {
-  @HiveField(0)
-  final String? name;
-  @HiveField(1)
-  final String? phone;
-  @HiveField(2)
-  final String? email;
-  @HiveField(3)
-  final String? role;
-  @HiveField(4)
-  final int? userRating;
-  final Experince? experince;
-  @HiveField(5)
-  final String? job;
-  @HiveField(6)
-  final String? unviersity;
-  @HiveField(7)
-  final String? faculty;
-  @HiveField(8)
-  @JsonKey(name: 'Educationaldegree')
-  final String? educationalDegree;
-  @HiveField(9)
-  final String? country;
-  @HiveField(10)
-  final String? city;
-  @HiveField(11)
-  String? photo;
-  @HiveField(12)
-  @JsonKey(name: 'Background')
-  String? background;
-  @HiveField(13)
-  @JsonKey(name: '_id')
-  final String? id;
-  @HiveField(14)
-  final String? date;
-
-  @HiveField(15)
-  @JsonKey(name: '__v')
-  final int? iV;
-
-  User({
-     this.name,
-     this.phone,
-     this.email,
-     this.role,
-     this.id,
-     this.date,
-    this.userRating,
-    this.iV,
+  User( {
+    this.favorites,
     this.experince,
-    this.job,
-    this.unviersity,
-    this.faculty,
-    this.educationalDegree,
-    this.country,
-    this.city,
-    this.photo,
-    this.background,
+    required this.userRating,
+    required this.id,
+    required this.name,
+    required this.phone,
+    required this.email,
+    //required this.password,
+    required this.role,
+    required this.date,
+    this.v,
+    this.educationaldegree,
+    required this.city,
+    required this.country,
+    required this.faculty,
+    required this.job,
+    required this.background,
+    required this.photo,
+    required this.unviersity,
   });
 
+  final List<Experince>? experince;
+  static const String experinceKey = "experince";
+
+  @HiveField(0)
+  final String? name;
+  static const String nameKey = "name";
+
+  @HiveField(1)
+  final String? phone;
+  static const String phoneKey = "phone";
+
+  @HiveField(2)
+  final String? email;
+  static const String emailKey = "email";
+
+  @HiveField(3)
+  final String? role;
+  static const String roleKey = "role";
+
+  @HiveField(4)
+  final num? userRating;
+  static const String userRatingKey = "userRating";
+
+
+  @HiveField(5)
+  final String? job;
+  static const String jobKey = "job";
+
+  // @HiveField(6)
+  // final String? password;
+  // static const String passwordKey = "password";
+
+  @HiveField(7)
+  final String? unviersity;
+  static const String unviersityKey = "unviersity";
+
+
+  @HiveField(8)
+  final String? faculty;
+  static const String facultyKey = "faculty";
+
+
+  @HiveField(9)
+  @JsonKey(name: 'Educationaldegree')
+  final String? educationaldegree;
+  static const String educationaldegreeKey = "Educationaldegree";
+
+
+  @HiveField(10)
+  final String? country;
+  static const String countryKey = "country";
+
+  @HiveField(11)
+  final String? city;
+  static const String cityKey = "city";
+
+
+  @HiveField(12)
+  final String? photo;
+  static const String photoKey = "photo";
+
+  @HiveField(13)
+  @JsonKey(name: 'Background')
+  final String? background;
+  static const String backgroundKey = "Background";
+
+  @HiveField(14)
+  @JsonKey(name: '_id')
+  final String? id;
+  static const String idKey = "_id";
+
+
+  @HiveField(15)
+  final DateTime? date;
+  static const String dateKey = "date";
+
+  @HiveField(16)
+  @JsonKey(name: '__v')
+  final num? v;
+  static const String vKey = "__v";
+
+  @HiveField(17)
+  final List<String>? favorites;
+
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
 }
+
 
 @HiveType(typeId: 1)
 @JsonSerializable()

@@ -1,11 +1,14 @@
 import 'package:final_project/core/theming/text_style_helper.dart';
-import 'package:final_project/features/market/ui/item_details_widgets/details/seller_row/seller_image.dart';
-import 'package:final_project/features/market/ui/item_details_widgets/details/seller_row/seller_rating.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/reviews/comments/comment_text.dart';
 import 'package:flutter/material.dart';
 
 class CommentItem extends StatelessWidget {
-  const CommentItem({super.key});
+  const CommentItem({super.key, required this.name, required this.date, required this.comment});
+
+  final String name;
+  final String date;
+  final String comment;
+
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class CommentItem extends StatelessWidget {
       children: [
         Row(
           children: [
-            const SellerImage(),
+            //const SellerImage(),
             const SizedBox(
               width: 10
             ),
@@ -21,22 +24,22 @@ class CommentItem extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width - 120,
               child: Row(
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'محمد الشوال',
-                        style: TextStyle(
+                        name,
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 16,
                         ),
                       ),
-                      SellerRating(),
+                      //SellerRating(),
                     ],
                   ),
                   const Spacer(),
                   Text(
-                    '7/12/2023',
+                    date,
                     style: TextStyleHelper.font12RegularDarkGreen,
                   ),
                 ],
@@ -44,7 +47,9 @@ class CommentItem extends StatelessWidget {
             ),
           ],
         ),
-        const CommentText(),
+        CommentText(
+          comment: comment,
+        ),
       ],
     );
   }

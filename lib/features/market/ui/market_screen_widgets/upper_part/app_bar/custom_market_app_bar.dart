@@ -2,7 +2,6 @@ import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'custom_icon.dart';
 
 class CustomMarketAppBar extends StatelessWidget
@@ -15,12 +14,8 @@ class CustomMarketAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: ColorHelper.primaryColor,
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.light),
       automaticallyImplyLeading: false,
-      backgroundColor: ColorHelper.primaryColor,
+      surfaceTintColor: Colors.transparent,
       flexibleSpace: Padding(
         padding: const EdgeInsets.only(top: 18.0, right: 18),
         child: Column(
@@ -33,11 +28,14 @@ class CustomMarketAppBar extends StatelessWidget
                   children: [
                     Text(
                       'السوق',
-                      style: TextStyleHelper.font28BoldLightestGreen,
+                      //style: TextStyleHelper.font28BoldLightestGreen,
+                      style: TextStyleHelper.font32MediumPrimary,
                     ),
                     const Spacer(),
                     CustomIcon(
                       icon: Icons.add,
+                      borderColor: ColorHelper.iconBorderColor,
+                      iconColor: ColorHelper.darkestGreenColor,
                       onTap: () {
                         Navigator.pushNamed(
                           context,
@@ -53,6 +51,8 @@ class CustomMarketAppBar extends StatelessWidget
                     ),
                     CustomIcon(
                       icon: Icons.favorite_outline,
+                      borderColor: ColorHelper.iconBorderColor,
+                      iconColor: ColorHelper.darkestGreenColor,
                       onTap: () {
                         Navigator.pushNamed(
                           context,
@@ -65,6 +65,8 @@ class CustomMarketAppBar extends StatelessWidget
                     ),
                     CustomIcon(
                       icon: Icons.shopping_cart_outlined,
+                      borderColor: ColorHelper.iconBorderColor,
+                      iconColor: ColorHelper.darkestGreenColor,
                       onTap: () {
                         Navigator.pushNamed(
                           context,
@@ -88,19 +90,3 @@ class CustomMarketAppBar extends StatelessWidget
     );
   }
 }
-
-// title: Text(
-// 'السوق',
-// style: TextStyleHelper.font28BoldLightestGreen,
-// ),
-// actions: const [
-// CustomIcon(icon: Icons.add),
-// Padding(
-// padding: EdgeInsets.only(top: 18.0,bottom: 10),
-// child: SizedBox(width: 8,),
-// ),
-// CustomIcon(icon: Icons.favorite_outline),
-// SizedBox(width: 8,),
-// CustomIcon(icon: Icons.shopping_cart_outlined),
-// SizedBox(width: 18,),
-// ],

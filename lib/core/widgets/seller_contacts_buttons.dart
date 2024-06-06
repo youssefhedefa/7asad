@@ -2,10 +2,12 @@ import 'package:final_project/core/theming/color_helper.dart';
 import 'package:flutter/material.dart';
 
 class SellerContactsButtons extends StatelessWidget {
-  const SellerContactsButtons({super.key, this.messageOnTap, this.phoneOnTap});
+  const SellerContactsButtons({super.key, this.messageOnTap, this.phoneOnTap, this.messageColor = ColorHelper.primaryColor, this.phoneColor = ColorHelper.primaryColor});
 
   final void Function()? messageOnTap;
   final void Function()? phoneOnTap;
+  final Color? messageColor;
+  final Color? phoneColor;
 
   @override
   Widget build(BuildContext context) {
@@ -13,17 +15,17 @@ class SellerContactsButtons extends StatelessWidget {
       children: [
         IconButton(
           onPressed: messageOnTap,
-          icon: const Icon(
+          icon: Icon(
             Icons.chat_rounded,
-            color: ColorHelper.primaryColor,
+            color: messageColor,
             size: 30,
           ),
         ),
         IconButton(
           onPressed: phoneOnTap,
-          icon: const Icon(
+          icon: Icon(
             Icons.phone,
-            color: ColorHelper.primaryColor,
+            color: phoneColor,
             size: 30,
           ),
         ),

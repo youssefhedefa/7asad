@@ -24,7 +24,8 @@ class AttachAndSendIcon extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-    ) : GestureDetector(
+    ) :
+    GestureDetector(
       onTap: onSendTap,
       child: Container(
         padding: const EdgeInsets.all(8),

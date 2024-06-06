@@ -32,5 +32,6 @@ class IconHelper{
   static const String recevierIcon = 'assets/icons/recevier.png';
   static const String shareIcon = 'assets/icons/share.png';
   static const String sendIcon = 'assets/icons/send.png';
+  static const String allIcon = 'assets/icons/all_icon.png';
 
 }

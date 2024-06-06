@@ -1,10 +1,13 @@
+import 'package:final_project/features/market/data/models/product/product_data.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/details/details.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/nav_bar_item.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/reviews/reviews.dart';
 import 'package:flutter/material.dart';
 
 class DetailsAndReviewsWidget extends StatefulWidget {
-  const DetailsAndReviewsWidget({super.key});
+  const DetailsAndReviewsWidget({super.key, required this.product});
+
+  final ProductData product;
 
   @override
   State<DetailsAndReviewsWidget> createState() => _DetailsAndReviewsWidgetState();
@@ -90,9 +93,9 @@ class _DetailsAndReviewsWidgetState extends State<DetailsAndReviewsWidget> with 
   }
   Widget buildWidget(int index , UniqueKey key) {
     if (index == 0) {
-      return Details(key: key,);
+      return Details(key: key,product: widget.product,);
     } else {
-      return Reviews(key: key,);
+      return Reviews(key: key, product: widget.product,);
     }
   }
 }

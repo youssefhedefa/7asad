@@ -21,6 +21,7 @@ class LogInScreen extends StatelessWidget {
         title: 'تسجيل دخول',
         background: ColorHelper.primaryColor,
         hasLeading: false,
+        whiteText: true,
       ),
       body: BlocBuilder<LogInCubit,LogInState>(
         builder: (BuildContext context, LogInState<dynamic> state) {
@@ -61,7 +62,7 @@ class LogInScreen extends StatelessWidget {
                     actionText: 'انشاء حساب',
                     text: 'ليس',
                     onTap: (){
-                      Navigator.pushReplacementNamed(context, RoutesManager.signInScreen);
+                      Navigator.pushNamed(context, RoutesManager.signInScreen);
                     },
                   ),
                 ],

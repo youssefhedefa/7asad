@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'package:dio/dio.dart';
 import 'package:final_project/core/networking/remote/api_service/api_constance.dart';
@@ -164,8 +164,8 @@ ApiErrorModel _handleError(DioException error) {
       return DataSource.DEFAULT.getFailure();
     case DioExceptionType.badCertificate:
       return DataSource.DEFAULT.getFailure();
-    case DioExceptionType.badResponse:
-      return DataSource.DEFAULT.getFailure();
+    // case DioExceptionType.badResponse:
+    //   return DataSource.DEFAULT.getFailure();
   }
 }
 

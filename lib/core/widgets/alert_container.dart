@@ -32,7 +32,7 @@ class AlertContainer extends StatelessWidget {
             child: RichText(
               text: TextSpan(
                 text: 'تنبيه: ',
-                style: TextStyleHelper.font14RegularDis,
+                style: TextStyleHelper.font16RegularDis,
                 children: [
                   TextSpan(
                     text: text,

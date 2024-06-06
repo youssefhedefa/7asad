@@ -12,11 +12,11 @@ class DescriptionText extends StatelessWidget {
           children: [
             TextSpan(
               text: 'أحصل على 2طن من قمح الخبز المنقى بخصم ',
-              style: TextStyleHelper.font14RegularDarkGreen,
+              style: TextStyleHelper.font16RegularWhite,
             ),
             TextSpan(
               text: '22%',
-              style: TextStyleHelper.font14RegularDis,
+              style: TextStyleHelper.font16RegularDis,
             ),
           ],
         ),

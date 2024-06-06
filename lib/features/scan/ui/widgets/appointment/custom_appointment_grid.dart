@@ -1,6 +1,8 @@
 import 'package:final_project/core/theming/color_helper.dart';
+import 'package:final_project/features/scan/logic/prediction_cubit/prediction_cubit.dart';
 import 'package:final_project/features/scan/ui/widgets/appointment/custom_appointment.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomAppointmentGrid extends StatefulWidget {
   const CustomAppointmentGrid({super.key});
@@ -30,6 +32,7 @@ class _CustomAppointmentGridState extends State<CustomAppointmentGrid> {
             setState(() {
               currentIndex = index;
             });
+            context.read<PredictionCubit>().time = '${index + 1}.30';
           },
           child: CustomAppointment(
             backgroundColor: currentIndex == index ? ColorHelper.primaryColor : ColorHelper.lightGreenColor,

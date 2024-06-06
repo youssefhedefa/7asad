@@ -21,16 +21,22 @@ class LogInCubit extends Cubit<LogInState>{
   String errorMessage = '';
 
   void emitLogInStates(LoginRequestBody loginRequestBody) async{
-    emit(const LogInState.loading());
+    if(!isClosed){
+      emit(const LogInState.loading());
+    }
     final response = await logInRepo.logIn(loginRequestBody);
     response.when(
       success: (userDataResponse){
         print('success');
-        emit(LogInState.success(userDataResponse));
+        if(!isClosed){
+          emit(LogInState.success(userDataResponse));
+        }
       },
       failure: (error){
         print('error');
-        emit(LogInState.error(error: error.failure.message ?? 'error in sign in'));
+        if(!isClosed){
+          emit(const LogInState.error(error: 'رقم الهاتف أو الرقم السري خاطئين'));
+        }
       },
     );
   }

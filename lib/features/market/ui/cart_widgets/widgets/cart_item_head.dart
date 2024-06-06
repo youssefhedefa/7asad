@@ -3,26 +3,37 @@ import 'package:final_project/features/market/ui/cart_widgets/widgets/cart_item_
 import 'package:flutter/material.dart';
 
 class CartItemHead extends StatelessWidget {
-  const CartItemHead({super.key});
+  const CartItemHead({super.key, required this.imageUrl, required this.title, required this.quantity, required this.price, required this.id, required this.isFavourite, });
+
+  final String imageUrl;
+  final String title;
+  final String quantity;
+  final String price;
+  final String id;
+  final bool isFavourite;
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
+    return Row(
       children: [
-        Row(
-          children: [
-            Expanded(
-              flex: 30,
-              child: CartImage(),
-            ),
-            SizedBox(
-              width: 8,
-            ),
-            Expanded(
-              flex: 70,
-              child: CartItemDetails(),
-            ),
-          ],
+        Expanded(
+          flex: 30,
+          child: CartImage(
+            imageUrl: imageUrl,
+          ),
+        ),
+        const SizedBox(
+          width: 12,
+        ),
+        Expanded(
+          flex: 70,
+          child: CartItemDetails(
+            title: title,
+            quantity: quantity,
+            price: price,
+            id:  id,
+            isFavourite: isFavourite,
+          ),
         ),
       ],
     );

@@ -1,224 +1,134 @@
 // import 'package:final_project/core/helpers/assets_helper/icon_helper.dart';
 // import 'package:final_project/core/routing/routes.dart';
 // import 'package:final_project/core/theming/color_helper.dart';
+// import 'package:final_project/core/theming/font_weight_helper.dart';
 // import 'package:final_project/core/theming/text_style_helper.dart';
-// import 'package:final_project/core/widgets/custom_floating_item.dart';
+// import 'package:final_project/core/widgets/action_buttons.dart';
+// import 'package:final_project/core/widgets/alert_container.dart';
+// import 'package:final_project/core/widgets/custom_app_bar.dart';
+// import 'package:final_project/features/market/ui/item_details_widgets/reviews/custom_divider.dart';
+// import 'package:final_project/features/market/ui/market_screen_widgets/custom_label.dart';
+// import 'package:final_project/features/scan/ui/widgets/disease_detection/custom_divider_with_label.dart';
+// import 'package:final_project/features/scan/ui/widgets/disease_detection/medicien_list.dart';
+// import 'package:final_project/features/scan/ui/widgets/disease_detection/samellier_images.dart';
+// import 'package:final_project/features/scan/ui/widgets/disease_detection/symptoms_disease.dart';
+// import 'package:final_project/features/scan/ui/widgets/disease_detection/taken_image.dart';
 // import 'package:flutter/material.dart';
-// import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
-// import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 // import 'package:image_picker/image_picker.dart';
-
-// class TestButton extends StatefulWidget {
-//   const TestButton({super.key});
 //
-//   @override
-//   State<TestButton> createState() => _TestButtonState();
-// }
-//
-// class _TestButtonState extends State<TestButton> with TickerProviderStateMixin  {
-//   bool flag = false;
-//
-//   late AnimationController _galleryController;
-//   late Animation<Offset> _galleryAnimation;
-//
-//   late AnimationController _cameraController;
-//   late Animation<Offset> _cameraAnimation;
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//
-//     // Create an animation controller
-//     _galleryController = AnimationController(
-//       duration: const Duration(milliseconds: 800),
-//       vsync: this,
-//     );
-//
-//     // Create a Tween animation that animates the position
-//     _galleryAnimation = Tween<Offset>(
-//       begin: const Offset(0.0, 0.0),
-//       end: const Offset(0.0, -1.2),
-//     ).animate(_galleryController);
-//
-//     // Create an animation controller
-//     _cameraController = AnimationController(
-//       duration: const Duration(milliseconds: 850),
-//       vsync: this,
-//     );
-//
-//     // Create a Tween animation that animates the position
-//     _cameraAnimation = Tween<Offset>(
-//       begin: const Offset(0.0, 0.0),
-//       end: const Offset(0.0, -2.4),
-//     ).animate(_cameraController);
-//
-//     // Start the animation when the widget is initialized
-//   }
-//
-//   XFile? _imageFiles;
-//
-//   Future<void> _pickImages() async {
-//     final ImagePicker picker = ImagePicker();
-//     XFile? image = await picker.pickImage(source: ImageSource.gallery);
-//     if (image!.path.isNotEmpty) {
-//       setState(() {
-//         _imageFiles = image;
-//       });
-//     }
-//   }
+// class DiseaseDetectionTest extends StatelessWidget {
+//   const DiseaseDetectionTest({super.key, });
 //
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//       body: Center(
-//           child : SizedBox(
-//             height: 66,
-//             child: Column(
-//               children: [
-//                 Stack(
-//                   alignment: Alignment.center,
-//                   clipBehavior: Clip.none,
+//       appBar: const CustomAppBar(
+//         title: 'كشف الأمراض',
+//         background: Colors.white,
+//       ),
+//       body: SingleChildScrollView(
+//         child: Padding(
+//           padding: const EdgeInsets.only(
+//             top: 32.0,
+//             left: 16,
+//             right: 16,
+//           ),
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               TakenImage(
+//               //    image: image,
+//               ),
+//               Row(
+//                 children: [
+//                   Image.asset(
+//                     IconHelper.pointerIcon,
+//                     width: 14,
+//                     height: 21,
+//                   ),
+//                   const CustomLabel(
+//                     label: 'التشخيص',
+//                     rightPadding: 6,
+//                     hasViewAll: false,
+//                   ),
+//                 ],
+//               ),
+//               Text(
+//                 ' مرض لفحة الغمد على الساق',
+//                 style: TextStyleHelper.font16BoldDarkestGreen
+//                     .copyWith(fontWeight: FontWeightHelper.medium),
+//               ),
+//               const CustomDividerWithLabel(
+//                 text: 'أعراض المرض',
+//               ),
+//               const SymptomsOfTheDisease(),
+//               const SizedBox(
+//                 height: 28,
+//               ),
+//               const SamellierImage(),
+//               const CustomDividerWithLabel(text: 'العلاج'),
+//               const AlertContainer(
+//                 text:
+//                 'يتم أستخدام نوع واحد فقط من الأنواع الأتيه وتتبع ارشادات الأستخدام الخاصه بكل نوع',
+//               ),
+//               const SizedBox(
+//                 height: 28,
+//               ),
+//               const MedicienList(),
+//               const CustomDividerWithLabel(text: 'الأسباب'),
+//               const SymptomsOfTheDisease(),
+//               const CustomDividerWithLabel(text: 'طرق الوقاية'),
+//               const SymptomsOfTheDisease(),
+//               const SizedBox(
+//                 height: 28,
+//               ),
+//               const CustomDivider(),
+//               Container(
+//                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+//                 decoration: BoxDecoration(
+//                   color: const Color(0xffDAF2EF),
+//                   borderRadius: BorderRadius.circular(8),
+//                 ),
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
 //                   children: [
-//                     GestureDetector(
-//                       onTap: (){
-//                         print('object');
-//                       },
-//                       child: SlideTransition(
-//                         position: _cameraAnimation,
-//                         child: CustomFloatingButton(
-//                           image: IconHelper.cameraIcon,
-//                           borderColor: ColorHelper.primaryColor,
-//                           backGroundColor: ColorHelper.cardBackgroundColor,
-//                           ratio: 22,
+//                     Text(
+//                       'هل كان التشخيص والعلاج مفيد؟',
+//                       style: TextStyleHelper.font16BoldDarkestGreen,
+//                     ),
+//                     const SizedBox(
+//                       height: 14,
+//                     ),
+//                     Text(
+//                       'يمكنك حجز معاد مع أحد مستشارين الأمراض والتحدث معه بشكل مباشر للتأكد من الحاله ',
+//                       style: TextStyleHelper.font16BoldDarkestGreen
+//                           .copyWith(fontWeight: FontWeightHelper.regular),
+//                     ),
+//                     const SizedBox(
+//                       height: 24,
+//                     ),
+//                     Center(
+//                       child: SizedBox(
+//                         width: MediaQuery.sizeOf(context).width - 120,
+//                         child: ActionButton(
 //                           onTap: () {
-//                             print('camera');
+//                             Navigator.pushNamed(context, RoutesManager.bookingScreen);
 //                           },
+//                           label: 'احجز معاد',
+//                           outerColor: ColorHelper.primaryColor,
+//                           labelColor: Colors.white,
 //                         ),
-//                       ),
-//                     ),
-//                     SlideTransition(
-//                       position: _galleryAnimation,
-//                       child: CustomFloatingButton(
-//                         image: IconHelper.gallereyIcon,
-//                         borderColor: ColorHelper.primaryColor,
-//                         backGroundColor: ColorHelper.cardBackgroundColor,
-//                         ratio: 22,
-//                         onTap: () {
-//                           print(5);
-//                           _pickImages();
-//                           print(_imageFiles!.path);
-//                           if (context.mounted){
-//                             Navigator.pushNamed(context, RoutesManager.diseaseDetectionScreen,arguments: _imageFiles);
-//                           }
-//                         },
-//                       ),
-//                     ),
-//                     GestureDetector(
-//                       onTap: () {
-//                         setState(() {
-//                           if (!flag) {
-//                             flag = !flag;
-//                             _galleryController.forward();
-//                             _cameraController.forward();
-//                           } else {
-//                             flag = !flag;
-//                             _galleryController.reverse();
-//                             _cameraController.reverse();
-//                           }
-//                         });
-//                       },
-//                       child: CustomFloatingButton(
-//                         image: IconHelper.scanIcon,
-//                         borderColor: ColorHelper.primaryColor,
-//                         backGroundColor: ColorHelper.primaryColor,
-//                         onTap: () {
-//                           setState(() {
-//                             if (!flag) {
-//                               flag = !flag;
-//                               _galleryController.forward();
-//                               _cameraController.forward();
-//                             } else {
-//                               flag = !flag;
-//                               _galleryController.reverse();
-//                               _cameraController.reverse();
-//                             }
-//                           });
-//                         },
 //                       ),
 //                     ),
 //                   ],
 //                 ),
-//                 const SizedBox(height: 2),
-//                 Text(
-//                   'المسح الضوئي',
-//                   style: TextStyleHelper.font12RegularDarkGreen,
-//                 ),
-//               ],
-//             ),
-//           )
-//       ),
-//     );
-//   }
-// }
-
-// class TestButton extends StatelessWidget {
-//   const TestButton({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 80,
-//       child: Column(
-//         children: [
-//           SpeedDial(
-//             openCloseDial: ValueNotifier(true),
-//             backgroundColor: Colors.transparent,
-//             elevation: 0,
-//             overlayOpacity: 0,
-//             children: [
-//               SpeedDialChild(
-//                 backgroundColor: Colors.transparent,
-//                 elevation: 0,
-//                 child: CustomFloatingButton(
-//                   image: IconHelper.gallereyIcon,
-//                   borderColor: ColorHelper.primaryColor,
-//                   backGroundColor: ColorHelper.cardBackgroundColor,
-//                   ratio: 22,
-//                   onTap: () {},
-//                 ),
 //               ),
-//               SpeedDialChild(
-//                 backgroundColor: Colors.transparent,
-//                 elevation: 0,
-//                 child: CustomFloatingButton(
-//                   image: IconHelper.cameraIcon,
-//                   borderColor: ColorHelper.primaryColor,
-//                   backGroundColor: ColorHelper.cardBackgroundColor,
-//                   ratio: 22,
-//                   onTap: () {},
-//                 ),
-//               ),
+//               const SizedBox(height: 28,)
 //             ],
-//             // label: Text(
-//             //   'المسح الضوئي',
-//             //   style: TextStyleHelper.font12RegularDarkGreen,
-//             // ),
-//             child: CustomFloatingButton(
-//               image: IconHelper.scanIcon,
-//               borderColor: ColorHelper.primaryColor,
-//               backGroundColor: ColorHelper.primaryColor,
-//               onTap: () {},
-//             ),
 //           ),
-//           const SizedBox(
-//             height: 2,
-//           ),
-//           Text(
-//             'المسح الضوئي',
-//             style: TextStyleHelper.font12RegularDarkGreen,
-//           ),
-//         ],
+//         ),
 //       ),
 //     );
 //   }
 // }
+//

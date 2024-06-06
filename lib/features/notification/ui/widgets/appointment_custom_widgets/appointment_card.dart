@@ -1,3 +1,7 @@
+import 'package:final_project/core/models/the_data_to_profile_as_visitor.dart';
+import 'package:final_project/core/models/user_data.dart';
+import 'package:final_project/core/networking/local/caching_helper.dart';
+import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/features/notification/ui/widgets/appointment_custom_widgets/custom_flash_dot.dart';
@@ -5,7 +9,9 @@ import 'package:final_project/features/notification/ui/widgets/appointment_custo
 import 'package:flutter/material.dart';
 
 class AppointmentCard extends StatelessWidget {
-  const AppointmentCard({super.key});
+  const AppointmentCard({super.key,required this.consultant});
+
+  final User consultant;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +19,6 @@ class AppointmentCard extends StatelessWidget {
       alignment: Alignment.topRight,
       children: [
         Container(
-          //width: MediaQuery.sizeOf(context).width * 0.70,
           padding: const EdgeInsets.only(
             bottom: 20,
             top: 16,
@@ -76,34 +81,48 @@ class AppointmentCard extends StatelessWidget {
               const SizedBox(height: 8),
               RichText(
                 text: TextSpan(
-                  text: 'التشخيص: ',
+                  text: 'الاستشاري: ',
                   style: TextStyleHelper.font12MediumDarkestGreen,
                   children: [
                     TextSpan(
-                      text: 'هاموشة الأرز',
+                      text: consultant.name,
                       style: TextStyleHelper.font12MediumDarkestGreen,
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 8),
-              RichText(
-                text: TextSpan(
-                  text: 'العلاج: ',
-                  style: TextStyleHelper.font12MediumDarkestGreen,
-                  children: [
-                    TextSpan(
-                      text: 'Megaban Super(MOL\\MIL)',
-                      style: TextStyleHelper.font12MediumDarkestGreen,
-                    ),
-                  ],
-                ),
-              ),
+              // RichText(
+              //   text: TextSpan(
+              //     text: 'العلاج: ',
+              //     style: TextStyleHelper.font12MediumDarkestGreen,
+              //     children: [
+              //       TextSpan(
+              //         text: 'Megaban Super(MOL\\MIL)',
+              //         style: TextStyleHelper.font12MediumDarkestGreen,
+              //       ),
+              //     ],
+              //   ),
+              // ),
               const SizedBox(height: 10),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  PersonButton(),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RoutesManager.profileScreen,
+                        arguments: DataToProfileAsVisitor(
+                          isVisitor: (consultant.id != CachHelper.getId()),
+                          id: consultant.id,
+                        ),
+                      );
+                    },
+                    child: PersonButton(
+                      consultant: consultant,
+                    ),
+                  ),
                 ],
               ),
             ],

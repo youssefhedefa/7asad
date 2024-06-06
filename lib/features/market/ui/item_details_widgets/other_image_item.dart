@@ -2,7 +2,9 @@ import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:flutter/material.dart';
 
 class OtherImageItem extends StatelessWidget {
-  const OtherImageItem({super.key});
+  const OtherImageItem({super.key, required this.imageUrl});
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +13,9 @@ class OtherImageItem extends StatelessWidget {
       width: (MediaQuery.sizeOf(context).width - 100) / 4,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        image: const DecorationImage(
+        image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage(ImageHelper.testMainItemDetails1Image),
+          image: NetworkImage(imageUrl),
         ),
       ),
     );

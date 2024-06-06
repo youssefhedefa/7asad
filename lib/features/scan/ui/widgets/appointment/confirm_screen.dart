@@ -1,4 +1,5 @@
 import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
+import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/font_weight_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
@@ -93,7 +94,9 @@ class ConfirmScreen extends StatelessWidget {
                 flex: 2,
               ),
               ActionButton(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(context, RoutesManager.landScreen, (route) => false);
+                },
                 label: 'تأكيد ',
                 outerColor: ColorHelper.primaryColor,
                 labelColor: Colors.white,

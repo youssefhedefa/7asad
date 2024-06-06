@@ -2,11 +2,12 @@ import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, this.onTap, this.onChanged, this.controller});
+  const CustomTextField({super.key, this.onTap, this.onChanged, this.controller, this.onSubmitted});
 
   final void Function()? onTap;
   final void Function(String)? onChanged;
   final TextEditingController? controller;
+  final void Function(String)? onSubmitted;
 
 
   @override
@@ -19,6 +20,7 @@ class CustomTextField extends StatelessWidget {
         onTap: onTap,
         onChanged: onChanged,
         controller: controller,
+        onSubmitted: onSubmitted,
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,

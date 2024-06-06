@@ -1,17 +1,18 @@
-import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:flutter/material.dart';
 
 class ResultItemImage extends StatelessWidget {
-  const ResultItemImage({super.key});
+  const ResultItemImage({super.key, required this.image});
+
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        image: const DecorationImage(
-            image: AssetImage(
-              ImageHelper.orangeImage,
+        image: DecorationImage(
+            image: NetworkImage(
+              image,
             ),
             fit: BoxFit.fill
         ),

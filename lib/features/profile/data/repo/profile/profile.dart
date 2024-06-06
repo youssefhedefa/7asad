@@ -15,7 +15,7 @@ class ProfileRepo{
       final response = await apiService.getUserData(id);
       return ApiResult.success(response);
     }catch(error){
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiResult.failure(error.toString());
     }
   }
 
@@ -29,7 +29,7 @@ class ProfileRepo{
     }
   }
 
-  Future<LocalServiceResult<Experince>> getProfileExperinceDataFromLocalData() async {
+  Future<LocalServiceResult<List<Experince>>> getProfileExperinceDataFromLocalData() async {
     try{
       final experinceData = await LocalServices.getData(box: LocalBox.exprienceBox, key: KeysConstance.experinceKey);
       return LocalServiceResult.success(experinceData);

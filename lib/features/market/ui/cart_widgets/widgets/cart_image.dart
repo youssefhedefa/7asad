@@ -1,17 +1,19 @@
-import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:flutter/material.dart';
 
 class CartImage extends StatelessWidget {
-  const CartImage({super.key});
+  const CartImage({super.key, required this.imageUrl});
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        image: const DecorationImage(
+        image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage(ImageHelper.orangeImage),
+          //image: AssetImage(ImageHelper.orangeImage),
+          image: NetworkImage(imageUrl),
         ),
       ),
     );

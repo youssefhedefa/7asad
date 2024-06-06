@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 import 'market_screen_widgets/custom_label.dart';
 import 'market_screen_widgets/offers_part/custom_offers_panel.dart';
 import 'market_screen_widgets/result_part/result_part.dart';
@@ -21,7 +19,10 @@ class MarketScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               UpperPart(),
-              CustomLabel(label: 'عروض خاصة'),
+              CustomLabel(
+                  label: 'عروض خاصة',
+                hasViewAll: true,
+              ),
               CustomOffersPanel(),
               CustomLabel(label: 'الأقسام'),
               SectionPart(),

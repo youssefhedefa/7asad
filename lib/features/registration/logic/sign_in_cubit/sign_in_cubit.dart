@@ -22,7 +22,9 @@ class SignInCubit extends Cubit<SingInState> {
 
   void emitSignInStates(
       SignInRequestBody signInRequestBody, BuildContext context) async {
-    emit(const SingInState.loading());
+    if (!isClosed) {
+      emit(const SingInState.loading());
+    }
     final response = await signInRepo.signIn(signInRequestBody);
     response.when(
       success: (signInResponse) {
@@ -47,11 +49,15 @@ class SignInCubit extends Cubit<SingInState> {
             );
           },
         );
-        emit(SingInState.success(signInResponse));
+        if (!isClosed) {
+          emit(SingInState.success(signInResponse));
+        }
       },
       failure: (error) {
-        emit(SingInState.error(
-            error: error.failure.message ?? 'error in sign in'));
+        if (!isClosed) {
+          emit(SingInState.error(
+              error: error));
+        }
       },
     );
   }

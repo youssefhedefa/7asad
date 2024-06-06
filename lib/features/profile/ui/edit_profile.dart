@@ -1,9 +1,6 @@
-
 import 'package:final_project/core/constants.dart';
 import 'package:final_project/core/di/dependency_injection.dart';
 import 'package:final_project/core/models/user_data.dart';
-import 'package:final_project/core/networking/local/hive/constance.dart';
-import 'package:final_project/core/networking/local/hive/local_servics.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/core/widgets/action_buttons.dart';
@@ -41,8 +38,7 @@ class EditProfile extends StatelessWidget {
                       EditFieldItem(
                         label: 'الأسم ',
                         hint: 'مثال: أحمد اسماعيل',
-                        controller:
-                        context.read<ProfileCubit>().nameController,
+                        controller: context.read<ProfileCubit>().nameController,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'الاسم مطلوب';
@@ -53,9 +49,8 @@ class EditProfile extends StatelessWidget {
                       EditDropDownItem(
                         label: 'الوظيفة',
                         hintText: 'مثال: مهندس زراعي',
-                        controller: context
-                            .read<ProfileCubit>()
-                            .jobDropDownController,
+                        controller:
+                            context.read<ProfileCubit>().jobDropDownController,
                         menuItems: const [
                           'مهندس زراعي',
                           'مزارع',
@@ -69,22 +64,20 @@ class EditProfile extends StatelessWidget {
                       EditFieldItem(
                         label: 'الجامعة ',
                         hint: 'مثال: كفر الشيخ',
-                        controller: context
-                            .read<ProfileCubit>()
-                            .universityController,
+                        controller:
+                            context.read<ProfileCubit>().universityController,
                       ),
                       EditFieldItem(
                         label: 'الكلية ',
                         hint: 'مثال: زراعه',
                         controller:
-                        context.read<ProfileCubit>().facultyController,
+                            context.read<ProfileCubit>().facultyController,
                       ),
                       EditFieldItem(
                         label: 'الدرجة التعليمة ',
                         hint: 'مثال: بكالوريوس',
-                        controller: context
-                            .read<ProfileCubit>()
-                            .educationController,
+                        controller:
+                            context.read<ProfileCubit>().educationController,
                       ),
                       EditFieldItem(
                         label: 'الدولة',
@@ -96,16 +89,14 @@ class EditProfile extends StatelessWidget {
                       EditFieldItem(
                         label: 'المدينة',
                         hint: 'مثال: كفر الشيخ',
-                        controller: context
-                            .read<ProfileCubit>()
-                            .townDropDownController,
+                        controller:
+                            context.read<ProfileCubit>().townDropDownController,
                       ),
                       EditFieldItem(
                         label: 'رقم الهاتف ',
                         hint: 'مثال: 0100123456789',
-                        controller: context
-                            .read<ProfileCubit>()
-                            .phoneNumberController,
+                        controller:
+                            context.read<ProfileCubit>().phoneNumberController,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'رقم الهاتف مطلوب';
@@ -113,81 +104,116 @@ class EditProfile extends StatelessWidget {
                           return '';
                         },
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'الخبرة',
-                            style: TextStyleHelper.font22MediumDarkestGreen
-                                .copyWith(color: Colors.black),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              context
-                                  .read<ProfileCubit>()
-                                  .experienceNumber++;
-                            },
-                            icon: const Icon(
-                              Icons.add,
-                              color: Colors.black,
+                      Form(
+                        key: context.read<ProfileCubit>().experienceFormKey,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'الخبرة',
+                                  style: TextStyleHelper.font22MediumDarkestGreen
+                                      .copyWith(color: Colors.black),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    addExperince(
+                                      context: context,
+                                      title: context
+                                          .read<ProfileCubit>()
+                                          .courseDropDownController
+                                          .text,
+                                      company: context
+                                          .read<ProfileCubit>()
+                                          .enterpriseDropDownController
+                                          .text,
+                                      startDate: context
+                                          .read<ProfileCubit>()
+                                          .fromDropDownController
+                                          .text,
+                                      endDate: context
+                                          .read<ProfileCubit>()
+                                          .toDropDownController
+                                          .text,
+                                    );
+                                  },
+                                  icon: const Icon(
+                                    Icons.add,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      EditFieldItem(
-                        label: 'الوظيفة \\ الكورس',
-                        hint: 'مثال:موظف ',
-                        controller: context
-                            .read<ProfileCubit>()
-                            .courseDropDownController,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      EditFieldItem(
-                        label: 'أسم الشركة',
-                        hint: 'مثال:الزراعة والحياة ',
-                        controller: context
-                            .read<ProfileCubit>()
-                            .enterpriseDropDownController,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          EditDropDownItem(
-                            label: 'من',
-                            width: (MediaQuery.sizeOf(context).width / 2) - 32,
-                            hintText: 'مثال:2020 ',
-                            controller: context
-                                .read<ProfileCubit>()
-                                .fromDropDownController,
-                            menuItems: Constants.years,
-                          ),
-                          EditDropDownItem(
-                            label: 'الى',
-                            width: (MediaQuery.sizeOf(context).width / 2) - 32,
-                            hintText: 'مثال:2024 ',
-                            controller: context
-                                .read<ProfileCubit>()
-                                .toDropDownController,
-                            menuItems: Constants.years,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 16,
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            EditFieldItem(
+                              label: 'الوظيفة \\ الكورس',
+                              hint: 'مثال:موظف ',
+                              controller: context
+                                  .read<ProfileCubit>()
+                                  .courseDropDownController,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'الوظيفة مطلوبة';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            EditFieldItem(
+                              label: 'أسم الشركة',
+                              hint: 'مثال:الزراعة والحياة ',
+                              controller: context
+                                  .read<ProfileCubit>()
+                                  .enterpriseDropDownController,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'أسم الشركة مطلوب';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                EditDropDownItem(
+                                  label: 'من',
+                                  width: (MediaQuery.sizeOf(context).width / 2) - 32,
+                                  hintText: 'مثال:2020 ',
+                                  controller: context
+                                      .read<ProfileCubit>()
+                                      .fromDropDownController,
+                                  menuItems: Constants.years,
+                                ),
+                                EditDropDownItem(
+                                  label: 'الى',
+                                  width: (MediaQuery.sizeOf(context).width / 2) - 32,
+                                  hintText: 'مثال:2024 ',
+                                  controller: context
+                                      .read<ProfileCubit>()
+                                      .toDropDownController,
+                                  menuItems: Constants.years,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                          ],
+                        ),
                       ),
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisExtent: 40,
                           mainAxisSpacing: 8,
@@ -196,7 +222,7 @@ class EditProfile extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) =>
                             experienceCard(context),
                         itemCount:
-                        context.read<ProfileCubit>().experienceNumber,
+                            context.read<ProfileCubit>().experienceNumber,
                       ),
                       const SizedBox(height: 18),
                       ActionButton(
@@ -250,124 +276,87 @@ class EditProfile extends StatelessWidget {
   }
 
   void updateUserData(BuildContext context) async {
-
-    User user = await LocalServices.getData(
-      box: LocalBox.userBox,
-      key: KeysConstance.userKey,
-    );
-    Experince experince = await LocalServices.getData(
-      box: LocalBox.exprienceBox,
-      key: KeysConstance.experinceKey,
-    );
-
     if (context.mounted) {
       context.read<ProfileCubit>().updateUserDataEmitStates(
             userData: User(
               name: context.read<ProfileCubit>().nameController.text.isEmpty
-                  ? user.name
+                  ? context.read<ProfileCubit>().user.name
                   : context.read<ProfileCubit>().nameController.text,
               job: context
                       .read<ProfileCubit>()
                       .jobDropDownController
                       .text
                       .isEmpty
-                  ? user.job
+                  ? context.read<ProfileCubit>().user.job
                   : context.read<ProfileCubit>().jobDropDownController.text,
-              unviersity: context
-                      .read<ProfileCubit>()
-                      .universityController
-                      .text
-                      .isEmpty
-                  ? user.unviersity
-                  : context.read<ProfileCubit>().universityController.text,
-              faculty: context
-                      .read<ProfileCubit>()
-                      .facultyController
-                      .text
-                      .isEmpty
-                  ? user.faculty
-                  : context.read<ProfileCubit>().facultyController.text,
-              educationalDegree: context
-                      .read<ProfileCubit>()
-                      .educationController
-                      .text
-                      .isEmpty
-                  ? user.educationalDegree
-                  : context.read<ProfileCubit>().educationController.text,
+              unviersity:
+                  context.read<ProfileCubit>().universityController.text.isEmpty
+                      ? context.read<ProfileCubit>().user.unviersity
+                      : context.read<ProfileCubit>().universityController.text,
+              faculty:
+                  context.read<ProfileCubit>().facultyController.text.isEmpty
+                      ? context.read<ProfileCubit>().user.faculty
+                      : context.read<ProfileCubit>().facultyController.text,
+              educationaldegree:
+                  context.read<ProfileCubit>().educationController.text.isEmpty
+                      ? context.read<ProfileCubit>().user.educationaldegree
+                      : context.read<ProfileCubit>().educationController.text,
               country: context
                       .read<ProfileCubit>()
                       .countryDropDownController
                       .text
                       .isEmpty
-                  ? user.country
-                  : context
-                      .read<ProfileCubit>()
-                      .countryDropDownController
-                      .text,
+                  ? context.read<ProfileCubit>().user.country
+                  : context.read<ProfileCubit>().countryDropDownController.text,
               city: context
                       .read<ProfileCubit>()
                       .townDropDownController
                       .text
                       .isEmpty
-                  ? user.city
-                  : context
-                      .read<ProfileCubit>()
-                      .townDropDownController
-                      .text,
-              phone: user.phone,
-              photo: user.photo,
-              background: user.background,
-              userRating: user.userRating,
-              role: user.role,
-              id: user.id,
-              date: user.date,
-              email: user.email,
-              iV: user.iV,
-              experince: Experince(
-                title: context
-                        .read<ProfileCubit>()
-                        .courseDropDownController
-                        .text
-                        .isEmpty
-                    ? experince.title
-                    : context
-                        .read<ProfileCubit>()
-                        .courseDropDownController
-                        .text,
-                company: context
-                        .read<ProfileCubit>()
-                        .enterpriseDropDownController
-                        .text
-                        .isEmpty
-                    ? experince.company
-                    : context
-                        .read<ProfileCubit>()
-                        .enterpriseDropDownController
-                        .text,
-                startDate: context
-                        .read<ProfileCubit>()
-                        .fromDropDownController
-                        .text
-                        .isEmpty
-                    ? experince.startDate
-                    : context
-                        .read<ProfileCubit>()
-                        .fromDropDownController
-                        .text,
-                endDate: context
-                        .read<ProfileCubit>()
-                        .toDropDownController
-                        .text
-                        .isEmpty
-                    ? experince.endDate
-                    : context
-                        .read<ProfileCubit>()
-                        .toDropDownController
-                        .text,
-              ),
+                  ? context.read<ProfileCubit>().user.city
+                  : context.read<ProfileCubit>().townDropDownController.text,
+              phone: context.read<ProfileCubit>().user.phone,
+              photo: context.read<ProfileCubit>().user.photo,
+              background: context.read<ProfileCubit>().user.background,
+              userRating: context.read<ProfileCubit>().user.userRating,
+              role: context.read<ProfileCubit>().user.role,
+              id: context.read<ProfileCubit>().user.id,
+              date: context.read<ProfileCubit>().user.date,
+              email: context.read<ProfileCubit>().user.email,
+              v: context.read<ProfileCubit>().user.v,
+              experince: context.read<ProfileCubit>().experince,
             ),
           );
     }
+  }
+
+  addExperince({
+    required BuildContext context,
+    required String title,
+    required String company,
+    required String startDate,
+    required String endDate,
+  }) {
+    if(context.read<ProfileCubit>().experienceFormKey.currentState!.validate()){
+      context.read<ProfileCubit>().experienceNumber++;
+     // List<Experince>? experince = context.read<ProfileCubit>().experince;
+      context.read<ProfileCubit>().experince.add(Experince(
+        title: title,
+        company: company,
+        startDate: startDate,
+        endDate: endDate,
+      ),);
+      print(context.read<ProfileCubit>().experince.length);
+
+      context.read<ProfileCubit>().enterpriseDropDownController.clear();
+      context.read<ProfileCubit>().courseDropDownController.clear();
+      context.read<ProfileCubit>().fromDropDownController.clear();
+      context.read<ProfileCubit>().toDropDownController.clear();
+    }
+    else{
+      print('error');
+    }
+
   }
 
 }

@@ -1,7 +1,9 @@
 import 'dart:collection';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
+import 'package:final_project/features/scan/logic/prediction_cubit/prediction_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class WeeklyCalendar extends StatefulWidget {
@@ -13,8 +15,6 @@ class WeeklyCalendar extends StatefulWidget {
 
 class _WeeklyCalendarState extends State<WeeklyCalendar> {
   DateTime today = DateTime.now();
-
-  //Map<DateTime, List> _eventsList = {};
 
   int getHashCode(DateTime key) {
     return key.day * 1000000 + key.month * 10000 + key.year;
@@ -52,6 +52,7 @@ class _WeeklyCalendarState extends State<WeeklyCalendar> {
       calendarFormat: CalendarFormat.week,
       eventLoader: getEventForDay,
       onDaySelected: (selectedDay, focusedDay) {
+        context.read<PredictionCubit>().getAppointmentsByDate(date: selectedDay);
         setState(() {
           today = selectedDay;
         });

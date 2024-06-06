@@ -8,25 +8,26 @@ import 'package:final_project/core/widgets/alert_container.dart';
 import 'package:final_project/core/widgets/custom_app_bar.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/reviews/custom_divider.dart';
 import 'package:final_project/features/market/ui/market_screen_widgets/custom_label.dart';
+import 'package:final_project/features/scan/data/models/diseases_info.dart';
 import 'package:final_project/features/scan/ui/widgets/disease_detection/custom_divider_with_label.dart';
 import 'package:final_project/features/scan/ui/widgets/disease_detection/medicien_list.dart';
 import 'package:final_project/features/scan/ui/widgets/disease_detection/samellier_images.dart';
 import 'package:final_project/features/scan/ui/widgets/disease_detection/taken_image.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'widgets/disease_detection/symptoms_disease.dart';
 
 class DiseaseDetection extends StatelessWidget {
-  const DiseaseDetection({super.key, required this.image});
+  const DiseaseDetection({super.key, required this.diseaseInfoModel});
 
-  final XFile image;
+  //final XFile image;
+  final DiseaseInfoModel diseaseInfoModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'كشف الأمراض',
-        background: ColorHelper.primaryColor,
+        background: Colors.white,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -38,7 +39,9 @@ class DiseaseDetection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TakenImage(image: image),
+              TakenImage(
+                  image: diseaseInfoModel.image,
+              ),
               Row(
                 children: [
                   Image.asset(
@@ -49,11 +52,12 @@ class DiseaseDetection extends StatelessWidget {
                   const CustomLabel(
                     label: 'التشخيص',
                     rightPadding: 6,
+                    hasViewAll: false,
                   ),
                 ],
               ),
               Text(
-                ' مرض لفحة الغمد على الساق',
+                diseaseInfoModel.diseaseName,
                 style: TextStyleHelper.font16BoldDarkestGreen
                     .copyWith(fontWeight: FontWeightHelper.medium),
               ),

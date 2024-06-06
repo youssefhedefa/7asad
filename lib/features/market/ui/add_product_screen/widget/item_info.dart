@@ -3,12 +3,15 @@ import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:flutter/material.dart';
 
 class ItemInfo extends StatelessWidget {
-  const ItemInfo({super.key, required this.label, this.height, this.keyBordTyp, required this.isMultiLine});
+  const ItemInfo({super.key, required this.label, this.height, this.keyBordTyp, required this.isMultiLine, this.controller, required this.errorText});
 
   final String label;
   final double? height;
   final TextInputType? keyBordTyp;
   final bool isMultiLine;
+  final TextEditingController? controller;
+  final String errorText;
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +33,16 @@ class ItemInfo extends StatelessWidget {
           ),
           SizedBox(
             height: height,
-            child: TextField(
+            child: TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return errorText;
+                }
+                return null;
+              },
               maxLines: isMultiLine ? null : 1,
               minLines: 1,
+              controller: controller,
               keyboardType: keyBordTyp ?? TextInputType.text,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(vertical: 4.0,horizontal: 4),
