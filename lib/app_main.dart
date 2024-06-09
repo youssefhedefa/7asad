@@ -1,7 +1,6 @@
 import 'package:final_project/core/routing/app_router.dart';
 import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
-import 'package:final_project/test_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       onGenerateRoute: appRouter.generateRoute,
       initialRoute: RoutesManager.landScreen,
-      //home: DiseaseDetectionTest(),
+      //home: const OnBourdingScreen(),
     );
   }
 }

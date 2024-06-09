@@ -6,6 +6,7 @@ import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/networking/local/hive/constance.dart';
 import 'package:final_project/core/routing/app_router.dart';
 import 'package:final_project/features/market/logic/product_cubit/product_cubit.dart';
+import 'package:final_project/features/scan/data/models/diseases_info.dart';
 import 'package:firebase_core/firebase_core.dart';
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+  await DiseaseDataClassification.loadJsonData();
   await setUpSetIt();
   await CachHelper.init();
   final appDir = await path_provider.getApplicationDocumentsDirectory();

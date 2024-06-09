@@ -73,8 +73,8 @@ class ProductRepo {
 
   }
 
-  Future<ApiResult<List<ReviewBody>>> getReviews({required String id}) async {
-    List<ReviewBody> reviews = [];
+  Future<ApiResult<ReviewModel>> getReviews({required String id}) async {
+    List<ReviewModel> reviews = [];
     String cookie = 'jwt=${CachHelper.getToken()}';
     try{
       final response = await apiService.getProductReviews(
@@ -82,8 +82,8 @@ class ProductRepo {
         cookie: cookie,
        contentType: 'application/json',
       );
-      reviews = response.data!.data!;
-      return ApiResult.success(reviews);
+      //reviews = response.data.review!;
+      return ApiResult.success(response);
     } catch (error) {
       print(error.toString());
       return ApiResult.failure(error.toString());

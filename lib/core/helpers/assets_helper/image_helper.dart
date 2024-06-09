@@ -10,4 +10,8 @@ class ImageHelper{
   static const String confirmImage = 'assets/images/confirm.png';
   static const String testProfileImage = 'assets/images/test_profile_pic.png';
   static const String testProfileBackgroundImage = 'assets/images/test_profile_background.png';
+  static const String scanImage = 'assets/images/scan.png';
+  static const String shoppingCartImage = 'assets/images/shopping_cart.png';
+  static const String socialMediaImage = 'assets/images/social_media_icons.png';
+  static const String textDialogImage = 'assets/images/text_dialog.png';
 }

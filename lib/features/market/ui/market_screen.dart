@@ -21,7 +21,7 @@ class MarketScreen extends StatelessWidget {
               UpperPart(),
               CustomLabel(
                   label: 'عروض خاصة',
-                hasViewAll: true,
+                hasViewAll: false,
               ),
               CustomOffersPanel(),
               CustomLabel(label: 'الأقسام'),

@@ -99,6 +99,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/disease/diseases.json
 
   fonts:
     - family: Tajawal

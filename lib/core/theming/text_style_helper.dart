@@ -18,6 +18,12 @@ class TextStyleHelper{
     color: ColorHelper.primaryColor,
   );
 
+   static TextStyle font14MediumWhite = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Tajawal',
+    color: Colors.white,);
+
    static TextStyle font14MediumSuccess = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeightHelper.medium,
@@ -30,6 +36,13 @@ class TextStyleHelper{
     fontWeight: FontWeightHelper.medium,
     fontFamily: 'Tajawal',
     color: ColorHelper.darkestGreenColor,
+  );
+
+   static TextStyle font16MediumPrimary = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Tajawal',
+    color: ColorHelper.primaryColor,
   );
 
    static TextStyle font16MediumWhite = const TextStyle(

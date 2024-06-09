@@ -1,11 +1,13 @@
 import 'package:final_project/core/di/dependency_injection.dart';
 import 'package:final_project/core/models/chat_model.dart';
+import 'package:final_project/core/models/default_user.dart';
 import 'package:final_project/core/models/the_data_to_profile_as_visitor.dart';
 import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/core/widgets/action_buttons.dart';
+import 'package:final_project/features/community/ui/widgets/post_item/post_item.dart';
 import 'package:final_project/features/profile/logic/profile_cubit/profile_cubit.dart';
 import 'package:final_project/features/profile/logic/profile_cubit/profile_state.dart';
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/profile_menu.dart';
@@ -29,12 +31,13 @@ class ProfileScreen extends StatelessWidget {
     return BlocProvider.value(
       value: getIt<ProfileCubit>()..emitGetProfileState(
         id: dataToProfileAsVisitor.isVisitor ? dataToProfileAsVisitor.id! : CachHelper.getId(),
-      ),
+      )..getUserPost(id: dataToProfileAsVisitor.isVisitor ? dataToProfileAsVisitor.id! : CachHelper.getId()),
       child: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (BuildContext context, ProfileState<dynamic> state) {
           if (state is Success ||
               state is SuccessUpdateUserData ||
               state is SuccessUpdateBackGroundImage ||
+              state is SuccessGetUserPost||
               state is SuccessUpdatePersonalImage) {
             return Scaffold(
               appBar: AppBar(
@@ -66,7 +69,8 @@ class ProfileScreen extends StatelessWidget {
                         country:
                             context.read<ProfileCubit>().user.country ?? ' ',
                       ),
-                      const StatisticsRow(),
+                      context.read<ProfileCubit>().user.role == 'farmer' ? const SizedBox() : const Icon(Icons.verified, color: ColorHelper.primaryColor, size: 30,),
+                      //const StatisticsRow(),
                       Padding(
                         padding: const EdgeInsets.only(
                           top: 24,
@@ -147,12 +151,28 @@ class ProfileScreen extends StatelessWidget {
                       ListView.separated(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        //itemBuilder: (_, index) => const PostItem(),
-                        itemBuilder: (_, index) => const SizedBox(),
+                        itemBuilder: (_, index) => PostItem(
+                          publisher: context
+                              .read<ProfileCubit>()
+                              .posts[index]
+                              .postedBy ?? defaultUser(),
+                          content: context.read<ProfileCubit>().posts[index].content ??
+                              ' ',
+                          image: context.read<ProfileCubit>().posts[index].image ??
+                              '',
+                          comments: context.read<ProfileCubit>().posts[index].comments.length,
+                          time: context.read<ProfileCubit>().posts[index].date.toString(),
+                          postId:  context.read<ProfileCubit>().posts[index].id ?? '',
+                          likesList: context.read<ProfileCubit>().posts[index].likes,
+                        ),
+                        //itemBuilder: (_, index) => const SizedBox(),
                         separatorBuilder: (_, index) => const SizedBox(
                           height: 16,
                         ),
-                        itemCount: 15,
+                        itemCount: context.read<ProfileCubit>().posts.length,
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
                       const ProfileListener()
                     ],

@@ -11,7 +11,7 @@ ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
       results: json['results'] as num?,
       data: json['data'] == null
           ? null
-          : ReviewData.fromJson(json['data'] as Map<String, dynamic>),
+          : Data.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
@@ -21,49 +21,38 @@ Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
       'data': instance.data,
     };
 
-ReviewData _$ReviewDataFromJson(Map<String, dynamic> json) => ReviewData(
-      data: (json['data'] as List<dynamic>?)
-          ?.map((e) => ReviewBody.fromJson(e as Map<String, dynamic>))
+Data _$DataFromJson(Map<String, dynamic> json) => Data(
+      review: (json['review'] as List<dynamic>?)
+          ?.map((e) => Review.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$ReviewDataToJson(ReviewData instance) =>
-    <String, dynamic>{
-      'data': instance.data,
+Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+      'review': instance.review,
     };
 
-ReviewBody _$ReviewBodyFromJson(Map<String, dynamic> json) => ReviewBody(
+Review _$ReviewFromJson(Map<String, dynamic> json) => Review(
       id: json['_id'] as String?,
       review: json['review'] as String?,
       rating: json['rating'] as num?,
       product: json['product'] as String?,
       user: json['user'] == null
           ? null
-          : UserInReview.fromJson(json['user'] as Map<String, dynamic>),
+          : User.fromJson(json['user'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
-      datumId: json['datumId'] as String?,
+      v: json['__v'] as num?,
+      reviewId: json['reviewId'] as String?,
     );
 
-Map<String, dynamic> _$ReviewBodyToJson(ReviewBody instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ReviewToJson(Review instance) => <String, dynamic>{
       '_id': instance.id,
       'review': instance.review,
       'rating': instance.rating,
       'product': instance.product,
       'user': instance.user,
       'createdAt': instance.createdAt?.toIso8601String(),
-      'datumId': instance.datumId,
-    };
-
-UserInReview _$UserInReviewFromJson(Map<String, dynamic> json) => UserInReview(
-      id: json['_id'] as String?,
-      name: json['name'] as String?,
-    );
-
-Map<String, dynamic> _$UserInReviewToJson(UserInReview instance) =>
-    <String, dynamic>{
-      '_id': instance.id,
-      'name': instance.name,
+      '__v': instance.v,
+      'reviewId': instance.reviewId,
     };

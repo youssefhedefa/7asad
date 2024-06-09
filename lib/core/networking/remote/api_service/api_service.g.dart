@@ -327,7 +327,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'reviews/${id}/reviews',
+              'reviews/${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -633,6 +633,37 @@ class _ApiService implements ApiService {
             .compose(
               _dio.options,
               'post',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = AllCommunityPostsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AllCommunityPostsResponse> getUserPosts({
+    required String id,
+    required String cookie,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Cookie': cookie};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AllCommunityPostsResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'post/user/${id}',
               queryParameters: queryParameters,
               data: _data,
             )

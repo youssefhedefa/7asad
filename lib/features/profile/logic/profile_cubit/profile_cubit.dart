@@ -2,6 +2,9 @@
 
 import 'dart:io';
 import 'package:final_project/core/component/upload_image/data/repo/upload_image_repo.dart';
+import 'package:final_project/features/community/data/models/get_all_comments.dart';
+import 'package:final_project/features/community/data/models/get_all_posts_response.dart';
+import 'package:final_project/features/community/data/repo/community_repo.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:dio/dio.dart';
 import 'package:final_project/core/models/user_data.dart';
@@ -24,6 +27,9 @@ class ProfileCubit extends Cubit<ProfileState>{
 
    late User user;
    late List<Experince> experince;
+
+  List<Post> posts = [];
+  List<Comment> comments = [];
 
   void getAllData()async{
     // user = await LocalServices.getData(box: LocalBox.userBox, key: KeysConstance.userKey);
@@ -74,39 +80,6 @@ class ProfileCubit extends Cubit<ProfileState>{
   TextEditingController toDropDownController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
 
-  // emitGetProfileMainUserDataFromLocalData() async {
-  //   emit(const ProfileState.loadingUserDataFromLocalStorage());
-  //   final response = await profileRepo.getProfileMainUserDataFromLocalData();
-  //   response.when(
-  //     success: (userData) {
-  //       //user = userData;
-  //       // print(user!.name);
-  //       emit(ProfileState.successUserDataFromLocalStorage(userData));
-  //     },
-  //     failure: (error) {
-  //       print(error.failure.message);
-  //       emit(ProfileState.error(error: error.failure.message ?? 'error in get user data from local storage'));
-  //     },
-  //   );
-  // }
-  //
-  // emitGetProfileExperinceDataFromLocalData() async {
-  //   emit(const ProfileState.loadingExperienceDataFromLocalStorage());
-  //   final response = await profileRepo.getProfileExperinceDataFromLocalData();
-  //   response.when(
-  //     success: (experinceData) {
-  //       //experince = experinceData;
-  //       // print(experince!.title);
-  //       emit(ProfileState.successExperienceDataFromLocalStorage(experinceData));
-  //     },
-  //     failure: (error) {
-  //       print(error.failure.message);
-  //       emit(ProfileState.error(error: error.failure.message ?? 'error in get experince data from local storage'));
-  //     },
-  //   );
-  // }
-  //
-
 
   updateUserDataEmitStates({required User userData}) async {
     emit(const ProfileState.loading());
@@ -114,25 +87,6 @@ class ProfileCubit extends Cubit<ProfileState>{
     response.when(
       success: (userData) {
           user = userData.data!.user;
-
-          //user = userData.data!.user;
-          //experince = user.experince!;
-
-          // LocalServices.clearData(box: LocalBox.userBox);
-          // LocalServices.clearData(box: LocalBox.exprienceBox);
-          //
-          // LocalServices.putData(
-          //   lazyBox: LocalBox.userBox,
-          //   key: KeysConstance.userKey,
-          //   value: user,
-          // );
-          //
-          // LocalServices.putData(
-          //   lazyBox: LocalBox.exprienceBox,
-          //   key: KeysConstance.experinceKey,
-          //   value: experince,
-          // );
-          //
 
            emit(ProfileState.successUpdateUserData(userData));
 
@@ -281,6 +235,20 @@ class ProfileCubit extends Cubit<ProfileState>{
         // print(uploadImageResponse.image);
 
         emit(ProfileState.successUpdateBackGroundImage(uploadImageResponse));
+      },
+      failure: (error) {
+        emit(ProfileState.error(error: error));
+      },
+    );
+  }
+
+  getUserPost({required String id}) async {
+    emit(const ProfileState.loading());
+    final response = await profileRepo.getUserPost(id: id);
+    response.when(
+      success: (allCommunityPostsResponse) {
+        posts = allCommunityPostsResponse.data!.posts.reversed.toList();
+        emit(ProfileState.successGetUserPost(allCommunityPostsResponse));
       },
       failure: (error) {
         emit(ProfileState.error(error: error));

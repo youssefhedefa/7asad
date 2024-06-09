@@ -17,32 +17,35 @@ class Reviews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit,ProductState>(
-      bloc: getIt<ProductCubit>()..getProductReviews(id: product.id!),
-      builder: (context,state){
-        if(state is LoadingAddReview || state is LoadingReviews){
-          return const Center(
-            child: CircularProgressIndicator(),
+    return BlocProvider.value(
+      value: getIt<ProductCubit>()..getProductReviews(id: product.id!),
+      child: BlocBuilder<ProductCubit,ProductState>(
+        //bloc: getIt<ProductCubit>()..getProductReviews(id: product.id!),
+        builder: (context,state){
+          if(state is LoadingAddReview || state is LoadingReviews){
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const RatingStart(),
+                const CustomRatingBars(),
+                const CustomDivider(),
+                CommentList(
+                  reviews: context.read<ProductCubit>().reviews,
+                ),
+                const CustomDivider(),
+                CreateComment(
+                  id: product.id!,
+                ),
+              ],
+            ),
           );
-        }
-        return SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const RatingStart(),
-              const CustomRatingBars(),
-              const CustomDivider(),
-              CommentList(
-                reviews: context.read<ProductCubit>().reviews,
-              ),
-              const CustomDivider(),
-              CreateComment(
-                id: product.id!,
-              ),
-            ],
-          ),
-        );
-      },
+        },
+      ),
     );
   }
 }

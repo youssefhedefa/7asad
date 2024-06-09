@@ -15,7 +15,7 @@ class Result extends StatelessWidget {
     return BlocBuilder<ProductCubit,ProductState>(
       bloc: context.read<ProductCubit>()..getAllProducts()..getFavouriteProducts(),
       builder: (context,state){
-        if( state is SuccessChangeMainImageIndex || state is SuccessSearchProduct || state is SuccessFavouriteProducts || state is SuccessAllProduct || state is SuccessProductsByCategory || state is SuccessAddReview || state is SuccessReviews || state is SuccessProductsByCategory || state is SuccessSingleProduct || state is SuccessAddProduct || state is SuccessAddFavouriteProduct || state is LoadingAddFavouriteProduct || state is SuccessCartProducts || state is ReviewsError){
+        if( state is Error || state is SuccessChangeMainImageIndex || state is SuccessSearchProduct || state is SuccessFavouriteProducts || state is SuccessAllProduct || state is SuccessProductsByCategory || state is SuccessAddReview || state is SuccessReviews || state is SuccessProductsByCategory || state is SuccessSingleProduct || state is SuccessAddProduct || state is SuccessAddFavouriteProduct || state is LoadingAddFavouriteProduct || state is SuccessCartProducts || state is ReviewsError){
           if(context.read<ProductCubit>().products.isNotEmpty){
             return ListView.builder(
               shrinkWrap: true,

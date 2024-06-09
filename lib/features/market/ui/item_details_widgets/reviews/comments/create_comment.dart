@@ -91,7 +91,9 @@ class CreateComment extends StatelessWidget {
       },
       listener: (context,state){
         if(state is SuccessAddReview){
+          print('SuccessAddReview');
           context.read<ProductCubit>().getProductReviews(id: id);
+          context.read<ProductCubit>().addCommentController.clear();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(

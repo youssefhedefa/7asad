@@ -159,6 +159,12 @@ abstract class ApiService {
     @Header("Cookie") required String cookie,
   });
 
+  @GET(ApiConstants.getUserPosts)
+  Future<AllCommunityPostsResponse> getUserPosts({
+    @Path("id") required String id,
+    @Header("Cookie") required String cookie,
+  });
+
   @POST(ApiConstants.addPost)
   Future<AddPostResponse> addPost({
     @Body() required AddPostRequest addPostRequest,

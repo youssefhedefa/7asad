@@ -1,10 +1,12 @@
 import 'package:final_project/core/models/user_data.dart';
+import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/networking/local/hive/constance.dart';
 import 'package:final_project/core/networking/local/hive/local_service_result.dart';
 import 'package:final_project/core/networking/local/hive/local_servics.dart';
 import 'package:final_project/core/networking/remote/api_service/api_error_handler.dart';
 import 'package:final_project/core/networking/remote/api_service/api_result.dart';
 import 'package:final_project/core/networking/remote/api_service/api_service.dart';
+import 'package:final_project/features/community/data/models/get_all_posts_response.dart';
 
 class ProfileRepo{
   ApiService apiService;
@@ -39,5 +41,18 @@ class ProfileRepo{
     }
   }
 
+  Future<ApiResult<AllCommunityPostsResponse>> getUserPost({required String id}) async{
+    String cookie = 'jwt=${CachHelper.getToken()}';
+    try{
+      final response = await apiService.getUserPosts(
+        cookie: cookie,
+        id: id
+      );
+      return ApiResult.success(response);
+    }catch(error){
+      return ApiResult.failure(error.toString());
+    }
+
+  }
 
 }

@@ -209,26 +209,18 @@ class EditProfile extends StatelessWidget {
                           ],
                         ),
                       ),
-                      GridView.builder(
+                      ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisExtent: 40,
-                          mainAxisSpacing: 8,
-                          crossAxisSpacing: 6,
-                        ),
                         itemBuilder: (BuildContext context, int index) =>
-                            experienceCard(context),
+                            experienceCard(context: context,index: index),
                         itemCount:
-                            context.read<ProfileCubit>().experienceNumber,
+                            context.read<ProfileCubit>().user.experince!.length,
                       ),
                       const SizedBox(height: 18),
                       ActionButton(
                         onTap: () async {
                           updateUserData(context);
-                          //await updateData().then((value) => print('done')).error((error) => print(error.toString()));
                         },
                         label: 'حفظ التعديلات ',
                         outerColor: ColorHelper.primaryColor,
@@ -246,9 +238,8 @@ class EditProfile extends StatelessWidget {
     );
   }
 
-  Widget experienceCard(BuildContext context) {
+  Widget experienceCard({required BuildContext context,required int index}) {
     return Container(
-      width: (MediaQuery.sizeOf(context).width / 2),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: const Color(0xffD9D9D9),
@@ -256,20 +247,23 @@ class EditProfile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text('موظف/', style: TextStyleHelper.font10RegularDarkestGreen),
-          Text('الزراعة والحياة/',
-              style: TextStyleHelper.font10RegularDarkestGreen),
-          Text('2020//2024', style: TextStyleHelper.font10RegularDarkestGreen),
+          Text(context.read<ProfileCubit>().user.experince![index].title!,
+              style: TextStyleHelper.font12RegularDarkestGreen),
+          Text(' // ', style: TextStyleHelper.font12RegularDarkestGreen),
+          Text(context.read<ProfileCubit>().user.experince![index].company!,
+              style: TextStyleHelper.font12RegularDarkestGreen),
           const Spacer(),
-          InkWell(
-            onTap: () {
-              context.read<ProfileCubit>().experienceNumber--;
-            },
-            child: const Icon(
-              Icons.close,
-              size: 20,
-            ),
-          )
+          Text('${context.read<ProfileCubit>().user.experince![index].startDate}//${context.read<ProfileCubit>().user.experince![index].endDate}', style: TextStyleHelper.font10RegularDarkestGreen),
+          //const Spacer(),
+          // InkWell(
+          //   onTap: () {
+          //     context.read<ProfileCubit>().experienceNumber--;
+          //   },
+          //   child: const Icon(
+          //     Icons.close,
+          //     size: 20,
+          //   ),
+          // )
         ],
       ),
     );

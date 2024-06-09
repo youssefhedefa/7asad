@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
+import 'dart:async';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:final_project/features/market/data/models/product/add_product_request.dart';
 import 'package:final_project/features/market/data/models/product/add_product_to_cart_request.dart';
@@ -31,7 +31,16 @@ class ProductCubit extends Cubit<ProductState> {
   List<String> cartProductsId = [];
   List<ProductData> searchProducts = [];
   List<ProductData> searchProductsData = [];
-  List<ReviewBody> reviews = [];
+  List<Review> reviews = [];
+  Map<int, double> productRatingMap = {
+    1: 0.0,
+    2: 0.0,
+    3: 0.0,
+    4: 0.0,
+    5: 0.0,
+  };
+  double totalRating = 0;
+  double sumRating = 0.0;
   List<Favorite> favouriteProducts = [];
   List<ProductElement> cartProducts = [];
   String label = 'الكل';
@@ -166,16 +175,39 @@ class ProductCubit extends Cubit<ProductState> {
     );
   }
 
+  //------------------------ reviews ------------------------
+
+
+
   getProductReviews({required String id}) {
     if (!isClosed) {
       emit(const ProductState.loadingReviews());
     }
     productRepo.getReviews(id: id).then((result) {
       result.whenOrNull(
-        success: (reviews) {
-          this.reviews = reviews;
+        success: (response) {
+          reviews.clear();
+          productRatingMap = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+          };
+          sumRating = 0;
+          totalRating = 0;
+          reviews = response.data!.review ?? [];
+
+          for (var item in reviews) {
+            productRatingMap[item.rating!.toInt()] =
+                productRatingMap[item.rating!.toInt()]! + 1;
+            sumRating = sumRating + item.rating!.toInt();
+          }
+
+          totalRating = sumRating / reviews.length.toDouble();
+
           if (!isClosed) {
-            emit(ProductState.successReviews(this.reviews));
+            emit(ProductState.successReviews(reviews));
           }
         },
         failure: (error) {
@@ -202,7 +234,7 @@ class ProductCubit extends Cubit<ProductState> {
       success: (response) {
         addCommentController.clear();
         productRating = 1;
-        //getProductReviews(id: id);
+        getProductReviews(id: id);
         if (!isClosed) {
           emit(ProductState.successAddReview(response));
         }
@@ -265,6 +297,9 @@ class ProductCubit extends Cubit<ProductState> {
     );
   }
 
+
+  //---------------------------------------- Favourite ----------------------------------------
+
   getFavouriteProducts() async {
     if (!isClosed) {
       emit(const ProductState.loadingFavouriteProducts());
@@ -272,6 +307,7 @@ class ProductCubit extends Cubit<ProductState> {
     final result = await productRepo.getFavouriteProducts();
     result.whenOrNull(
       success: (response) {
+        favProductsId.clear();
         favouriteProducts = response.data!.favorites;
         for (var item in favouriteProducts) {
           favProductsId.add(item.product!.id!);

@@ -15,5 +15,9 @@ class ProfileState<T> with _$ProfileState<T>{
   const factory ProfileState.successUpdatePersonalImage(T data) = SuccessUpdatePersonalImage<T>;
   const factory ProfileState.successUpdateBackGroundImage(T data) = SuccessUpdateBackGroundImage<T>;
   const factory ProfileState.successLogOut(T data) = SuccessLogOut<T>;
+
+  const factory ProfileState.successGetUserPost(T data) = SuccessGetUserPost<T>;
+
+
   const factory ProfileState.error({required String error}) = Error;
 }

@@ -19,10 +19,9 @@ abstract class ApiConstants{
   static const String getSingleProduct = 'product/one/{id}';
   static const String getProductsByCategory = 'product/forCategory/{category}';
 
-  static const String getProductReview = 'reviews/{id}/reviews';
-  static const String getProductReviews = 'reviews/{id}/reviews';
+  //static const String getProductReview = 'reviews/{id}/reviews';
+  static const String getProductReviews = 'reviews/{id}';
   static const String addProductReviews = 'reviews/{id}/reviews';
-
   static const String searchProducts = 'product/search';
   //--------------------------------- cart -----------------------------
   static const String getCartProducts = 'cart/getCart';
@@ -34,6 +33,7 @@ abstract class ApiConstants{
   static const String deleteFavouriteProducts = 'favorites/delete/{id}';
   //--------------------------------- community --------------------------
   static const String getAllPosts = 'post';
+  static const String getUserPosts = 'post/user/{id}';
   static const String addPost = 'post';
   static const String getCommentsOnPost = 'post/{id}/comment';
   static const String addCommentOnPost = 'post/{id}/comment';

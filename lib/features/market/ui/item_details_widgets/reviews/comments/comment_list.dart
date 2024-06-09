@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class CommentList extends StatelessWidget {
   const CommentList({super.key, required this.reviews});
 
-  final List<ReviewBody> reviews;
+  final List<Review> reviews;
 
   @override
   Widget build(BuildContext context) {

@@ -27,21 +27,22 @@ class NotificationAndAppointmentScreen extends StatelessWidget {
             icon: const Icon(Icons.chat_outlined),
           ),
         ),
-        body: const Column(
-          children: [
-            Expanded(
-              child: NavBar(
-                horizontalPadding: 16,
-                firstTap: 'المواعيد',
-                secondTap: 'الأشعارات',
-                screens: [
-                  NotificationScreen(),
-                  AppointmentsScreen(),
-                ],
-              ),
-            ),
-          ],
-        ),
+        body: const AppointmentsScreen(),
+        // body: const Column(
+        //   children: [
+        //     Expanded(
+        //       child: NavBar(
+        //         horizontalPadding: 16,
+        //         firstTap: 'المواعيد',
+        //         secondTap: 'الأشعارات',
+        //         screens: [
+        //           NotificationScreen(),
+        //           AppointmentsScreen(),
+        //         ],
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:final_project/features/chat/ui/chat_body_screen.dart';
 import 'package:final_project/features/chat/ui/chats_screen.dart';
 import 'package:final_project/features/community/logic/manager/community_cubit.dart';
 import 'package:final_project/features/market/data/models/product/product_data.dart';
+import 'package:final_project/features/market/logic/product_cubit/product_cubit.dart';
 import 'package:final_project/features/market/ui/add_product_screen.dart';
 import 'package:final_project/features/market/ui/cart_screen.dart';
 import 'package:final_project/features/market/ui/favourite_screen.dart';
@@ -14,6 +15,7 @@ import 'package:final_project/features/market/ui/item_details_screen.dart';
 import 'package:final_project/features/market/ui/market_screen.dart';
 import 'package:final_project/features/market/ui/search/search_screen.dart';
 import 'package:final_project/features/notification/ui/notification_and_appointment_screen.dart';
+import 'package:final_project/features/on_bourding/ui/base_screen.dart';
 import 'package:final_project/features/profile/ui/edit_profile.dart';
 import 'package:final_project/features/profile/ui/profile_screen.dart';
 import 'package:final_project/features/registration/logic/log_in_cubit/log_in_cubit.dart';
@@ -29,7 +31,6 @@ import 'package:final_project/features/scan/ui/widgets/appointment/confirm_scree
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -48,16 +49,16 @@ class AppRouter {
                 BlocProvider(
                   create: (BuildContext context) => getIt<CommunityCubit>(),
                 ),
+                BlocProvider(
+                  create: (BuildContext context) => getIt<ProductCubit>(),
+                ),
               ],
                 child: const LandScreen(),
             ),
           );
         }
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-              create: (BuildContext context) => getIt<LogInCubit>(),
-              child: const LogInScreen(),
-          ),
+          builder: (_) => const OnBourdingScreen(),
         );
 
       case RoutesManager.marketScreen:

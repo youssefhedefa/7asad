@@ -29,6 +29,7 @@ mixin _$ProfileState<T> {
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ mixin _$ProfileState<T> {
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +63,7 @@ mixin _$ProfileState<T> {
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -85,6 +88,7 @@ mixin _$ProfileState<T> {
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +111,7 @@ mixin _$ProfileState<T> {
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +134,7 @@ mixin _$ProfileState<T> {
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) =>
@@ -202,6 +208,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -221,6 +228,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -240,6 +248,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -270,6 +279,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return initial(this);
@@ -295,6 +305,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return initial?.call(this);
@@ -320,6 +331,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -383,6 +395,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -402,6 +415,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -421,6 +435,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -451,6 +466,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return loading(this);
@@ -476,6 +492,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return loading?.call(this);
@@ -501,6 +518,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -569,6 +587,7 @@ class _$LoadingUserDataFromLocalStorageImpl<T>
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return loadingUserDataFromLocalStorage();
@@ -588,6 +607,7 @@ class _$LoadingUserDataFromLocalStorageImpl<T>
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return loadingUserDataFromLocalStorage?.call();
@@ -607,6 +627,7 @@ class _$LoadingUserDataFromLocalStorageImpl<T>
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -637,6 +658,7 @@ class _$LoadingUserDataFromLocalStorageImpl<T>
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return loadingUserDataFromLocalStorage(this);
@@ -662,6 +684,7 @@ class _$LoadingUserDataFromLocalStorageImpl<T>
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return loadingUserDataFromLocalStorage?.call(this);
@@ -687,6 +710,7 @@ class _$LoadingUserDataFromLocalStorageImpl<T>
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -756,6 +780,7 @@ class _$LoadingExperienceDataFromLocalStorageImpl<T>
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return loadingExperienceDataFromLocalStorage();
@@ -775,6 +800,7 @@ class _$LoadingExperienceDataFromLocalStorageImpl<T>
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return loadingExperienceDataFromLocalStorage?.call();
@@ -794,6 +820,7 @@ class _$LoadingExperienceDataFromLocalStorageImpl<T>
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -824,6 +851,7 @@ class _$LoadingExperienceDataFromLocalStorageImpl<T>
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return loadingExperienceDataFromLocalStorage(this);
@@ -849,6 +877,7 @@ class _$LoadingExperienceDataFromLocalStorageImpl<T>
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return loadingExperienceDataFromLocalStorage?.call(this);
@@ -874,6 +903,7 @@ class _$LoadingExperienceDataFromLocalStorageImpl<T>
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -966,6 +996,7 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return success(data);
@@ -985,6 +1016,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return success?.call(data);
@@ -1004,6 +1036,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1034,6 +1067,7 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return success(this);
@@ -1059,6 +1093,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return success?.call(this);
@@ -1084,6 +1119,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -1185,6 +1221,7 @@ class _$SuccessUserDataFromLocalStorageImpl<T>
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return successUserDataFromLocalStorage(data);
@@ -1204,6 +1241,7 @@ class _$SuccessUserDataFromLocalStorageImpl<T>
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return successUserDataFromLocalStorage?.call(data);
@@ -1223,6 +1261,7 @@ class _$SuccessUserDataFromLocalStorageImpl<T>
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1253,6 +1292,7 @@ class _$SuccessUserDataFromLocalStorageImpl<T>
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return successUserDataFromLocalStorage(this);
@@ -1278,6 +1318,7 @@ class _$SuccessUserDataFromLocalStorageImpl<T>
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return successUserDataFromLocalStorage?.call(this);
@@ -1303,6 +1344,7 @@ class _$SuccessUserDataFromLocalStorageImpl<T>
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -1406,6 +1448,7 @@ class _$SuccessExperienceDataFromLocalStorageImpl<T>
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return successExperienceDataFromLocalStorage(data);
@@ -1425,6 +1468,7 @@ class _$SuccessExperienceDataFromLocalStorageImpl<T>
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return successExperienceDataFromLocalStorage?.call(data);
@@ -1444,6 +1488,7 @@ class _$SuccessExperienceDataFromLocalStorageImpl<T>
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1474,6 +1519,7 @@ class _$SuccessExperienceDataFromLocalStorageImpl<T>
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return successExperienceDataFromLocalStorage(this);
@@ -1499,6 +1545,7 @@ class _$SuccessExperienceDataFromLocalStorageImpl<T>
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return successExperienceDataFromLocalStorage?.call(this);
@@ -1524,6 +1571,7 @@ class _$SuccessExperienceDataFromLocalStorageImpl<T>
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -1625,6 +1673,7 @@ class _$SuccessUpdateUserDataImpl<T> implements SuccessUpdateUserData<T> {
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return successUpdateUserData(data);
@@ -1644,6 +1693,7 @@ class _$SuccessUpdateUserDataImpl<T> implements SuccessUpdateUserData<T> {
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return successUpdateUserData?.call(data);
@@ -1663,6 +1713,7 @@ class _$SuccessUpdateUserDataImpl<T> implements SuccessUpdateUserData<T> {
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1693,6 +1744,7 @@ class _$SuccessUpdateUserDataImpl<T> implements SuccessUpdateUserData<T> {
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return successUpdateUserData(this);
@@ -1718,6 +1770,7 @@ class _$SuccessUpdateUserDataImpl<T> implements SuccessUpdateUserData<T> {
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return successUpdateUserData?.call(this);
@@ -1743,6 +1796,7 @@ class _$SuccessUpdateUserDataImpl<T> implements SuccessUpdateUserData<T> {
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -1845,6 +1899,7 @@ class _$SuccessUpdatePersonalImageImpl<T>
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return successUpdatePersonalImage(data);
@@ -1864,6 +1919,7 @@ class _$SuccessUpdatePersonalImageImpl<T>
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return successUpdatePersonalImage?.call(data);
@@ -1883,6 +1939,7 @@ class _$SuccessUpdatePersonalImageImpl<T>
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1913,6 +1970,7 @@ class _$SuccessUpdatePersonalImageImpl<T>
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return successUpdatePersonalImage(this);
@@ -1938,6 +1996,7 @@ class _$SuccessUpdatePersonalImageImpl<T>
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return successUpdatePersonalImage?.call(this);
@@ -1963,6 +2022,7 @@ class _$SuccessUpdatePersonalImageImpl<T>
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -2066,6 +2126,7 @@ class _$SuccessUpdateBackGroundImageImpl<T>
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return successUpdateBackGroundImage(data);
@@ -2085,6 +2146,7 @@ class _$SuccessUpdateBackGroundImageImpl<T>
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return successUpdateBackGroundImage?.call(data);
@@ -2104,6 +2166,7 @@ class _$SuccessUpdateBackGroundImageImpl<T>
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -2134,6 +2197,7 @@ class _$SuccessUpdateBackGroundImageImpl<T>
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return successUpdateBackGroundImage(this);
@@ -2159,6 +2223,7 @@ class _$SuccessUpdateBackGroundImageImpl<T>
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return successUpdateBackGroundImage?.call(this);
@@ -2184,6 +2249,7 @@ class _$SuccessUpdateBackGroundImageImpl<T>
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -2282,6 +2348,7 @@ class _$SuccessLogOutImpl<T> implements SuccessLogOut<T> {
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return successLogOut(data);
@@ -2301,6 +2368,7 @@ class _$SuccessLogOutImpl<T> implements SuccessLogOut<T> {
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return successLogOut?.call(data);
@@ -2320,6 +2388,7 @@ class _$SuccessLogOutImpl<T> implements SuccessLogOut<T> {
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -2350,6 +2419,7 @@ class _$SuccessLogOutImpl<T> implements SuccessLogOut<T> {
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return successLogOut(this);
@@ -2375,6 +2445,7 @@ class _$SuccessLogOutImpl<T> implements SuccessLogOut<T> {
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return successLogOut?.call(this);
@@ -2400,6 +2471,7 @@ class _$SuccessLogOutImpl<T> implements SuccessLogOut<T> {
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -2417,6 +2489,226 @@ abstract class SuccessLogOut<T> implements ProfileState<T> {
   @JsonKey(ignore: true)
   _$$SuccessLogOutImplCopyWith<T, _$SuccessLogOutImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessGetUserPostImplCopyWith<T, $Res> {
+  factory _$$SuccessGetUserPostImplCopyWith(_$SuccessGetUserPostImpl<T> value,
+          $Res Function(_$SuccessGetUserPostImpl<T>) then) =
+      __$$SuccessGetUserPostImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T data});
+}
+
+/// @nodoc
+class __$$SuccessGetUserPostImplCopyWithImpl<T, $Res>
+    extends _$ProfileStateCopyWithImpl<T, $Res, _$SuccessGetUserPostImpl<T>>
+    implements _$$SuccessGetUserPostImplCopyWith<T, $Res> {
+  __$$SuccessGetUserPostImplCopyWithImpl(_$SuccessGetUserPostImpl<T> _value,
+      $Res Function(_$SuccessGetUserPostImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$SuccessGetUserPostImpl<T>(
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SuccessGetUserPostImpl<T> implements SuccessGetUserPost<T> {
+  const _$SuccessGetUserPostImpl(this.data);
+
+  @override
+  final T data;
+
+  @override
+  String toString() {
+    return 'ProfileState<$T>.successGetUserPost(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessGetUserPostImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessGetUserPostImplCopyWith<T, _$SuccessGetUserPostImpl<T>>
+      get copyWith => __$$SuccessGetUserPostImplCopyWithImpl<T,
+          _$SuccessGetUserPostImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() loadingUserDataFromLocalStorage,
+    required TResult Function() loadingExperienceDataFromLocalStorage,
+    required TResult Function(T data) success,
+    required TResult Function(T data) successUserDataFromLocalStorage,
+    required TResult Function(T data) successExperienceDataFromLocalStorage,
+    required TResult Function(T data) successUpdateUserData,
+    required TResult Function(T data) successUpdatePersonalImage,
+    required TResult Function(T data) successUpdateBackGroundImage,
+    required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
+    required TResult Function(String error) error,
+  }) {
+    return successGetUserPost(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loadingUserDataFromLocalStorage,
+    TResult? Function()? loadingExperienceDataFromLocalStorage,
+    TResult? Function(T data)? success,
+    TResult? Function(T data)? successUserDataFromLocalStorage,
+    TResult? Function(T data)? successExperienceDataFromLocalStorage,
+    TResult? Function(T data)? successUpdateUserData,
+    TResult? Function(T data)? successUpdatePersonalImage,
+    TResult? Function(T data)? successUpdateBackGroundImage,
+    TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
+    TResult? Function(String error)? error,
+  }) {
+    return successGetUserPost?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? loadingUserDataFromLocalStorage,
+    TResult Function()? loadingExperienceDataFromLocalStorage,
+    TResult Function(T data)? success,
+    TResult Function(T data)? successUserDataFromLocalStorage,
+    TResult Function(T data)? successExperienceDataFromLocalStorage,
+    TResult Function(T data)? successUpdateUserData,
+    TResult Function(T data)? successUpdatePersonalImage,
+    TResult Function(T data)? successUpdateBackGroundImage,
+    TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (successGetUserPost != null) {
+      return successGetUserPost(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(LoadingUserDataFromLocalStorage<T> value)
+        loadingUserDataFromLocalStorage,
+    required TResult Function(LoadingExperienceDataFromLocalStorage<T> value)
+        loadingExperienceDataFromLocalStorage,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(SuccessUserDataFromLocalStorage<T> value)
+        successUserDataFromLocalStorage,
+    required TResult Function(SuccessExperienceDataFromLocalStorage<T> value)
+        successExperienceDataFromLocalStorage,
+    required TResult Function(SuccessUpdateUserData<T> value)
+        successUpdateUserData,
+    required TResult Function(SuccessUpdatePersonalImage<T> value)
+        successUpdatePersonalImage,
+    required TResult Function(SuccessUpdateBackGroundImage<T> value)
+        successUpdateBackGroundImage,
+    required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
+    required TResult Function(Error<T> value) error,
+  }) {
+    return successGetUserPost(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(LoadingUserDataFromLocalStorage<T> value)?
+        loadingUserDataFromLocalStorage,
+    TResult? Function(LoadingExperienceDataFromLocalStorage<T> value)?
+        loadingExperienceDataFromLocalStorage,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(SuccessUserDataFromLocalStorage<T> value)?
+        successUserDataFromLocalStorage,
+    TResult? Function(SuccessExperienceDataFromLocalStorage<T> value)?
+        successExperienceDataFromLocalStorage,
+    TResult? Function(SuccessUpdateUserData<T> value)? successUpdateUserData,
+    TResult? Function(SuccessUpdatePersonalImage<T> value)?
+        successUpdatePersonalImage,
+    TResult? Function(SuccessUpdateBackGroundImage<T> value)?
+        successUpdateBackGroundImage,
+    TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
+    TResult? Function(Error<T> value)? error,
+  }) {
+    return successGetUserPost?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(LoadingUserDataFromLocalStorage<T> value)?
+        loadingUserDataFromLocalStorage,
+    TResult Function(LoadingExperienceDataFromLocalStorage<T> value)?
+        loadingExperienceDataFromLocalStorage,
+    TResult Function(Success<T> value)? success,
+    TResult Function(SuccessUserDataFromLocalStorage<T> value)?
+        successUserDataFromLocalStorage,
+    TResult Function(SuccessExperienceDataFromLocalStorage<T> value)?
+        successExperienceDataFromLocalStorage,
+    TResult Function(SuccessUpdateUserData<T> value)? successUpdateUserData,
+    TResult Function(SuccessUpdatePersonalImage<T> value)?
+        successUpdatePersonalImage,
+    TResult Function(SuccessUpdateBackGroundImage<T> value)?
+        successUpdateBackGroundImage,
+    TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
+    TResult Function(Error<T> value)? error,
+    required TResult orElse(),
+  }) {
+    if (successGetUserPost != null) {
+      return successGetUserPost(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SuccessGetUserPost<T> implements ProfileState<T> {
+  const factory SuccessGetUserPost(final T data) = _$SuccessGetUserPostImpl<T>;
+
+  T get data;
+  @JsonKey(ignore: true)
+  _$$SuccessGetUserPostImplCopyWith<T, _$SuccessGetUserPostImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2494,6 +2786,7 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function(T data) successUpdatePersonalImage,
     required TResult Function(T data) successUpdateBackGroundImage,
     required TResult Function(T data) successLogOut,
+    required TResult Function(T data) successGetUserPost,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -2513,6 +2806,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function(T data)? successUpdatePersonalImage,
     TResult? Function(T data)? successUpdateBackGroundImage,
     TResult? Function(T data)? successLogOut,
+    TResult? Function(T data)? successGetUserPost,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -2532,6 +2826,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function(T data)? successUpdatePersonalImage,
     TResult Function(T data)? successUpdateBackGroundImage,
     TResult Function(T data)? successLogOut,
+    TResult Function(T data)? successGetUserPost,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -2562,6 +2857,7 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function(SuccessUpdateBackGroundImage<T> value)
         successUpdateBackGroundImage,
     required TResult Function(SuccessLogOut<T> value) successLogOut,
+    required TResult Function(SuccessGetUserPost<T> value) successGetUserPost,
     required TResult Function(Error<T> value) error,
   }) {
     return error(this);
@@ -2587,6 +2883,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult? Function(SuccessLogOut<T> value)? successLogOut,
+    TResult? Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult? Function(Error<T> value)? error,
   }) {
     return error?.call(this);
@@ -2612,6 +2909,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function(SuccessUpdateBackGroundImage<T> value)?
         successUpdateBackGroundImage,
     TResult Function(SuccessLogOut<T> value)? successLogOut,
+    TResult Function(SuccessGetUserPost<T> value)? successGetUserPost,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {

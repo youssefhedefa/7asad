@@ -102,14 +102,10 @@ class CustomFloatingActionButton extends StatelessWidget {
           }
           if (state is SuccessPrdeictionState) {
             Navigator.pop(context);
-            DiseaseInfoModel diseaseInfo = DiseaseInfoModel(
-              image: context.read<PredictionCubit>().imageXFile!,
-              diseaseName: 'diseaseName',
-              symptoms: 'symptoms',
-              treatment: 'treatment',
-              reasons: 'reasons',
-              protection: 'protection',
-            );
+            // print(context.read<PredictionCubit>().predictionResult);
+            // context.read<PredictionCubit>().fromatDiseaseData(disease: context.read<PredictionCubit>().predictionResult);
+            // print(context.read<PredictionCubit>().diseaseModel.diseaseName + 'from floating button');
+             DiseaseInfoModel diseaseInfo = context.read<PredictionCubit>().diseaseModel;
             Navigator.pushNamed(context, RoutesManager.diseaseDetectionScreen,
                 arguments: diseaseInfo);
           }

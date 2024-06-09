@@ -87,12 +87,7 @@ Future<void> setUpSetIt() async {
 
   //----------------------------------------- product -----------------------------------------
 
-  // getIt.registerLazySingleton<ProductRepo>(
-  //   () => ProductRepo(
-  //     apiService: getIt(),
-  //   ),
-  // );
-  //
+
   getIt.registerSingleton<ProductRepo>(
     ProductRepo(
       apiService: getIt(),
