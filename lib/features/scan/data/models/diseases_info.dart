@@ -10,8 +10,9 @@ class DiseaseInfoModel{
   final String description;
   final String defaultCombat;
   final String chemicalCombat;
+  final List<dynamic> similarImages;
 
-  DiseaseInfoModel({required this.image, required this.diseaseName, required this.factors, required this.description, required this.defaultCombat, required this.chemicalCombat});
+  DiseaseInfoModel( {required this.similarImages,required this.image, required this.diseaseName, required this.factors, required this.description, required this.defaultCombat, required this.chemicalCombat});
 
 }
 

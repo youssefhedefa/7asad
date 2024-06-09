@@ -2,7 +2,9 @@ import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:flutter/material.dart';
 
 class SamellierImage extends StatelessWidget {
-  const SamellierImage({super.key});
+  const SamellierImage({super.key, required this.similarImages});
+
+  final List<dynamic> similarImages;
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +13,13 @@ class SamellierImage extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Image.asset(
-            ImageHelper.testMainItemDetailsImage,
+            similarImages[index],
           width: 100,
           height: 100,
           fit: BoxFit.fill,
         ),
-        separatorBuilder: (context, index) => const SizedBox(width: 8,) ,
-        itemCount: 5,
+        separatorBuilder: (context, index) => const SizedBox(width: 8,),
+        itemCount: similarImages.length,
       ),
     );
   }

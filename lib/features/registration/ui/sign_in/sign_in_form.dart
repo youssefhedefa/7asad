@@ -64,8 +64,10 @@ class _SignInFormState extends State<SignInForm> {
               if (value!.isEmpty) {
                 return 'كلمه السر مطلوبه';
               }
-              else if(!AppRegex.isPasswordValid(value)){
-                return 'من فضلك ادخل كلمه سر تحتوي علي حروف وارقام\n وتتكون من اكتر من 7 حروف';
+              else if(value.length < 7){
+                //print(AppRegex.isPasswordValid(value));
+                //  تحتوي علي حروف وارقام\n و
+                return 'من فضلك ادخل كلمه سر تتكون من اكتر من 7 حروف';
               }
               else {
                 return null;

@@ -100,6 +100,13 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/disease/diseases.json
+    - assets/disease/bacterial_leaf/
+    - assets/disease/brown_leaf/
+    - assets/disease/false_smut/
+    - assets/disease/foot_root/
+    - assets/disease/healthy/
+    - assets/disease/leaf_blast/
+    - assets/disease/sheath_rot/
 
   fonts:
     - family: Tajawal

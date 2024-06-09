@@ -53,7 +53,8 @@ class SignInListener extends StatelessWidget {
             print('error state');
             Navigator.pop(context);
             context.read<SignInCubit>().errorHappen = true;
-            context.read<SignInCubit>().errorMessage = error;
+            //context.read<SignInCubit>().errorMessage = error;
+            context.read<SignInCubit>().errorMessage = 'هذا الحساب موجود';
           },
         );
       },

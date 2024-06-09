@@ -101,6 +101,7 @@ class PredictionCubit extends Cubit<PredictionState> {
           description: DiseaseDataClassification.diseaseData[i]['description'],
           defaultCombat: DiseaseDataClassification.diseaseData[i]['defaultCombat'],
           chemicalCombat: DiseaseDataClassification.diseaseData[i]['chemicalCombat'],
+          similarImages: DiseaseDataClassification.diseaseData[i]['samellierImages'],
         );
         break;
       }
@@ -112,6 +113,7 @@ class PredictionCubit extends Cubit<PredictionState> {
             description: 'No Disease Found',
             defaultCombat: 'No Disease Found',
             chemicalCombat: 'No Disease Found',
+            similarImages: [],
         );
       }
     }

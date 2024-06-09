@@ -61,14 +61,27 @@ class DiseaseDetection extends StatelessWidget {
                 style: TextStyleHelper.font16BoldDarkestGreen
                     .copyWith(fontWeight: FontWeightHelper.medium),
               ),
+              //const CustomDivider(),
+              const CustomDividerWithLabel(text: 'صور مشابهه'),
+              SamellierImage(
+                similarImages: diseaseInfoModel.similarImages,
+              ),
               const CustomDividerWithLabel(
                 text: 'أعراض المرض',
               ),
-              const SymptomsOfTheDisease(),
+              SymptomsOfTheDisease(
+                  text: diseaseInfoModel.description
+              ),
               const SizedBox(
                 height: 28,
               ),
-              const SamellierImage(),
+              const CustomDividerWithLabel(text: 'الأسباب'),
+              SymptomsOfTheDisease(
+                text:  diseaseInfoModel.factors,
+              ),
+              const SizedBox(
+                height: 28,
+              ),
               const CustomDividerWithLabel(text: 'العلاج'),
               const AlertContainer(
                 text:
@@ -78,10 +91,16 @@ class DiseaseDetection extends StatelessWidget {
                 height: 28,
               ),
               const MedicienList(),
-              const CustomDividerWithLabel(text: 'الأسباب'),
-              const SymptomsOfTheDisease(),
+              const SizedBox(
+                height: 28,
+              ),
+              SymptomsOfTheDisease(
+                text:  diseaseInfoModel.chemicalCombat,
+              ),
               const CustomDividerWithLabel(text: 'طرق الوقاية'),
-              const SymptomsOfTheDisease(),
+              SymptomsOfTheDisease(
+                text:  diseaseInfoModel.defaultCombat,
+              ),
               const SizedBox(
                 height: 28,
               ),
