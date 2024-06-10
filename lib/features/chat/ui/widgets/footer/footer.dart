@@ -53,6 +53,8 @@ class _CustomFooterState extends ConsumerState<CustomFooter> {
         padding: const EdgeInsets.only(top: 14, left: 14,right: 14,bottom: 18),
         child: AudioRecorderViewBody(
           onGestureTap: handelMic,
+          roomID: widget.chatroomId,
+          receiverId: widget.receiverId,
         ),
       ),
     ):

@@ -2,6 +2,7 @@
 import 'package:final_project/core/models/user_data.dart';
 import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/routing/routes.dart';
+import 'package:final_project/features/registration/data/phone_auth/auth_services.dart';
 import 'package:final_project/features/registration/logic/sign_in_cubit/sign_in_cubit.dart';
 import 'package:final_project/features/registration/logic/sign_in_cubit/sign_in_states.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class SignInListener extends StatelessWidget {
               ),
             );
           },
-          success: (userDataResponse) {
+          success: (userDataResponse) async {
             print('success state');
             /// todo: save token here
              UserData response = userDataResponse;
@@ -38,15 +39,36 @@ class SignInListener extends StatelessWidget {
             CachHelper.setId(userInfo: response.data!.user.id!);
             CachHelper.setImageUrl(imageUrl: response.data!.user.photo ?? 'https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg');
 
+            await AuthService.sendOTP(
+              phoneNumber: context.read<SignInCubit>().phoneNumberController.text,
+              errorStep: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text(
+                      'error in sending opt',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              },
+              nextStep: () {
+                Navigator.pushNamed(
+                  context,
+                  RoutesManager.phoneAuthScreen,
+                  arguments: context.read<SignInCubit>().phoneNumberController.text,
+                );
+              },
+            );
 
-            if(context.mounted){
-              Navigator.pop(context);
-              Navigator.pop(context);
-              Navigator.pushNamedAndRemoveUntil(context, RoutesManager.landScreen, (route) => false);
-            }
-            else{
-              print('error in success state');
-            }
+            // if(context.mounted){
+            //   Navigator.pop(context);
+            //   Navigator.pop(context);
+            //   Navigator.pushNamedAndRemoveUntil(context, RoutesManager.landScreen, (route) => false);
+            // }
+            // else{
+            //   print('error in success state');
+            // }
           },
           error: (error) {
             /// todo: need to handle the errors

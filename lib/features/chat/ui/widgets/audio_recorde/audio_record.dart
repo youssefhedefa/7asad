@@ -9,8 +9,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:record/record.dart';
 
 class AudioRecorderViewBody extends StatefulWidget {
-  const AudioRecorderViewBody({super.key, required this.onGestureTap});
+  const AudioRecorderViewBody({super.key, required this.onGestureTap, required this.roomID, required this.receiverId});
   final Function onGestureTap;
+  final  String roomID;
+  final String receiverId;
 
   @override
   State<AudioRecorderViewBody> createState() => _AudioRecorderViewBodyState();
@@ -58,8 +60,8 @@ class _AudioRecorderViewBodyState extends State<AudioRecorderViewBody> {
                         .getAudioFilePath(voiceNoteModel.path);
                     chatRepository.sendFileMessage(
                       file: file,
-                      chatroomId: '94204a30-0981-11ef-b9f0-c98437472eca',
-                      receiverId: '6625feb2629a73b4555a0de2',
+                      chatroomId: widget.roomID,
+                      receiverId: widget.receiverId,
                       messageType: 'audio',
                     );
                     widget.onGestureTap();

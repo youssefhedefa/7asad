@@ -42,7 +42,7 @@ class AddItemImage extends StatelessWidget {
                           print(context.read<ProductCubit>().imagesUrl.length);
                           await context
                               .read<ProductCubit>()
-                              .pickImage(source: ImageSource.camera);
+                              .pickImage(source: ImageSource.gallery);
                           if (context.mounted) {
                             if (context.read<ProductCubit>().imageXFile != null) {
                               context.read<ProductCubit>().uploadImage();

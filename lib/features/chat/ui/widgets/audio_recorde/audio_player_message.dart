@@ -3,7 +3,8 @@ import 'package:final_project/features/chat/ui/widgets/audio_recorde/play_pause_
 import 'package:flutter/material.dart';
 
 class AudioPlayerMessage extends StatefulWidget {
-  const AudioPlayerMessage({super.key, required this.message, required this.isMe});
+  const AudioPlayerMessage(
+      {super.key, required this.message, required this.isMe});
 
   final String message;
   final bool isMe;
@@ -13,7 +14,6 @@ class AudioPlayerMessage extends StatefulWidget {
 }
 
 class _AudioPlayerMessageState extends State<AudioPlayerMessage> {
-
   final player = AudioPlayer();
   bool isPlaying = false;
   double sliderValue = 0.0;
@@ -24,6 +24,8 @@ class _AudioPlayerMessageState extends State<AudioPlayerMessage> {
     player.dispose();
     super.dispose();
   }
+
+  ValueNotifier<double> sliderValueNotifier = ValueNotifier<double>(0.0);
 
   @override
   void initState() {
@@ -36,7 +38,7 @@ class _AudioPlayerMessageState extends State<AudioPlayerMessage> {
       });
     });
     player.onPlayerStateChanged.listen((event) {
-      if(event == PlayerState.completed){
+      if (event == PlayerState.completed) {
         setState(() {
           sliderValue = 0.0;
           player.seek(const Duration(milliseconds: 0));
@@ -47,12 +49,14 @@ class _AudioPlayerMessageState extends State<AudioPlayerMessage> {
     super.initState();
   }
 
-
   Future<void> playFormUrl() async {
     await player.play(UrlSource(widget.message));
+
     maxDuration = await player.getDuration().then((value) {
       return value!.inMilliseconds.toDouble();
     });
+    sliderValueNotifier.value =
+        sliderValueNotifier.value.clamp(0.0, maxDuration ?? 1.0);
   }
 
   @override
@@ -60,24 +64,23 @@ class _AudioPlayerMessageState extends State<AudioPlayerMessage> {
     return Directionality(
       textDirection: widget.isMe ? TextDirection.rtl : TextDirection.ltr,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           PlayPauseButton(
             isPlaying: isPlaying,
             onTap: () {
-              if(isPlaying == false && sliderValue == 0.0){
+              if (isPlaying == false && sliderValue == 0.0) {
                 playFormUrl();
                 setState(() {
                   isPlaying = !isPlaying;
                 });
-              }
-              else if (isPlaying == false && sliderValue != 0.0){
+              } else if (isPlaying == false && sliderValue != 0.0) {
                 player.seek(Duration(milliseconds: sliderValue.toInt()));
                 player.resume();
                 setState(() {
                   isPlaying = !isPlaying;
                 });
-              }
-              else{
+              } else {
                 player.pause();
                 setState(() {
                   isPlaying = !isPlaying;
@@ -89,46 +92,43 @@ class _AudioPlayerMessageState extends State<AudioPlayerMessage> {
             stream: player.onPositionChanged,
             builder: (context, snapshot) {
               if (snapshot.data != null) {
-                sliderValue = (snapshot.data!.inMilliseconds.toDouble()).clamp(0.0, maxDuration?? 1.0);
-                print(' value : $sliderValue maxDuration: $maxDuration');
+                sliderValueNotifier.value =
+                    snapshot.data!.inMilliseconds.toDouble().clamp(0.0, maxDuration ?? 1.0);
               }
-              return Slider(
-                value: sliderValue,
-                min: 0.0,
-                max: maxDuration ?? 1.0,
-                onChanged: (value) {
-                  setState(() {
-                    sliderValue = value;
-                    player.seek(Duration(milliseconds: value.toInt()));
-                  });
-                  if(value == maxDuration){
-                    //isPlaying = false;
-                    setState(() {
-                      sliderValue = 0.0;
-                      player.seek(const Duration(milliseconds: 0));
+              return ValueListenableBuilder<double>(
+                valueListenable: sliderValueNotifier,
+                builder: (context, value, child) {
+                  return Slider(
+                    value: value,
+                    min: 0.0,
+                    max: maxDuration ?? 1.0,
+                    onChanged: (value) {
+                      sliderValueNotifier.value = value;
+                      player.seek(Duration(milliseconds: value.toInt()));
+                      if (value == maxDuration) {
+                        sliderValueNotifier.value = 0.0;
+                        player.seek(const Duration(milliseconds: 0));
+                        isPlaying = false;
+                      }
+                    },
+                    onChangeStart: (value) {
+                      print('start $value');
                       isPlaying = false;
-                    });
-                  }
-                },
-                onChangeStart: (value) {
-                  print('start $value');
-                  isPlaying = false;
-                  setState(() {
-                    player.pause();
-                  });
-                },
-                onChangeEnd: (value) {
-                  isPlaying = true;
-                  print('start $value');
-                  sliderValue = value;
-                  setState(() {
-                    player.seek(Duration(milliseconds: value.toInt()));
-                    player.resume();
-                  });
+                      player.pause();
+                    },
+                    onChangeEnd: (value) {
+                      isPlaying = true;
+                      print('start $value');
+                      sliderValueNotifier.value = value;
+                      player.seek(Duration(milliseconds: value.toInt()));
+                      player.resume();
+                    },
+                  );
                 },
               );
             },
           ),
+
         ],
       ),
     );

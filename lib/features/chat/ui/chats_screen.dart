@@ -18,7 +18,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'المحادثات',
-        background: ColorHelper.primaryColor,
+        background: Colors.white,
         radius: 0,
         sufixWidget: SizedBox(),
         hasImage: false,
@@ -26,23 +26,33 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
       ),
       body: Column(
         children: [
+          // Container(
+          //   padding: const EdgeInsets.symmetric(
+          //     horizontal: 24,
+          //     vertical: 20,
+          //   ),
+          //   decoration: const BoxDecoration(
+          //     color: ColorHelper.primaryColor,
+          //     borderRadius: BorderRadius.only(
+          //       bottomRight: Radius.circular(16),
+          //       bottomLeft: Radius.circular(16),
+          //     ),
+          //   ),
+          //   child: const SizedBox(
+          //     height: 50,
+          //       child: CustomSearchField(
+          //         enabled: true,
+          //       ),
+          //   ),
+          // ),
           Container(
+            height: 90,
             padding: const EdgeInsets.symmetric(
               horizontal: 24,
               vertical: 20,
             ),
-            decoration: const BoxDecoration(
-              color: ColorHelper.primaryColor,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-              ),
-            ),
-            child: const SizedBox(
-              height: 50,
-                child: CustomSearchField(
-                  enabled: true,
-                ),
+            child: const CustomSearchField(
+              enabled: false,
             ),
           ),
           const SizedBox(height: 24),

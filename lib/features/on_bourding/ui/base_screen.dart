@@ -17,29 +17,43 @@ class OnBourdingScreen extends StatefulWidget {
 
 class _OnBourdingScreenState extends State<OnBourdingScreen> {
   final PageController pageController = PageController();
-  late List<Widget> images ;
+  late List<Widget> images;
+  late List<String> headTitles;
+  late List<String> subTitles;
 
   int currentPage = 0;
 
   @override
   void initState() {
     super.initState();
-      images = [
-        const Image(
-          image: AssetImage(ImageHelper.shoppingCartImage),
-          fit: BoxFit.fitWidth,
-        ),
-        const Image(
-          image: AssetImage(ImageHelper.scanImage),
-        ),
-        const Image(
-          image: AssetImage(ImageHelper.socialMediaImage),
-        ),
-        const Image(
-          image: AssetImage(ImageHelper.textDialogImage),
-        ),
-      ];
-      setState(() {});
+    images = [
+      const Image(
+        image: AssetImage(ImageHelper.shoppingCartImage),
+        fit: BoxFit.fitWidth,
+      ),
+      const Image(
+        image: AssetImage(ImageHelper.scanImage),
+      ),
+      const Image(
+        image: AssetImage(ImageHelper.socialMediaImage),
+      ),
+      const Image(
+        image: AssetImage(ImageHelper.textDialogImage),
+      ),
+    ];
+    headTitles = [
+      'السوق',
+      'الكشف عن الأمراض',
+      'المشاركة والتفاعل',
+      'محادثات فعالة ',
+    ];
+    subTitles = [
+      'تقدر تبيع او تشتري منتجات ومعدات زراعيه بسعر تنافسي ومتابعه الاسعار',
+      'بمجرد تصوير النبات تقدر تعرف المرض  وعلاجه وطرق الوقايه منه',
+      'تفاعل وشارك منشورات مع اشخاص في مجال الزراعه وتقدر تلاقي شغل ببساطه',
+      'تقدر تتكلم مع استشارين لستشارتهم في امور الزراعه او مع اصحابك',
+    ];
+    setState(() {});
     pageController.addListener(() {
       setState(() {
         currentPage = pageController.page!.round();
@@ -59,16 +73,31 @@ class _OnBourdingScreenState extends State<OnBourdingScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        padding: const EdgeInsets.symmetric(vertical: 60.0,horizontal: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
             const SkipButton(),
+            const Spacer(),
             CustomImageViewer(
               pageController: pageController,
               children: images,
             ),
+            const Spacer(),
+            Text(
+              headTitles[currentPage],
+              style: TextStyleHelper.font18MediumDarkestGreen,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              subTitles[currentPage],
+              style: TextStyleHelper.font16MediumDarkestGreen,
+              textAlign: TextAlign.center,
+            ),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

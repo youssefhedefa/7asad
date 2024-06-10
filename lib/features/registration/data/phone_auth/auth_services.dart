@@ -7,10 +7,10 @@ class AuthService {
   static String verifyID = '';
 
   // static Future<void> phoneAuthRecaptcha() async{
-  //   // firebaseAuth.setSettings(
-  //   //   appVerificationDisabledForTesting: true,
-  //   //   forceRecaptchaFlow: true,
-  //   // );
+  //   firebaseAuth.setSettings(
+  //     //appVerificationDisabledForTesting: true,
+  //     forceRecaptchaFlow: false,
+  //   );
   // }
 
   static Future sendOTP({

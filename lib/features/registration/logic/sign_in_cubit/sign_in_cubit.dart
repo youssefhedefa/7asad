@@ -27,8 +27,8 @@ class SignInCubit extends Cubit<SingInState> {
     }
     final response = await signInRepo.signIn(signInRequestBody);
     response.when(
-      success: (signInResponse) {
-        AuthService.sendOTP(
+      success: (signInResponse) async {
+        await AuthService.sendOTP(
           phoneNumber: context.read<SignInCubit>().phoneNumberController.text,
           errorStep: () {
             ScaffoldMessenger.of(context).showSnackBar(

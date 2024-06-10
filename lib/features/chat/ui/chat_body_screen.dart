@@ -24,7 +24,6 @@ class _ChatBodyScreenState extends ConsumerState<ChatBodyScreen> {
   late final TextEditingController messageController;
   late final String chatroomId;
 
-
   final record = FlutterSoundRecorder();
 
   bool isMicAndCamera = true;
