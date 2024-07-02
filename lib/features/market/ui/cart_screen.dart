@@ -2,7 +2,6 @@ import 'package:final_project/core/di/dependency_injection.dart';
 import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/core/widgets/custom_app_bar.dart';
-import 'package:final_project/features/market/data/models/product/product_data.dart';
 import 'package:final_project/features/market/logic/product_cubit/product_cubit.dart';
 import 'package:final_project/features/market/logic/product_cubit/product_states.dart';
 import 'package:final_project/features/market/ui/cart_widgets/widgets/cart_item.dart';
@@ -22,7 +21,8 @@ class CartScreen extends StatelessWidget {
         background: Colors.white,
       ),
       body: BlocProvider.value(
-        value: getIt<ProductCubit>()..getCartProducts(),
+        //value: getIt<ProductCubit>()..getCartProducts(),
+        value: getIt<ProductCubit>(),
         child: SingleChildScrollView(
           child: BlocConsumer<ProductCubit,ProductState>(
             builder: (context,state) {
@@ -67,11 +67,11 @@ class CartScreen extends StatelessWidget {
                               'المجموع الكلي',
                               style: TextStyleHelper.font22MediumDarkestGreen,
                             ),
-                            const Spacer(),
-                            Text(
-                              'جم 24.000',
-                              style: TextStyleHelper.font22MediumDarkestGreen,
-                            ),
+                            // const Spacer(),
+                            // Text(
+                            //   'جم 24.000',
+                            //   style: TextStyleHelper.font22MediumDarkestGreen,
+                            // ),
                           ],
                         ),
                         const SizedBox(height: 28,),

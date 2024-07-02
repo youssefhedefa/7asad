@@ -16,7 +16,6 @@ class CustomRatingBar extends StatelessWidget {
         Text(
           title,
           style: TextStyleHelper.font12RegularDarkGreen,
-
         ),
         const Spacer(),
         LinearPercentIndicator(

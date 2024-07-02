@@ -19,9 +19,11 @@ class LogInScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'تسجيل دخول',
-        background: ColorHelper.primaryColor,
+        background: Colors.white,
+        radius: 0,
+        sufixWidget: SizedBox(),
+        hasImage: false,
         hasLeading: false,
-        whiteText: true,
       ),
       body: BlocBuilder<LogInCubit,LogInState>(
         builder: (BuildContext context, LogInState<dynamic> state) {

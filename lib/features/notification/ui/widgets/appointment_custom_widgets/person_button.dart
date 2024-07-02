@@ -1,5 +1,4 @@
 import 'package:final_project/core/constants.dart';
-import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:final_project/core/models/user_data.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';

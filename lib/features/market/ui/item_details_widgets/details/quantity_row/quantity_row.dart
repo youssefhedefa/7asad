@@ -32,7 +32,7 @@ class _QuantityRowState extends State<QuantityRow> {
     return Row(
       children: [
         Text(
-          'طن\\جم$price',
+          'جنيه $price',
           style: TextStyleHelper.font20BoldPrimary,
         ),
         const Spacer(),

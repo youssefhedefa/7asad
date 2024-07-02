@@ -17,8 +17,11 @@ class PhoneAuthScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'تأكيد الحساب',
-        background: ColorHelper.primaryColor,
-        whiteText: true,
+        background: Colors.white,
+        radius: 0,
+        sufixWidget: SizedBox(),
+        hasImage: false,
+        hasLeading: true,
       ),
       body: BlocProvider(
         create: (context) => AuthCubit(),

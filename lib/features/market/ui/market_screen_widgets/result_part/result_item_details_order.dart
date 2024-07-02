@@ -13,7 +13,7 @@ class ResultItemDetailsOrder extends StatelessWidget {
     return Row(
       children: [
         Text(
-          'طن\\جم $price',
+          'جنيه $price',
           style: TextStyleHelper.font12RegularPrimary,
         ),
         const Spacer(),

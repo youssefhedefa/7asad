@@ -29,18 +29,18 @@ class ProfileMenu extends StatelessWidget {
         );
       },
       menuChildren: [
-        InkWell(
-          onTap: () {
-            print('تم مسح الحساب');
-          },
-          child: MenuItemButton(
-            child: Text(
-              'مسح الحساب',
-              style: TextStyleHelper.font16MediumDarkGreen.copyWith(
-                  color: Colors.black, fontWeight: FontWeightHelper.regular),
-            ),
-          ),
-        ),
+        // InkWell(
+        //   onTap: () {
+        //     print('تم مسح الحساب');
+        //   },
+        //   child: MenuItemButton(
+        //     child: Text(
+        //       'مسح الحساب',
+        //       style: TextStyleHelper.font16MediumDarkGreen.copyWith(
+        //           color: Colors.black, fontWeight: FontWeightHelper.regular),
+        //     ),
+        //   ),
+        // ),
         BlocProvider.value(
           value:getIt<ProfileCubit>(),
           child: BlocBuilder<ProfileCubit,ProfileState>(
@@ -67,18 +67,18 @@ class ProfileMenu extends StatelessWidget {
             }
           ),
         ),
-        InkWell(
-          onTap: () {
-            print('المزيد');
-          },
-          child: MenuItemButton(
-            child: Text(
-              'المزيد',
-              style: TextStyleHelper.font16MediumDarkGreen.copyWith(
-                  color: Colors.black, fontWeight: FontWeightHelper.regular),
-            ),
-          ),
-        ),
+        // InkWell(
+        //   onTap: () {
+        //     print('المزيد');
+        //   },
+        //   child: MenuItemButton(
+        //     child: Text(
+        //       'المزيد',
+        //       style: TextStyleHelper.font16MediumDarkGreen.copyWith(
+        //           color: Colors.black, fontWeight: FontWeightHelper.regular),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

@@ -1,3 +1,6 @@
+import 'package:final_project/core/constants.dart';
+import 'package:final_project/core/models/chat_model.dart';
+import 'package:final_project/core/models/default_user.dart';
 import 'package:final_project/core/models/the_data_to_profile_as_visitor.dart';
 import 'package:final_project/core/models/user_data.dart';
 import 'package:final_project/core/networking/local/caching_helper.dart';
@@ -55,7 +58,16 @@ class SellerInfo extends StatelessWidget {
                 }
             },
             messageOnTap: (){
-              Navigator.pushNamed(context, RoutesManager.chatBodyScreen);
+              ChatBodyModel n = ChatBodyModel(name: user.name ?? defaultUser().name!, id: user.id!, image: user.photo ?? Constants.imageStatic);
+              Navigator.pushNamed(context, RoutesManager.chatBodyScreen,arguments: n);
+              // Navigator.pushNamed(
+              //   context,
+              //   RoutesManager.profileScreen,
+              //   arguments: DataToProfileAsVisitor(
+              //     isVisitor: (consultant.id != CachHelper.getId()),
+              //     id: consultant.id,
+              //   ),
+              // );
             },
           ),
         ],

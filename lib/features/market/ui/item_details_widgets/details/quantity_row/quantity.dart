@@ -3,14 +3,19 @@ import 'package:final_project/features/market/ui/item_details_widgets/details/qu
 import 'package:flutter/material.dart';
 
 class Quantity extends StatefulWidget {
-  const Quantity({super.key, required this.buttonWidth, required this.buttonHeight, required this.fontSize, this.buttonFontSize, this.changeQuantity});
+  const Quantity(
+      {super.key,
+      required this.buttonWidth,
+      required this.buttonHeight,
+      required this.fontSize,
+      this.buttonFontSize,
+      this.changeQuantity});
 
   final double buttonWidth;
   final double buttonHeight;
   final double fontSize;
   final double? buttonFontSize;
   final Function(int)? changeQuantity;
-
 
   @override
   State<Quantity> createState() => _QuantityState();
@@ -22,7 +27,9 @@ class _QuantityState extends State<Quantity> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0,),
+      padding: const EdgeInsets.only(
+        bottom: 8.0,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
@@ -41,22 +48,28 @@ class _QuantityState extends State<Quantity> {
             height: widget.buttonHeight,
             buttonFontSize: widget.buttonFontSize,
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           Text(
             _counter.toString(),
             style: TextStyle(
-                fontSize: widget.fontSize,
+              fontSize: widget.fontSize,
               color: Colors.black.withOpacity(0.65),
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           QuantityButton(
             onTap: () {
-              setState(() {
-                _counter--;
-                widget.changeQuantity!(_counter);
-              });
+              if (_counter > 1) {
+                setState(() {
+                  _counter--;
+                  widget.changeQuantity!(_counter);
+                });
+              }
             },
             sign: '-',
             outerColor: const Color(0xFFEAEAEA),
@@ -65,10 +78,11 @@ class _QuantityState extends State<Quantity> {
             height: widget.buttonHeight,
             buttonFontSize: widget.buttonFontSize,
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
         ],
       ),
     );
   }
 }
-

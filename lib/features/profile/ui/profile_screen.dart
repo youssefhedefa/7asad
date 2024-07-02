@@ -1,3 +1,4 @@
+import 'package:final_project/core/constants.dart';
 import 'package:final_project/core/di/dependency_injection.dart';
 import 'package:final_project/core/models/chat_model.dart';
 import 'package:final_project/core/models/default_user.dart';
@@ -15,7 +16,6 @@ import 'package:final_project/features/profile/ui/widgets/profile_widgets/educat
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/experience_container.dart';
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/info_text.dart';
 import 'package:final_project/features/profile/ui/widgets/profile_widgets/profile_photo_stack.dart';
-import 'package:final_project/features/profile/ui/widgets/profile_widgets/statistics_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,9 +58,9 @@ class ProfileScreen extends StatelessWidget {
                                 .read<ProfileCubit>()
                                 .user
                                 .background ??
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHrMqwA2X-_g537_jV6dciihxDmX4PUTQD6Q&s',
+                            Constants.backStatic,
                         image: context.read<ProfileCubit>().user.photo ??
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQljYSrXL1AK2EzLXxKDtbl3hrFbLphwvqzmw&s',
+                            Constants.imageStatic,
                       ),
                       InfoText(
                         name: context.read<ProfileCubit>().user.name ?? '',
@@ -68,8 +68,14 @@ class ProfileScreen extends StatelessWidget {
                         city: context.read<ProfileCubit>().user.city ?? ' ',
                         country:
                             context.read<ProfileCubit>().user.country ?? ' ',
+                        placeNull: context.read<ProfileCubit>().user.city == ' ' || context.read<ProfileCubit>().user.country  == ' ' ? true : false,
                       ),
-                      context.read<ProfileCubit>().user.role == 'farmer' ? const SizedBox() : const Icon(Icons.verified, color: ColorHelper.primaryColor, size: 30,),
+                      context.read<ProfileCubit>().user.role == 'farmer' ? const SizedBox() : const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                           Icon(Icons.verified, color: ColorHelper.primaryColor, size: 30,),
+                        ],
+                      ),
                       //const StatisticsRow(),
                       Padding(
                         padding: const EdgeInsets.only(

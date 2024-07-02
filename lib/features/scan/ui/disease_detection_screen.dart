@@ -4,13 +4,11 @@ import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/theming/font_weight_helper.dart';
 import 'package:final_project/core/theming/text_style_helper.dart';
 import 'package:final_project/core/widgets/action_buttons.dart';
-import 'package:final_project/core/widgets/alert_container.dart';
 import 'package:final_project/core/widgets/custom_app_bar.dart';
 import 'package:final_project/features/market/ui/item_details_widgets/reviews/custom_divider.dart';
 import 'package:final_project/features/market/ui/market_screen_widgets/custom_label.dart';
 import 'package:final_project/features/scan/data/models/diseases_info.dart';
 import 'package:final_project/features/scan/ui/widgets/disease_detection/custom_divider_with_label.dart';
-import 'package:final_project/features/scan/ui/widgets/disease_detection/medicien_list.dart';
 import 'package:final_project/features/scan/ui/widgets/disease_detection/samellier_images.dart';
 import 'package:final_project/features/scan/ui/widgets/disease_detection/taken_image.dart';
 import 'package:flutter/material.dart';
@@ -83,14 +81,14 @@ class DiseaseDetection extends StatelessWidget {
                 height: 28,
               ),
               const CustomDividerWithLabel(text: 'العلاج'),
-              const AlertContainer(
-                text:
-                    'يتم أستخدام نوع واحد فقط من الأنواع الأتيه وتتبع ارشادات الأستخدام الخاصه بكل نوع',
-              ),
-              const SizedBox(
-                height: 28,
-              ),
-              const MedicienList(),
+              // const AlertContainer(
+              //   text:
+              //       'يتم أستخدام نوع واحد فقط من الأنواع الأتيه وتتبع ارشادات الأستخدام الخاصه بكل نوع',
+              // ),
+              // const SizedBox(
+              //   height: 28,
+              // ),
+              // const MedicienList(),
               const SizedBox(
                 height: 28,
               ),

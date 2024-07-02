@@ -3,7 +3,6 @@ import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/widgets/action_buttons.dart';
 import 'package:final_project/core/widgets/custom_app_bar.dart';
-import 'package:final_project/core/widgets/custom_functions/functions.dart';
 import 'package:final_project/features/market/ui/market_screen_widgets/custom_label.dart';
 import 'package:final_project/features/scan/data/models/appointment_request.dart';
 import 'package:final_project/features/scan/logic/prediction_cubit/prediction_cubit.dart';

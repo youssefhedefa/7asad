@@ -16,7 +16,8 @@ class ItemDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: context.read<ProductCubit>()..getProductReviews(id: product.id!)..getCartProducts(),
+      //value: context.read<ProductCubit>()..getProductReviews(id: product.id!)..getCartProducts(),
+      value: context.read<ProductCubit>()..getProductReviews(id: product.id!),
       child: Scaffold(
         appBar: const CustomItemDetailsAppBar(),
         body: Padding(

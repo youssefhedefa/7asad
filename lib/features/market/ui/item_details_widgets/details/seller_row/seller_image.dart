@@ -1,4 +1,4 @@
-import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
+import 'package:final_project/core/constants.dart';
 import 'package:flutter/material.dart';
 
 class SellerImage extends StatelessWidget {
@@ -20,7 +20,7 @@ class SellerImage extends StatelessWidget {
           shape: BoxShape.circle,
           image: DecorationImage(
             fit: BoxFit.fill,
-            image: AssetImage(ImageHelper.mohamedImage),
+            image: NetworkImage(Constants.imageStatic),
           ),
         ),
       );

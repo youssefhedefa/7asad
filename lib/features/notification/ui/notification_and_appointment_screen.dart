@@ -1,9 +1,7 @@
 import 'package:final_project/core/di/dependency_injection.dart';
 import 'package:final_project/core/routing/routes.dart';
 import 'package:final_project/core/widgets/custom_app_bar.dart';
-import 'package:final_project/features/market/ui/item_details_widgets/nav_bar.dart';
 import 'package:final_project/features/notification/ui/appointments.dart';
-import 'package:final_project/features/notification/ui/notification.dart';
 import 'package:final_project/features/scan/logic/prediction_cubit/prediction_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

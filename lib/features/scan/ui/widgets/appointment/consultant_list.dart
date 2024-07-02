@@ -1,5 +1,4 @@
 import 'package:final_project/core/constants.dart';
-import 'package:final_project/core/models/default_user.dart';
 import 'package:final_project/features/scan/logic/prediction_cubit/prediction_cubit.dart';
 import 'package:final_project/features/scan/logic/prediction_cubit/prediction_state.dart';
 import 'package:final_project/features/scan/ui/widgets/appointment/consultants_item.dart';

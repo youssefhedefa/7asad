@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:final_project/core/component/upload_image/data/repo/upload_image_repo.dart';
 import 'package:final_project/features/community/data/models/get_all_comments.dart';
 import 'package:final_project/features/community/data/models/get_all_posts_response.dart';
-import 'package:final_project/features/community/data/repo/community_repo.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:dio/dio.dart';
 import 'package:final_project/core/models/user_data.dart';

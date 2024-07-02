@@ -18,7 +18,7 @@ class ResultItemDetailsTitle extends StatelessWidget {
         ),
         const SizedBox(width: 6),
         Text(
-          'العدد: $quantity طن ',
+          'العدد: $quantity وحده ',
           style: TextStyleHelper.font14MediumSuccess,
         ),
       ],

@@ -1,6 +1,7 @@
 abstract class ApiConstants{
 
   static const String apiBaseUrl = 'https://sevenasad.onrender.com/';
+  //static const String apiBaseUrl = 'http://10.0.2.2:3333/';
   //static const String riceModelApiUrl = 'https://lit-taiga-72596-918c74049d5c.herokuapp.com/';
   static const String riceModelApiUrl = 'https://teaam.pythonanywhere.com/';
   static const String riceModelPredict = 'predict';

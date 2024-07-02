@@ -5,21 +5,13 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:final_project/core/networking/local/caching_helper.dart';
 // import 'package:final_project/core/networking/remote/firebase/firebase_constances.dart';
-import 'package:final_project/core/networking/local/caching_helper.dart';
 import 'package:final_project/core/routing/routes.dart';
-// import 'package:final_project/features/chat/data/models/chat_room.dart';
-// import 'package:final_project/features/chat/data/models/messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
-// import 'package:uuid/uuid.dart';
 
 class FirebaseServices{
 
  FirebaseAuth auth = FirebaseAuth.instance;
- // String userId = CachHelper.getId();
- // final _myUid = CachHelper.getId();
- // final _storage = FirebaseStorage.instance;
 
  void phoneAuth({required String phoneNumber, required BuildContext context ,}) async {
   try{

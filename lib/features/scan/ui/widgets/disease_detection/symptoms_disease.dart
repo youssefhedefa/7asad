@@ -1,5 +1,4 @@
 import 'package:final_project/core/theming/text_style_helper.dart';
-import 'package:final_project/core/widgets/expand_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class SymptomsOfTheDisease extends StatelessWidget {

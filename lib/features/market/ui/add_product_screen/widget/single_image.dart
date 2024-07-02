@@ -1,11 +1,8 @@
-import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:final_project/core/helpers/assets_helper/icon_helper.dart';
 import 'package:final_project/features/market/logic/product_cubit/product_cubit.dart';
-import 'package:final_project/features/market/logic/product_cubit/product_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 
 class SingleImage extends StatelessWidget {
   const SingleImage({super.key, required this.index});

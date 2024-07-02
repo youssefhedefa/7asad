@@ -19,9 +19,11 @@ class SignInScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'انشاء حساب',
-        background: ColorHelper.primaryColor,
+        background: Colors.white,
+        radius: 0,
+        sufixWidget: SizedBox(),
+        hasImage: false,
         hasLeading: false,
-        whiteText: true,
       ),
       body: SingleChildScrollView(
         child: Padding(

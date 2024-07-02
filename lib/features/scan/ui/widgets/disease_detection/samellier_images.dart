@@ -1,4 +1,3 @@
-import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:flutter/material.dart';
 
 class SamellierImage extends StatelessWidget {

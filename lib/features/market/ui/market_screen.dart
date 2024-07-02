@@ -27,6 +27,7 @@ class MarketScreen extends StatelessWidget {
               CustomLabel(label: 'الأقسام'),
               SectionPart(),
               ResultPart(),
+              SizedBox(height: 24),
             ],
           ),
         ),

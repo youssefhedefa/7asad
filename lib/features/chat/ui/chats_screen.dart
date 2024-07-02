@@ -1,4 +1,3 @@
-import 'package:final_project/core/theming/color_helper.dart';
 import 'package:final_project/core/widgets/custom_app_bar.dart';
 import 'package:final_project/features/chat/ui/widgets/chat_list.dart';
 import 'package:final_project/features/market/ui/market_screen_widgets/upper_part/custom_search/custom_search_field.dart';

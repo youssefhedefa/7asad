@@ -1,3 +1,4 @@
+import 'package:final_project/core/constants.dart';
 import 'package:final_project/core/helpers/assets_helper/image_helper.dart';
 import 'package:final_project/core/models/default_user.dart';
 import 'package:final_project/core/routing/routes.dart';
@@ -144,7 +145,7 @@ class Details extends StatelessWidget {
             shape: BoxShape.circle,
             image: DecorationImage(
               fit: BoxFit.fill,
-              image: AssetImage(ImageHelper.mohamedImage),
+              image: NetworkImage(Constants.imageStatic),
             ),
           ),
         );

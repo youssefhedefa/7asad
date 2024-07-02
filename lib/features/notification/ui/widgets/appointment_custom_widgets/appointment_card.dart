@@ -55,27 +55,27 @@ class AppointmentCard extends StatelessWidget {
                     'عن: الارز',
                     style: TextStyleHelper.font12MediumDarkestGreen,
                   ),
-                  const Spacer(),
-                  MenuAnchor(
-                    builder: (BuildContext context, MenuController controller,
-                        Widget? child) {
-                      return IconButton(
-                        onPressed: () {
-                          if (controller.isOpen) {
-                            controller.close();
-                          } else {
-                            controller.open();
-                          }
-                        },
-                        icon: const Icon(Icons.more_vert),
-                        //tooltip: 'Show menu',
-                      );
-                    },
-                    menuChildren: const [
-                      SizedBox(),
-                      SizedBox(),
-                    ],
-                  ),
+                  // const Spacer(),
+                  // MenuAnchor(
+                  //   builder: (BuildContext context, MenuController controller,
+                  //       Widget? child) {
+                  //     return IconButton(
+                  //       onPressed: () {
+                  //         if (controller.isOpen) {
+                  //           controller.close();
+                  //         } else {
+                  //           controller.open();
+                  //         }
+                  //       },
+                  //       icon: const Icon(Icons.more_vert),
+                  //       //tooltip: 'Show menu',
+                  //     );
+                  //   },
+                  //   menuChildren: const [
+                  //     SizedBox(),
+                  //     SizedBox(),
+                  //   ],
+                  // ),
                 ],
               ),
               const SizedBox(height: 8),
@@ -128,18 +128,18 @@ class AppointmentCard extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
+        const Positioned(
           top: 10,
           right: 10,
           child: Row(
             children: [
-              const CustomFlashDot(),
-              const SizedBox(width: 4),
-              Text(
-                'الأن',
-                style: TextStyleHelper.font10RegularDarkestGreen
-                    .copyWith(color: ColorHelper.errorColor),
-              ),
+              CustomFlashDot(),
+              SizedBox(width: 4),
+              // Text(
+              //   'الأن',
+              //   style: TextStyleHelper.font10RegularDarkestGreen
+              //       .copyWith(color: ColorHelper.errorColor),
+              // ),
             ],
           ),
         ),
