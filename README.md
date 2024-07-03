@@ -1,16 +1,125 @@
-# final_project
+# 7asad 
 
-A new Flutter project.
+-	7asad is application that help all who is Interested in the agricultural field in Egypt in particular.
+  
+-	This application offer:
 
-## Getting Started
+      o	Market to view agriculture products.
 
-This project is a starting point for a Flutter application.
+      o	ML scanner model to identify the disease of rice plant.
 
-A few resources to get you started if this is your first Flutter project:
+      o	Chat feature to communicate with other users.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+      o	Community to share posts and interact with other.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Demo
+
+<div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/8b7fbe9b-2f42-4066-a7b0-abfa43857adf.jpeg" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20147.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+
+  <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20148.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20150.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+
+  <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/Frame%201984077196.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%2049.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%2062.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%2064.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%2099.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20104.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/Frame%201984077201.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/M-PD.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20152.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/M-C.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/M-F.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/Frame%201984077202.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%2043%201.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%2053%202.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20176.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/M-P.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20203.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20190.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20175.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20179.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div>
+    
+  <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20184.png" width = 410 height = 867>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20202.png" width = 410 height = 867>
+  </div>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+
+  
+  
