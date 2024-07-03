@@ -116,7 +116,7 @@
     
   <img src ="https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20184.png" width = 410 height = 867>
   &nbsp;&nbsp;&nbsp;&nbsp; 
-  <img src = "https://github.com/youssefhedefa/7asad/blob/7asad_screens/iPhone%2013%20%26%2014%20-%20202.png" width = 410 height = 867>
+  <img src = "https://github.com/youssefhedefa/7asad/blob/master/iPhone%2013%20%26%2014%20-%20127.png" width = 410 height = 867>
   </div>
   
   &nbsp;&nbsp;&nbsp;&nbsp; 
