@@ -1,4 +1,4 @@
-import 'package:final_project/app_main.dart';
+import 'package:final_project/hasad_app.dart';
 import 'package:final_project/bloc_observer.dart';
 import 'package:final_project/core/di/dependency_injection.dart';
 import 'package:final_project/core/models/user_data.dart';
